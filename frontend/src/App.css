@@ -1770,6 +1770,7 @@ input, select, textarea {
 	.button {
 		cursor: pointer;
 		background-color: #3e9bbb;
+    background-image: url("images/bg02.png");
 		border-radius: 0.4em;
 		text-align: center;
 		box-shadow: inset 0px 0px 0px 1px rgba(255, 255, 255, 0.15);
