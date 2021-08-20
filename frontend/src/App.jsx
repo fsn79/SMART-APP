@@ -1,6 +1,7 @@
 import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
+import Sidebar from './components/sidebar/Sidebar.jsx';
 import Login from './components/index/Login.jsx';
 import CreateWorkCenter from './components/admin/CreateWorkCenter.jsx';
 import CreateUser from './components/admin/CreateUser.jsx';
@@ -16,6 +17,7 @@ function App() {
   return (
     <div className='App'>
       <BrowserRouter>
+        <Sidebar />
         <Switch>
           <Route path='/' exact>
             <Login />
