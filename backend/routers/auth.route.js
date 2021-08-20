@@ -4,3 +4,5 @@ const logout = require('../controllers/auth/logout');
 router
   .route('/logout')
     .get(logout)
+
+module.exports = router;
