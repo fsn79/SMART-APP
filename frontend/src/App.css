@@ -75,6 +75,14 @@ input, select, textarea {
 }
 
 /* Basic */
+.App{
+  display: flex;
+    align-items: stretch;
+}
+#root{
+  width: 100%;
+  width: -webkit-fill-available;
+}
 
 	html {
 		box-sizing: border-box;
@@ -2273,7 +2281,6 @@ input, select, textarea {
   }
 
 	#sidebar {
-    height: 100%;
 		color: rgba(255, 255, 255, 0.55);
 		text-shadow: -1px -1px 0px rgba(0, 0, 0, 0.5);
 		width: 14em;
@@ -2660,6 +2667,7 @@ input, select, textarea {
 			#content {
 				padding: 3em 5em 8em 5em;
 				margin-left: 7em;
+        min-height: 100vh;
 			}
 
 	}
