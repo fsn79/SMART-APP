@@ -4,7 +4,7 @@ const initState = {
 };
 
 function reducer(state = initState, action) {
-  switch (action.type) {
+  switch (action.type === 'OK') {
     default:
       return state;
   }

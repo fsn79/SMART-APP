@@ -5,9 +5,9 @@ import { fetchJson } from '../fetchJson.jsx';
 function* loadData() {
   try {
     const data = yield call(fetchJson('/'));
-    yield put('OK', { error: true, message: data });
+    yield put({ type: 'OK', payload: { error: true, message: data } });
   } catch (e) {
-    yield put('ERROR', { error: true, message: "Can't connect to server" });
+    yield put({ type: 'OK', payload: { error: true, message: "Can't connect to server" } });
   }
 }
 
