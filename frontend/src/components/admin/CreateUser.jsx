@@ -1,6 +1,8 @@
 function CreateUser() {
   // Форма создания пользователя
   return (
+    <div class="flex-direction--column formbg padding-horizontal--48">
+        <span class="padding-bottom--15">Create a new employee</span>
     <form>
        <div class="field padding-bottom--24">
         <label for="lastname">Lastname</label>
@@ -29,9 +31,10 @@ function CreateUser() {
         <option>Worker</option>
       </select></p>
       <div class="field padding-bottom--24">
-        <input type="submit" name="submit" value="Continue" />
+        <input type="submit" name="submit" value="Create" />
       </div>
     </form>
+    </div>
   );
 }
 
