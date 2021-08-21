@@ -31,7 +31,9 @@ function* createItem(action) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(action.payload),
     }));
-    
+
+  } catch (e) {
+    console.log(e)
   }
 }
 
