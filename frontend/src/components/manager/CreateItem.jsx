@@ -2,10 +2,8 @@ import { useDispatch } from 'react-redux';
 
 function CreateItem() {
   // Форма создания продукта
-  const dispatch = useDispatch(); 
-
+  const dispatch = useDispatch();
   const handlerCreateItem = (e) => {
-
     e.preventDefault();
     const payload = {
       name: e.target.itemName.value,
@@ -20,11 +18,9 @@ function CreateItem() {
       workcenter3: e.target.workcenter3.value,
       descrroute3: e.target.descrroute3.value,
       cycletime3: e.target.cycletime3.value,
-    }
-
-    dispatch({ type: "ITEM", payload})
-    
-  } 
+    };
+    dispatch({ type: 'ITEM', payload });
+  };
 
   return (
     <div class="flex-direction--column formbg padding-horizontal--48" id="createItemDiv">

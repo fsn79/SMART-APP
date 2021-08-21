@@ -1,5 +1,10 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
-import CREATE_USER from '../actionTypes';
+import {
+  createUserAC,
+  createItemAC,
+  createWorkCenterAC,
+  editWorkCenterAC,
+} from '../actionCreators';
 import { fetchJson } from '../fetchJson.jsx';
 
 // Worker
@@ -18,28 +23,56 @@ function* createUser(action) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(action.payload),
     }));
-    yield put({ type: CREATE_USER, payload: response });
+    yield put(createUserAC(response));
   } catch (e) {
     console.log(e);
   }
 }
 
 function* createItem(action) {
-  try{
+  try {
     const response = yield call(fetchJson('/api/item', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(action.payload),
     }));
-
+    yield put(createItemAC(response));
   } catch (e) {
-    console.log(e)
+    console.log(e);
+  }
+}
+
+function* createWorkCenter(action) {
+  try {
+    const response = yield call(fetchJson('/api/wc', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(action.payload),
+    }));
+    yield put(createWorkCenterAC(response));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+function* editWorkCenter(action) {
+  try {
+    const response = yield call(fetchJson('/api/wc/:id', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(action.payload),
+    }));
+    yield put(editWorkCenterAC(response));
+  } catch (e) {
+    console.log(e);
   }
 }
 
 // Watcher
 export default function* defaultSaga() {
   yield takeEvery('TEST', loadData);
-  yield takeEvery('USER', generationUser);
-  yield takeEvery('ITEM', )
+  yield takeEvery('USER', createUser);
+  yield takeEvery('ITEM', createItem);
+  yield takeEvery('WORK_CENTER', createWorkCenter);
+  yield takeEvery('EDIT_WC', editWorkCenter);
 }
