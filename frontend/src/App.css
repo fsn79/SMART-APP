@@ -2514,8 +2514,13 @@ input, select, textarea {
 				font-weight: 700;
 				font-size: 2em;
 				letter-spacing: 0.1em;
+        width: 100%;
+        margin-right: 60px;
+        margin-left: -40px;
 			}
-
+     .imgDiv{
+       width: 260px;
+      }
 				#logo a {
 					display: block;
 					background-color: #3e9bbb;

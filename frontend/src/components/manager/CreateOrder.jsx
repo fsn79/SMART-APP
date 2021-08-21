@@ -23,7 +23,7 @@ function CreateOrder() {
     <input type="number" name="" />
   </div>
   <div class="field padding-bottom--24">
-    <div class="grid--50-50">
+    <div class="grid">
       <label for="promisedDate">Enter Work Order promised date</label>
     </div>
     <input type="date" name="promisedDate" />
