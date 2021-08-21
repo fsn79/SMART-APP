@@ -14,8 +14,8 @@ function* loadData() {
 function* generationUser(action) {
   try {
     const response = yield call(fetchJson('/api/user', {
-      metod: 'POST',
-      headrs: { 'Content-Type': 'application/json' },
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(action.payload),
     }));
     yield put({ type: CREATE_USER, payload: response });
@@ -24,8 +24,20 @@ function* generationUser(action) {
   }
 }
 
+function* createItem(action) {
+  try{
+    const response = yield call(fetchJson('/api/item', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(action.payload),
+    }));
+    
+  }
+}
+
 // Watcher
 export default function* defaultSaga() {
   yield takeEvery('TEST', loadData);
   yield takeEvery('USER', generationUser);
+  yield takeEvery('ITEM', )
 }
