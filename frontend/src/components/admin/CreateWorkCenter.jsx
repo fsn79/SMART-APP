@@ -2,18 +2,18 @@ function CreateWorkCenter() {
   // Форма создания отдела
   return (
     <div class="flex-direction--column formbg padding-horizontal--48">
-    <span class="padding-bottom--15">Create a new department</span>
+    <span class="padding-bottom--15">New Work Centr creation form</span>
 <form>
    <div class="field padding-bottom--24">
-    <label for="name">Name</label>
-    <input type="text" name="name" />
+    <label for="centerName">Work Center Name</label>
+    <input type="text" name="centerName" />
   </div>
   <div class="field padding-bottom--24">
-    <label for="code">Code</label>
+    <label for="code">Work Center code</label>
     <input type="text" name="code" />
   </div>
   <div class="field padding-bottom--24">
-    <label for="capacity">Capacity</label>
+    <label for="capacity">Work Center capacity</label>
     <input type="number" name="capacity" />
   </div>
   <div class="field padding-bottom--24">

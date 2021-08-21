@@ -3199,3 +3199,9 @@ input, select, textarea {
   #createItemDiv{
     max-width: 40em;
   }
+.borderDiv {
+  border: 0;
+  border: solid 1px #ddd;
+  padding: 3px;
+  margin: 3px;
+}
