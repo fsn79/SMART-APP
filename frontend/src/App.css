@@ -2515,12 +2515,7 @@ input, select, textarea {
 				font-size: 2em;
 				letter-spacing: 0.1em;
         width: 100%;
-        margin-right: 60px;
-        margin-left: -40px;
 			}
-     .imgDiv{
-       width: 260px;
-      }
 				#logo a {
 					display: block;
 					background-color: #3e9bbb;
@@ -2532,18 +2527,7 @@ input, select, textarea {
 					color: #fff;
 				}
 
-		/* Content */
-
-
 				#content > .inner {
-
-					/*
-								This sets an upper limit on your page content to prevent it
-								from looking insane on really wide displays. It's currently set
-								to the width of the sample post images, but you can change it to
-								whatever you like (or remove it entirely).
-							*/
-
 					max-width: 1038px;
 				}
 
@@ -2566,11 +2550,7 @@ input, select, textarea {
 
 	}
 
-/* Wide */
-
 	@media screen and (min-width: 1201px) {
-
-		/* Basic */
 
 			body {
 				min-width: 1200px;
@@ -2672,7 +2652,7 @@ input, select, textarea {
 
 			#content {
 				padding: 3em 5em 8em 5em;
-				margin-left: 7em;
+				/* margin-left: 7em; */
         min-height: 100vh;
 			}
 
@@ -3209,7 +3189,7 @@ input, select, textarea {
 .borderDiv {
   border: 0;
   border: solid 1px #ddd;
-  padding: 3px;
+  padding: 15px;
   margin: 3px;
 }
 
@@ -3226,3 +3206,10 @@ input, select, textarea {
   margin-bottom: -9px;
 }  */
 
+#createOrder p select {
+  outline-color: rgb(84 105 212 / 0.5);
+}
+
+#createUser p select {
+  outline-color: rgb(84 105 212 / 0.5);
+}

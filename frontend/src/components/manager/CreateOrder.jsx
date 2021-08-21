@@ -2,8 +2,8 @@ function CreateOrder() {
   // Форма создания задачи
   return (
     <div class="flex-direction--column formbg padding-horizontal--48">
-    <span class="padding-bottom--15">New Work Order creation form</span>
-<form>
+    <span class="padding-bottom--15">Create a New Work Order</span>
+<form id="createOrder">
   <div className='borderDiv'>
     <p>Select item name or part number</p>
    <div class="field padding-bottom--24">

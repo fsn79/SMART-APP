@@ -3,7 +3,7 @@ function CreateUser() {
   return (
     <div class="flex-direction--column formbg padding-horizontal--48">
         <span class="padding-bottom--15">Create a new employee</span>
-    <form>
+    <form id="createUser">
        <div class="field padding-bottom--24">
         <label for="lastname">Lastname</label>
         <input type="text" name="lastname" />
