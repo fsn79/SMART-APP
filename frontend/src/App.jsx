@@ -15,8 +15,6 @@ import EditItem from './components/manager/EditItem.jsx';
 
 function App() {
   return (
-    // <div id="content">
-    //  <div className="inner">
     <div className="App">
       <BrowserRouter>
         <Sidebar />
