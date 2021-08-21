@@ -10,7 +10,7 @@ function CreateWorkCenter() {
   </div>
   <div class="field padding-bottom--24">
     <label for="code">Code</label>
-    <input type="number" name="code" />
+    <input type="text" name="code" />
   </div>
   <div class="field padding-bottom--24">
     <label for="capacity">Capacity</label>
