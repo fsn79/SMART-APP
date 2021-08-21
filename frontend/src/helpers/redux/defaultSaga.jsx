@@ -11,7 +11,7 @@ function* loadData() {
     yield put({ type: 'OK', payload: { error: true, message: "Can't connect to server" } });
   }
 }
-function* generationUser(action) {
+function* createUser(action) {
   try {
     const response = yield call(fetchJson('/api/user', {
       metod: 'POST',
@@ -27,5 +27,5 @@ function* generationUser(action) {
 // Watcher
 export default function* defaultSaga() {
   yield takeEvery('TEST', loadData);
-  yield takeEvery('USER', generationUser);
+  yield takeEvery('USER', createUser);
 }
