@@ -4,7 +4,7 @@ import Navigation from './Navigation.jsx';
 function Sidebar() {
   // Боковая панель
   return (
-    <div>
+    <div id="sidebar">
       <Logo />
       <Navigation />
     </div>

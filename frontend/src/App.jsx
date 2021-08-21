@@ -15,9 +15,13 @@ import EditItem from './components/manager/EditItem.jsx';
 
 function App() {
   return (
-    <div className='App'>
+    // <div id="content">
+    //  <div className="inner">
+    <div className="App">
       <BrowserRouter>
         <Sidebar />
+        <div id="content">
+     <div className="inner">
         <Switch>
           <Route path='/' exact>
             <Login />
@@ -50,8 +54,11 @@ function App() {
             <OrdersListing />
           </Route>
         </Switch>
-      </BrowserRouter>
+        </div>
     </div>
+      </BrowserRouter>
+      </div>
+
   );
 }
 
