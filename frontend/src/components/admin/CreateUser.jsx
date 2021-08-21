@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+import { createUserAC } from '../../helpers/actionCreators';
 
 function CreateUser() {
   // Форма создания пользователя
@@ -12,7 +13,7 @@ function CreateUser() {
       password: e.target.password.value,
       position: e.target.position.value,
     };
-    dispatch({ type: 'USER', payload });
+    dispatch(createUserAC(payload));
   };
 
   return (

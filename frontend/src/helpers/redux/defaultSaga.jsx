@@ -11,7 +11,7 @@ function* loadData() {
     yield put({ type: 'OK', payload: { error: true, message: "Can't connect to server" } });
   }
 }
-function* generationUser(action) {
+function* createUser(action) {
   try {
     const response = yield call(fetchJson('/api/user', {
       method: 'POST',
