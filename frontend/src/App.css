@@ -3192,3 +3192,9 @@ input, select, textarea {
       margin: 0 10px;
   }
  
+.borderDiv {
+  border: 0;
+  border: solid 1px #ddd;
+  padding: 3px;
+  margin: 3px;
+}
