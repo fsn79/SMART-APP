@@ -3193,7 +3193,9 @@ input, select, textarea {
   }
  
   select.selectCenter{
-    width: auto;
+    height: 43px;
+    margin-bottom: 25px;
+    outline-color: rgb(84 105 212 / 0.5);
   }
 
   #createItemDiv{
@@ -3205,3 +3207,17 @@ input, select, textarea {
   padding: 3px;
   margin: 3px;
 }
+
+#routingDiv {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1em;
+  max-width: inherit;
+  max-height: inherit;
+}
+
+/* input.routingDescription {
+  min-height: 38px;
+  margin-bottom: -9px;
+}  */
+
