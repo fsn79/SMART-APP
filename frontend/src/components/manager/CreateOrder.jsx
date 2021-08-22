@@ -20,7 +20,7 @@ function CreateOrder() {
     </div>
   <div class="field padding-bottom--24">
     <label for="">Enter Work Order planned quantity</label>
-    <input type="number" name="" />
+    <input type="number" step='0.1' name="" />
   </div>
   <div class="field padding-bottom--24">
     <div class="grid">
@@ -31,6 +31,7 @@ function CreateOrder() {
   <label for="productionPrioroty">Production Prioroty</label>
   <p><select>
     <option>Low</option>
+    <option>Medium</option>
     <option>High</option>
   </select></p>
   <div class="field padding-bottom--24">
