@@ -1,7 +1,23 @@
+import { useDispatch } from 'react-redux';
+
 function CreateUser() {
   // Форма создания пользователя
+  const dispatch = useDispatch();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const data = {
+      firstname: e.target.firstname.value,
+      lastname: e.target.lastname.value,
+      //...
+    }
+
+    dispatch({ type: 'USER', data })
+  }
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
        <div class="field padding-bottom--24">
         <label for="lastname">Lastname</label>
         <input type="text" name="lastname" />
