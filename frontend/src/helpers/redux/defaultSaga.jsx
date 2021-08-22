@@ -75,4 +75,5 @@ export default function* defaultSaga() {
   yield takeEvery('ITEM', createItem);
   yield takeEvery('WORK_CENTER', createWorkCenter);
   yield takeEvery('EDIT_WC', editWorkCenter);
+  yield takeEvery('EDIT_ONE_USER', editUser);
 }

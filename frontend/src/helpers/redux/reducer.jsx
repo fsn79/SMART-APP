@@ -42,6 +42,7 @@ function reducer(state = initState, action) {
 
       newState.workCenterList.splice(index, 1, action.payload);
       return newState;
+      
     /* eslint-enable */
     default:
       return state;

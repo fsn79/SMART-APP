@@ -520,7 +520,7 @@ select.selectCenter{
   outline-color: rgb(84 105 212 / 0.5);
 }
 
-#createItemDiv{
+#createItemDiv, #editItemDiv{
   max-width: 40em;
 }
 
@@ -539,10 +539,10 @@ select.selectCenter{
   max-height: inherit;
 }
 
-#createOrder p select {
+#createOrder p select, #editOrder p select {
   outline-color: rgb(84 105 212 / 0.5);
 }
 
-#createUser p select {
+#createUser p select, #editUser p select{
   outline-color: rgb(84 105 212 / 0.5);
 }

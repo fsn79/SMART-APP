@@ -11,7 +11,8 @@ function CreateUser() {
       firstname: e.target.firstname.value,
       email: e.target.email.value,
       password: e.target.password.value,
-      position: e.target.position.value,
+      jobtitle: e.target.jobtitle.value,
+      workcenterid: e.target.workcenter.value,
     };
     dispatch(createUserAC(payload));
   };
@@ -38,11 +39,11 @@ function CreateUser() {
         </div>
         <input type="password" name="password" />
       </div>
-      <p><select name='position'>
+      <p><select name='jobtitle'>
         <option>Manager</option>
         <option>Worker</option>
       </select></p>
-      <p><select>
+      <p><select name='workcenter'>
         <option>Manager</option>
         <option>Worker</option>
       </select></p>
