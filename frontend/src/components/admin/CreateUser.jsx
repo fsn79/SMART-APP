@@ -3,20 +3,22 @@ import { useDispatch } from 'react-redux';
 function CreateUser() {
   // Форма создания пользователя
   const dispatch = useDispatch();
-
-  const handleSubmit = (e) => {
+  const handleSubmitCreateUser = (e) => {
     e.preventDefault();
-
-    const data = {
-      firstname: e.target.firstname.value,
+    const payload = {
       lastname: e.target.lastname.value,
+      firstname: e.target.firstname.value,
+      email: e.target.email.value,
+      password: e.target.password.value,
+      position: e.target.position.value,
     };
-
-    dispatch({ type: 'USER', data });
+    dispatch({ type: 'USER', payload });
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div class="flex-direction--column formbg padding-horizontal--48">
+        <span class="padding-bottom--15">Create a new employee</span>
+    <form id="createUser" onSubmit={handleSubmitCreateUser}>
        <div class="field padding-bottom--24">
         <label for="lastname">Lastname</label>
         <input type="text" name="lastname" />
@@ -35,7 +37,7 @@ function CreateUser() {
         </div>
         <input type="password" name="password" />
       </div>
-      <p><select>
+      <p><select name='position'>
         <option>Manager</option>
         <option>Worker</option>
       </select></p>
@@ -44,9 +46,10 @@ function CreateUser() {
         <option>Worker</option>
       </select></p>
       <div class="field padding-bottom--24">
-        <input type="submit" name="submit" value="Continue" />
+        <input type="submit" name="submit" value="Create" />
       </div>
     </form>
+    </div>
   );
 }
 

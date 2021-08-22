@@ -16,8 +16,6 @@ import ListUsers from './components/admin/ListUsers.jsx';
 
 function App() {
   return (
-    // <div id="content">
-    //  <div className="inner">
     <div className="App">
       <BrowserRouter>
         <Sidebar />

@@ -13,6 +13,7 @@ function Navigation() {
       <Link to='/create-order'><li><a className='link'>Create Order</a></li></Link>
       <Link to='/orders'><li><a className='link' >Orders</a></li></Link>
       <Link to='/logout'><li><a className='link'>Logout</a></li></Link>
+      <Link to='/create-work-center'><li><a className='link'>Create work center</a></li></Link>
       </ul>
     </nav>
   );
