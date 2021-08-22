@@ -5,16 +5,14 @@ function ListUsers() {
   const [users, setUsers] = useState([]);
 
   useEffect(async () => {
-    console.log('пришел');
     const listUsers = await fetchJson('/api/user');
-    console.log('я сработал в эфекте', listUsers);
     setUsers(listUsers);
   }, []);
 
   return (
     <div>
       {
-        users.map((el, i) => <div key={i}>{el.firstname}<button>Edit</button></div>)
+        users.map((el) => <div key={el.id}>{el.firstname}<button>Edit</button></div>)
       }
     </div>
   );

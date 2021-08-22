@@ -13,22 +13,22 @@ function EditWorkCenter() {
   }
   // Форма редактирования отдела
   return (
-    <div class="flex-direction--column formbg padding-horizontal--48">
-    <span class="padding-bottom--15">Edit Work Center</span>
+    <div className="flex-direction--column formbg padding-horizontal--48">
+    <span className="padding-bottom--15">Edit Work Center</span>
 <form onSubmit={handleSubmitEditCenter}>
-   <div class="field padding-bottom--24">
+   <div className="field padding-bottom--24">
     <label for="centerName">Edit Work Center Name</label>
     <input type="text" name="centerName" />
   </div>
-  <div class="field padding-bottom--24">
+  <div className="field padding-bottom--24">
     <label for="code">Edit Work Center code</label>
     <input type="text" name="code" />
   </div>
-  <div class="field padding-bottom--24">
+  <div className="field padding-bottom--24">
     <label for="capacity">Edit Work Center capacity</label>
     <input type="number" step='0.1' name="capacity" />
   </div>
-  <div class="field padding-bottom--24">
+  <div className="field padding-bottom--24">
     <input type="submit" name="submit" value="Edit" />
   </div>
 </form>
