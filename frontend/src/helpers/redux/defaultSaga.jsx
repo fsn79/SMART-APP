@@ -12,8 +12,8 @@ function* loadData() {
 }
 function* generationUser(data) {
   try {
-    const response = yield call(fetchJson('/api/user', data))
-    yield put( { type: 'CREATE_USER', payload: response } )
+    const response = yield call(fetchJson('/api/user', data));
+    yield put( { type: 'CREATE_USER', payload: response });
   } catch (e) {
     console.log(e);
   }
@@ -22,5 +22,5 @@ function* generationUser(data) {
 // Watcher
 export default function* defaultSaga() {
   yield takeEvery('TEST', loadData);
-  yield takeEvery('USER', generationUser(data))
+  yield takeEvery('USER', generationUser);
 }

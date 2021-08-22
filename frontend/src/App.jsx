@@ -6,12 +6,13 @@ import Login from './components/index/Login.jsx';
 import CreateWorkCenter from './components/admin/CreateWorkCenter.jsx';
 import CreateUser from './components/admin/CreateUser.jsx';
 import Logout from './components/index/Logout.jsx';
-import EditUser from './components/admin/EditUser.jsx';
+// import EditUser from './components/admin/EditUser.jsx';
 import EditWorkCenter from './components/admin/EditWorkCenter.jsx';
 import CreateOrder from './components/manager/CreateOrder.jsx';
 import CreateItem from './components/manager/CreateItem.jsx';
 import OrdersListing from './components/user/OrdersListing.jsx';
 import EditItem from './components/manager/EditItem.jsx';
+import ListUsers from './components/admin/ListUsers.jsx';
 
 function App() {
   return (
@@ -35,8 +36,8 @@ function App() {
           <Route path='/create-user' exact>
             <CreateUser />
           </Route>
-          <Route path='/edit-user' exact>
-            <EditUser />
+          <Route path='/list-users' exact>
+            <ListUsers />
           </Route>
           <Route path='/edit-work-center' exact>
             <EditWorkCenter />

@@ -10,11 +10,10 @@ function CreateUser() {
     const data = {
       firstname: e.target.firstname.value,
       lastname: e.target.lastname.value,
-      //...
-    }
+    };
 
-    dispatch({ type: 'USER', data })
-  }
+    dispatch({ type: 'USER', data });
+  };
 
   return (
     <form onSubmit={handleSubmit}>
