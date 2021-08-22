@@ -1,7 +1,6 @@
 const db = require('../../models/index')
-
 async function allUsers(req, res) {
-  const listUsers = await db.Employees.findAll()
+  const listUsers = await db.employees.findAll()
   res.status(200).json(listUsers)
 }
 
