@@ -1,5 +1,5 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
-import CREATE_USER from '../actionTypes';
+import { CREATE_USER } from '../actionTypes';
 import { fetchJson } from '../fetchJson.jsx';
 
 // Worker

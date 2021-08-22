@@ -13,7 +13,7 @@ function CreateUser() {
       password: e.target.password.value,
       position: e.target.position.value,
     };
-    dispatch(createUserAC(payload));
+    dispatch(createUserAC(payload)); // <--- исправить!!!
   };
 
   return (

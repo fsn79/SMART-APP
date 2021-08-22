@@ -1,4 +1,4 @@
-import CREATE_USER from '../actionTypes';
+import { CREATE_USER } from '../actionTypes';
 
 const initState = {
   load: false,
