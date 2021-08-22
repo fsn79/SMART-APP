@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 function createUser(req, res) {
   const { lastname, firstname, email, password, position } = req.body;
 
-  const checkUser = await db.employees.findOne({
+  const checkUser = await db.Employees.findOne({
     where: {
       email
     }
@@ -16,7 +16,7 @@ function createUser(req, res) {
     try {
       // const hashPass = await bcrypt.hash(password, 10);
 
-      const user = await db.employees.create({
+      const user = await db.Employees.create({
         lastname,
         firstname,
         email,
