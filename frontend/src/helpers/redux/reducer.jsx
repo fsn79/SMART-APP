@@ -3,6 +3,7 @@ import {
   CREATE_ITEM,
   CREATE_WORK_CENTER,
   EDIT_WORK_CENTER,
+  EDIT_USER,
 } from '../actionTypes';
 
 const initState = {
@@ -41,6 +42,19 @@ function reducer(state = initState, action) {
       };
 
       newState.workCenterList.splice(index, 1, action.payload);
+      return newState;
+
+    case EDIT_USER:
+      const indexUser = state.userList.findIndex((item) => {
+        item.id === action.payload.id
+      });
+
+      const newStateUser = {
+        ...state,
+        userList: [...state.userList],
+      };
+
+      newStateUser.userList.splice(indexUser, 1, action.payload);
       return newState;
       
     /* eslint-enable */

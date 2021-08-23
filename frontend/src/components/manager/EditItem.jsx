@@ -1,4 +1,12 @@
+// import { useDispatch } from 'react-redux';
+
 function EditItem() {
+  // const dispatch = useDispatch();
+  // function handleSubmitEditItem(e) {
+  //   e.preventDefault();
+  //   const payload = {
+  //   }
+  // }
   // Форма редактирования продукта
   return (
     <div class="flex-direction--column formbg padding-horizontal--48" id="editItemDiv">
@@ -60,6 +68,11 @@ function EditItem() {
         </div>
       </div>
       </div>
+      <label for="status">Edit Status</label>
+      <p><select name="status" className="selectStatus">
+        <option>Active</option>
+        <option>Disabled</option>
+       </select></p>
       <div class="field padding-bottom--24">
         <input type="submit" name="submit" value="Edit" />
       </div>

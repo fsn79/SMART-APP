@@ -4,6 +4,7 @@ import {
   createItemAC,
   createWorkCenterAC,
   editWorkCenterAC,
+  editUserAC,
 } from '../actionCreators';
 import { fetchJson } from '../fetchJson.jsx';
 
@@ -63,6 +64,19 @@ function* editWorkCenter(action) {
       body: JSON.stringify(action.payload),
     }));
     yield put(editWorkCenterAC(response));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+function* editUser(action) {
+  try {
+    const response = yield call(fetchJson('/api/user/:id', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(action.payload),
+    }));
+    yield put(editUserAC(response));
   } catch (e) {
     console.log(e);
   }

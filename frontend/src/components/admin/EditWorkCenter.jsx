@@ -8,6 +8,7 @@ function EditWorkCenter() {
       name: e.target.centerName.value,
       code: e.target.code.value,
       capacity: e.target.capacity.value,
+      status: e.target.status.value,
     };
     dispatch({ type: 'EDIT_WC', payload });
   }
@@ -28,6 +29,11 @@ function EditWorkCenter() {
     <label for="capacity">Edit Work Center capacity</label>
     <input type="number" step='0.01' name="capacity" />
   </div>
+  <label for="status">Edit Status</label>
+  <p><select name="status" className="selectStatus">
+        <option>Active</option>
+        <option>Disabled</option>
+       </select></p>
   <div class="field padding-bottom--24">
     <input type="submit" name="submit" value="Edit" />
   </div>

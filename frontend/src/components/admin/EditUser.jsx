@@ -11,6 +11,7 @@ function EditUser() {
       password: e.target.password.value,
       jobtitle: e.target.jobtitle.value,
       workcenterid: e.target.workcenter.value,
+      status: e.target.status.value,
     };
     dispatch({ type: 'EDIT_ONE_USER', payload });
   }
@@ -44,6 +45,11 @@ function EditUser() {
       <p><select name='workcenter'>
         <option>Manager</option>
         <option>Worker</option>
+      </select></p>
+      <label for="status">Edit Status</label>
+      <p><select name='status'>
+        <option>Active</option>
+        <option>Retired</option>
       </select></p>
       <div class="field padding-bottom--24">
         <input type="submit" name="submit" value="Edit" />

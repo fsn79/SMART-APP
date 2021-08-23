@@ -514,7 +514,7 @@ input[type="submit"] {
   cursor: pointer;
 }
  
-select.selectCenter{
+select.selectCenter, select.selectStatus{
   height: 43px;
   margin-bottom: 25px;
   outline-color: rgb(84 105 212 / 0.5);
