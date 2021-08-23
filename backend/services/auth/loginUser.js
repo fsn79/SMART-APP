@@ -4,62 +4,30 @@ const bcrypt = require('bcrypt');
 
 async function loginUser(req, res) {
   const { email, password } = req.body;
-  try {
-    const checkUser = await db.employees.findOne({
-      where: {
-        email
-      }
-    });
-  } catch (e) {
-    res.status(400).json({ massage: 'email already exists' })
-  }
 
-  if(checkUser !== null) {
+  if(email && password) {
     try {
-      const checkPassword = await bcrypt.compare(password, checkUser.password);
-    } catch (e) {
-      res.status(401).json({ massage: 'Unauthorized' })
-    }
+      const checkUser = await db.Employees.findOne({
+        where: {
+          email
+        }
+      });
 
-    try {
-      if(checkUser && checkPassword) {
-        if(checkUser.jobtitle === 'admin') {
-          const nameOfUser = checkUser.name;
-          req.session.user = checkUser;
-          res.status(200).json({ masage: 'admin', checkUser });
+      if(checkUser !== null) {
+        const checkPassword = await bcrypt.compare(password, checkUser.password);
+        if(checkUser && checkPassword) {
+          res.status(200).json({ error: false, message: {id: checkUser.id, name: checkUser.firstname, jobtitle: checkUser.jobtitle} });
+        } else {
+          res.status(401).json({ error: true, message: 'Authorisation error' });
         };
-      }
-    } catch (e) {
-      res.status(401).json({ massage: 'Unauthorized' })
-    }
-
-    try {
-      if(checkUser.jobtitle === 'manager') {
-        const nameOfUser = checkUser.name;
-        req.session.user = checkUser;
-        res.status(200).json({ masage: 'manager', checkUser });
+      } else {
+        res.status(401).json({ error: true, message: 'Authorisation error' })
       };
     } catch (e) {
-      res.status(401).json({ massage: 'Unauthorized' })
-    }
-
-    try {
-      if(checkUser.jobtitle === 'worker') {
-        const nameOfUser = checkUser.name;
-        req.session.user = checkUser;
-        const listOrders = await db.orders.findAll({
-          limit: 10,
-          order: [['"priority" DESC'], ['"promiseddate" DESC']],
-          include: db.items,
-        });
-        res.status(200).json({ masage: 'worker', listOrders, checkUser });
-      };
-    } catch (e) {
-      res.status(401).json({ massage: 'Unauthorized' })
-    }
-
+      res.status(401).json({ massage: 'Unauthorized' });
     };
   };
+};
 
 module.exports = loginUser;
 

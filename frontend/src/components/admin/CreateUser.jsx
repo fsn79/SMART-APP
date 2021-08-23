@@ -12,6 +12,7 @@ function CreateUser() {
   useEffect(() => {
     async function fetchAndSetWorkCenters() {
       const listWorkCenters = await fetchJson('/api/wc');
+      console.log(listWorkCenters.message);
       setworkCenters(listWorkCenters.message);
     }
     fetchAndSetWorkCenters();
