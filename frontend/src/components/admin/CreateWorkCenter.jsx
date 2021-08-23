@@ -17,15 +17,15 @@ function CreateWorkCenter() {
       <span className="padding-bottom--15">Create a New Work Center</span>
       <form onSubmit={handleSubmitCenter}>
         <div className="field padding-bottom--24">
-          <label for="centerName">Work Center Name</label>
+          <label htmlFor="centerName">Work Center Name</label>
           <input type="text" name="centerName" />
         </div>
         <div className="field padding-bottom--24">
-          <label for="code">Work Center code</label>
+          <label htmlFor="code">Work Center code</label>
           <input type="text" name="code" />
         </div>
         <div className="field padding-bottom--24">
-          <label for="capacity">Work Center capacity</label>
+          <label htmlFor="capacity">Work Center capacity</label>
           <input type="number" step='0.1' name="capacity" />
         </div>
         <div className="field padding-bottom--24">

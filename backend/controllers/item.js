@@ -5,4 +5,4 @@ const editItem = require('../services/manager/editItem');
 router.route('/').post(createItem);
 router.route('/:id').put(editItem);
 
-module.exports =router
+module.exports =router;
