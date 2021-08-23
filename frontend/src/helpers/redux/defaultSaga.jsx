@@ -6,6 +6,7 @@ import {
   editWorkCenterAC,
   editUserAC,
   getWorkCentersAC,
+  getUsersAC,
 } from '../actionCreators';
 import { fetchJson } from '../fetchJson.jsx';
 
@@ -98,6 +99,18 @@ function* getWorkCenters() {
   }
 }
 
+function* getUsersList() {
+  try {
+    const response = yield call(fetchJson, '/api/user', {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    });
+    yield put(getUsersAC(response.message));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 // Watcher
 export default function* defaultSaga() {
   yield takeEvery('TEST', loadData);
@@ -107,4 +120,5 @@ export default function* defaultSaga() {
   yield takeEvery('EDIT_WC', editWorkCenter);
   yield takeEvery('EDIT_ONE_USER', editUser);
   yield takeEvery('GET_WCS', getWorkCenters);
+  yield takeEvery('GET_USERS_LIST', getUsersList);
 }

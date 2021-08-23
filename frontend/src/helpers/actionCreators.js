@@ -8,6 +8,7 @@ import {
   EDIT_ITEM,
   EDIT_ORDER,
   GET_WORK_CENTERS,
+  GET_LIST_OF_USERS,
 } from './actionTypes';
 
 export function createUserAC(payload) {
@@ -44,4 +45,8 @@ export function editOrderAC(payload) {
 
 export function getWorkCentersAC(payload) {
   return { type: GET_WORK_CENTERS, payload };
+}
+
+export function getUsersAC(payload) {
+  return { type: GET_LIST_OF_USERS, payload };
 }

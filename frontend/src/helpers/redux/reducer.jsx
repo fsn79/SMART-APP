@@ -5,6 +5,7 @@ import {
   EDIT_WORK_CENTER,
   EDIT_USER,
   GET_WORK_CENTERS,
+  GET_LIST_OF_USERS,
 } from '../actionTypes';
 
 const initState = {
@@ -36,6 +37,11 @@ function reducer(state = initState, action) {
       return {
         ...state,
         workCenterList: action.payload,
+      };
+    case GET_LIST_OF_USERS:
+      return {
+        ...state,
+        userList: action.payload,
       };
     case EDIT_WORK_CENTER:
       /* eslint-disable */
