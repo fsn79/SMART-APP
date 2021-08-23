@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const createWorkCenter = require('../services/admin/createDepartment');
-const editWorkCenter = require('../services/admin/editDepartment');
+const createWorkCenter = require('../services/admin/createWorkCenter');
+const editWorkCenter = require('../services/admin/editWorkCenter');
 
-module.exports = () => {
-  router.route('/').post(createWorkCenter);
-  router.route('/:id').put(editWorkCenter);
-}
+router.route('/').post(createWorkCenter);
+router.route('/:id').put(editWorkCenter);
+
+module.exports = router

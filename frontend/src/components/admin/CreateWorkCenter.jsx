@@ -9,29 +9,29 @@ function CreateWorkCenter() {
       code: e.target.code.value,
       capacity: e.target.capacity.value,
     };
-    dispatch({ type: 'WORK_CENTER_EDIT', payload });
+    dispatch({ type: 'WORK_CENTER', payload });
   };
   // Форма создания отдела
   return (
-    <div class="flex-direction--column formbg padding-horizontal--48">
-    <span class="padding-bottom--15">Create a New Work Center</span>
-<form onSubmit={handleSubmitCenter}>
-   <div class="field padding-bottom--24">
-    <label for="centerName">Work Center Name</label>
-    <input type="text" name="centerName" />
-  </div>
-  <div class="field padding-bottom--24">
-    <label for="code">Work Center code</label>
-    <input type="text" name="code" />
-  </div>
-  <div class="field padding-bottom--24">
-    <label for="capacity">Work Center capacity</label>
-    <input type="number" step='0.1' name="capacity" />
-  </div>
-  <div class="field padding-bottom--24">
-    <input type="submit" name="submit" value="Create" />
-  </div>
-</form>
+    <div className="flex-direction--column formbg padding-horizontal--48">
+      <span className="padding-bottom--15">Create a New Work Center</span>
+      <form onSubmit={handleSubmitCenter}>
+        <div className="field padding-bottom--24">
+          <label for="centerName">Work Center Name</label>
+          <input type="text" name="centerName" />
+        </div>
+        <div className="field padding-bottom--24">
+          <label for="code">Work Center code</label>
+          <input type="text" name="code" />
+        </div>
+        <div className="field padding-bottom--24">
+          <label for="capacity">Work Center capacity</label>
+          <input type="number" step='0.1' name="capacity" />
+        </div>
+        <div className="field padding-bottom--24">
+          <input type="submit" name="submit" value="Create" />
+        </div>
+      </form>
 </div>
   );
 }

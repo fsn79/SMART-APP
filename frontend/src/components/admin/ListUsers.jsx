@@ -4,17 +4,19 @@ import { fetchJson } from '../../helpers/fetchJson.jsx';
 function ListUsers() {
   const [users, setUsers] = useState([]);
 
-  useEffect(async () => {
-    console.log('пришел');
-    const listUsers = await fetchJson('/api/user');
-    console.log('я сработал в эфекте', listUsers);
-    setUsers(listUsers);
+  useEffect(() => {
+    async function fetchAndSetUsers() {
+      const listUsers = await fetchJson('/api/user');
+      setUsers(listUsers);
+    }
+
+    fetchAndSetUsers();
   }, []);
 
   return (
     <div>
       {
-        users.map((el, i) => <div key={i}>{el.firstname}<button>Edit</button></div>)
+        users.map((el) => <div key={el.id}>{el.firstname}<button>Edit</button></div>)
       }
     </div>
   );

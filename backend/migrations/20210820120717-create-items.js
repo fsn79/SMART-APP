@@ -26,15 +26,15 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         defaultValue: true
       },
-      employeesid: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'employees',
-          key: 'id',
-          onUpdate: 'cascade',
-          onDelete: 'cascade'
-        },
-      },
+      // employeesid: {
+      //   type: Sequelize.INTEGER,
+      //   references: {
+      //     model: 'employees',
+      //     key: 'id',
+      //     onUpdate: 'cascade',
+      //     onDelete: 'cascade'
+      //   },
+      // },
       workcenter1: {
         allowNull: false,
         type: Sequelize.STRING
