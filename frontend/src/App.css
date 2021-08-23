@@ -619,7 +619,17 @@ label {
   outline-color: rgb(84 105 212 / 0.5);
   background-color: rgb(255, 255, 255);
 }
-
+.field button {
+  font-size: 16px;
+  line-height: 28px;
+  padding: 8px 16px;
+  width: 100%;
+  min-height: 44px;
+  border: solid 1px #ddd;
+  border-radius: 4px;
+  outline-color: rgb(84 105 212 / 0.5);
+  background-color: #3e9bbb;
+}
 input[type='submit'] {
   background-color: #3985a8;
   color: #fff;
@@ -735,4 +745,20 @@ form .wc-status {
   padding: 0;
   border: none;
   background-color: white;
+}
+.output {
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  background-color: #4caf50;
+}
+.output.error {
+  background-color: #f44336;
+}
+.loader {
+  text-align: center;
+  padding: 10px;
+  background-color: #e3e3e3;
+  border-radius: 5px;
 }

@@ -8,11 +8,21 @@ import {
   EDIT_ITEM,
   EDIT_ORDER,
   GET_WORK_CENTERS,
-} from './actionTypes';
+  CREATE_USER_SUCCESS,
+  CREATE_USER_FAIL,
+} from './actionTypes.jsx';
 
+// CREATE USER AC
 export function createUserAC(payload) {
   return { type: CREATE_USER, payload };
 }
+export function createUserSuccessAC(payload) {
+  return { type: CREATE_USER_SUCCESS, payload };
+}
+export function createUserFailAC(payload) {
+  return { type: CREATE_USER_FAIL, payload };
+}
+// CREATE USER AC - END
 
 export function createWorkCenterAC(payload) {
   return { type: CREATE_WORK_CENTER, payload };
