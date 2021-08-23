@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class items extends Model {
+  class Items extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   };
-  items.init({
+  Items.init({
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -38,16 +38,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN,
       defaultValue: true
     },
-    // employeesid: {
-    //   allowNull: false,
-    //   type: DataTypes.INTEGER,
-    //   references: {
-    //     model: 'employees',
-    //     key: 'id',
-    //     onUpdate: 'cascade',
-    //     onDelete: 'cascade'
-    //   },
-    // },
     workcenter1: {
       allowNull: false,
       type: DataTypes.STRING
@@ -93,5 +83,5 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'items',
     freezeTableName: true,
   });
-  return items;
+  return Items;
 };

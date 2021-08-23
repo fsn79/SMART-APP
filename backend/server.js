@@ -24,7 +24,7 @@ const sConfig = {
   key: process.env.KEY_SESSION,
   store: new FileStore(),
   secret: process.env.SESSION_SECRET,
-  reseve: true,
+  resave: true,
   saveUninitialized: false,
   cookie: {
     maxAge: 1000*60*60*10,
