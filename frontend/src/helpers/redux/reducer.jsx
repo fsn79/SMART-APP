@@ -7,6 +7,7 @@ import {
   GET_WORK_CENTERS,
   CREATE_USER_FAIL,
   CREATE_USER_SUCCESS,
+  LOGIN_USER,
 } from '../actionTypes.jsx';
 
 const initState = {
@@ -85,6 +86,14 @@ function reducer(state = initState, action) {
 
       newStateUser.userList.splice(indexUser, 1, action.payload);
       return newState;
+    
+    case LOGIN_USER:
+      return {
+        ...state,
+        user: action.payload.name,
+        jobtitle: action.payload.jobtitle,
+        iduser: action.payload.id,
+      }
 
     /* eslint-enable */
     default:

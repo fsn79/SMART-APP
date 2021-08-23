@@ -7,6 +7,7 @@ async function loginUser(req, res) {
 
   if(email && password) {
     try {
+      console.log('ищю');
       const checkUser = await db.Employees.findOne({
         where: {
           email
@@ -14,8 +15,10 @@ async function loginUser(req, res) {
       });
 
       if(checkUser !== null) {
+        console.log('нашел пользователя');
         const checkPassword = await bcrypt.compare(password, checkUser.password);
         if(checkUser && checkPassword) {
+          req.session.user = checkUser;
           res.status(200).json({ error: false, message: {id: checkUser.id, name: checkUser.firstname, jobtitle: checkUser.jobtitle} });
         } else {
           res.status(401).json({ error: true, message: 'Authorisation error' });

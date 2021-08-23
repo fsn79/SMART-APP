@@ -10,6 +10,7 @@ import {
   GET_WORK_CENTERS,
   CREATE_USER_SUCCESS,
   CREATE_USER_FAIL,
+  LOGIN_USER,
 } from './actionTypes.jsx';
 
 // CREATE USER AC
@@ -54,4 +55,8 @@ export function editOrderAC(payload) {
 
 export function getWorkCentersAC(payload) {
   return { type: GET_WORK_CENTERS, payload };
+}
+
+export function loginUserAC(payload) {
+  return { type: LOGIN_USER, payload };
 }
