@@ -19,11 +19,11 @@ function* loadData() {
 }
 function* createUser(action) {
   try {
-    const response = yield call(fetchJson('/api/user', {
+    const response = yield call(fetchJson, '/api/user', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(action.payload),
-    }));
+    });
     yield put(createUserAC(response));
   } catch (e) {
     console.log(e);
@@ -32,11 +32,11 @@ function* createUser(action) {
 
 function* createItem(action) {
   try {
-    const response = yield call(fetchJson('/api/item', {
+    const response = yield call(fetchJson, '/api/item', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(action.payload),
-    }));
+    });
     yield put(createItemAC(response));
   } catch (e) {
     console.log(e);
@@ -45,11 +45,11 @@ function* createItem(action) {
 
 function* createWorkCenter(action) {
   try {
-    const response = yield call(fetchJson('/api/wc', {
+    const response = yield call(fetchJson, '/api/wc', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(action.payload),
-    }));
+    });
     yield put(createWorkCenterAC(response));
   } catch (e) {
     console.log(e);
@@ -58,11 +58,11 @@ function* createWorkCenter(action) {
 
 function* editWorkCenter(action) {
   try {
-    const response = yield call(fetchJson('/api/wc/:id', {
+    const response = yield call(fetchJson, '/api/wc/:id', {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(action.payload),
-    }));
+    });
     yield put(editWorkCenterAC(response));
   } catch (e) {
     console.log(e);

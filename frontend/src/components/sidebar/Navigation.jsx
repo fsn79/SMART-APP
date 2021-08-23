@@ -7,7 +7,7 @@ function Navigation() {
        <ul >
       <Link to='/edit-work-center'><li><a className='link'>Edit Work Center</a></li></Link>
       <Link to='/create-user'><li><a className='link'>Create User</a></li></Link>
-      <Link to='/edit-user'><li><a className='link'>Edit User</a></li></Link>
+      <Link to='/list-users'><li><a className='link'>Edit User</a></li></Link>
       <Link to='/create-item'><li><a className='link'>Create Item</a></li></Link>
       <Link to='/edit-item'><li><a className='link'>Edit Item</a></li></Link>
       <Link to='/edit-order'><li><a className='link'>Edit Order</a></li></Link>

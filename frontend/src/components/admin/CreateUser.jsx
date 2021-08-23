@@ -1,5 +1,4 @@
 import { useDispatch } from 'react-redux';
-import { createUserAC } from '../../helpers/actionCreators';
 
 function CreateUser() {
   // Форма создания пользователя
@@ -14,7 +13,7 @@ function CreateUser() {
       jobtitle: e.target.jobtitle.value,
       workcenterid: e.target.workcenter.value,
     };
-    dispatch(createUserAC(payload));
+    dispatch({ type: 'USER', payload });
   };
 
   return (
