@@ -1,6 +1,7 @@
+const db = require('../../models');
 
 function createOrder(req, res) {
-  return true
+  const {  } = req.body;
 };
 
 module.exports = createOrder;
