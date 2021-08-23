@@ -18,11 +18,11 @@ function* loadData() {
 }
 function* createUser(action) {
   try {
-    const response = yield call(fetchJson('/api/user', {
+    const response = yield call(fetchJson, '/api/user', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(action.payload),
-    }));
+    });
     yield put(createUserAC(response));
   } catch (e) {
     console.log(e);
@@ -57,11 +57,11 @@ function* createWorkCenter(action) {
 
 function* editWorkCenter(action) {
   try {
-    const response = yield call(fetchJson('/api/wc/:id', {
+    const response = yield call(fetchJson, '/api/wc/:id', {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(action.payload),
-    }));
+    });
     yield put(editWorkCenterAC(response));
   } catch (e) {
     console.log(e);

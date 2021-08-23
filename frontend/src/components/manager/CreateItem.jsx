@@ -27,20 +27,20 @@ function CreateItem() {
         <span className="padding-bottom--15">Create a new item</span>
     <form id="createItem" onSubmit={handlerCreateItem}>
        <div className="field padding-bottom--24">
-        <label for="itemName">Item Name</label>
+        <label htmlFor="itemName">Item Name</label>
         <input type="text" name="itemName" />
       </div>
       <div className="field padding-bottom--24">
-        <label for="partNumber">Part Number</label>
+        <label htmlFor="partNumber">Part Number</label>
         <input type="text" name="partNumber" />
       </div>
       <div className="field padding-bottom--24">
-        <label for="itemDescription">Item Description</label>
+        <label htmlFor="itemDescription">Item Description</label>
         <input type="text" name="itemDescription" />
       </div>
       <div id="routingDiv">
       <div id="selectCenter">
-      <label for="selectCenter">Work centers selection</label>
+      <label htmlFor="selectCenter">Work centers selection</label>
         <p><select className="selectCenter" name="workcenter1">
         <option>Centebbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbr 1</option>
         <option>Center 2</option>
@@ -59,7 +59,7 @@ function CreateItem() {
       </div>
       <div id="centerDescription">
         <div className="field padding-bottom--24">
-          <label for="routingDescription">Routing Description</label>
+          <label htmlFor="routingDescription">Routing Description</label>
           <input type="text" className="routingDescription" name="descrroute1"/>
         </div>
         <div className="field padding-bottom--24">
@@ -71,7 +71,7 @@ function CreateItem() {
       </div>
       <div id="cycleTime">
         <div className="field padding-bottom--24">
-          <label for="cycleTime">Cycle Time</label>
+          <label htmlFor="cycleTime">Cycle Time</label>
           <input type="number" step="0.1" className="cycleTime" name="cycletime1"/>
         </div>
         <div className="field padding-bottom--24">

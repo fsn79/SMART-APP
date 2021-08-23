@@ -4,9 +4,13 @@ import { fetchJson } from '../../helpers/fetchJson.jsx';
 function ListUsers() {
   const [users, setUsers] = useState([]);
 
-  useEffect(async () => {
-    const listUsers = await fetchJson('/api/user');
-    setUsers(listUsers);
+  useEffect(() => {
+    async function fetchAndSetUsers() {
+      const listUsers = await fetchJson('/api/user');
+      setUsers(listUsers);
+    }
+
+    fetchAndSetUsers();
   }, []);
 
   return (
