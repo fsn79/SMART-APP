@@ -6,9 +6,9 @@ async function createWorkCenter(req, res) {
     name,
     code,
     capacity,
-  })
+  });
 
-  res.status(200).json({ newWorkCenter })
-};
+  res.status(200).json({ newWorkCenter });
+}
 
 module.exports = createWorkCenter;

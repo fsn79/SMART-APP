@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('orders', {
+    await queryInterface.createTable('Orders', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -10,60 +10,60 @@ module.exports = {
       },
       itemname: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       itempartnum: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       itemsid: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
-          model: 'items',
+          model: 'Items',
           key: 'id',
           onUpdate: 'cascade',
-          onDelete: 'cascade'
+          onDelete: 'cascade',
         },
       },
       number: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       quantity: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       quantitycomplete: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        defaultValue: 0
+        defaultValue: 0,
       },
       promiseddate: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       priority: {
         allowNull: false,
         type: Sequelize.STRING,
-        defaultValue: 'Low'
+        defaultValue: 'Low',
       },
       status: {
         allowNull: false,
         type: Sequelize.STRING,
-        defaultValue: 'Created'
+        defaultValue: 'Created',
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('orders');
-  }
+    await queryInterface.dropTable('Orders');
+  },
 };
