@@ -11,14 +11,14 @@ async function loginUser(req, res) {
       }
     });
   } catch (e) {
-    res.status(404).send(e)
+    res.status(400).json({ massage: 'email already exists' })
   }
 
   if(checkUser !== null) {
     try {
       const checkPassword = await bcrypt.compare(password, checkUser.password);
     } catch (e) {
-      res.status(404).send(e)
+      res.status(401).json({ massage: 'Unauthorized' })
     }
 
     try {
@@ -30,7 +30,7 @@ async function loginUser(req, res) {
         };
       }
     } catch (e) {
-      res.status(404).send(e)
+      res.status(401).json({ massage: 'Unauthorized' })
     }
 
     try {
@@ -40,7 +40,7 @@ async function loginUser(req, res) {
         res.status(200).json({ masage: 'manager', checkUser });
       };
     } catch (e) {
-      res.status(404).send(e)
+      res.status(401).json({ massage: 'Unauthorized' })
     }
 
     try {
@@ -55,7 +55,7 @@ async function loginUser(req, res) {
         res.status(200).json({ masage: 'worker', listOrders, checkUser });
       };
     } catch (e) {
-      res.status(404).send(e)
+      res.status(401).json({ massage: 'Unauthorized' })
     }
 
     };
