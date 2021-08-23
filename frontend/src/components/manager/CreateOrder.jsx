@@ -7,28 +7,28 @@ function CreateOrder() {
   <div className='borderDiv'>
     <p>Select item name or part number</p>
    <div class="field padding-bottom--24">
-    <label for="itemName">Item Name</label>
+    <label htmlFor="itemName">Item Name</label>
     <p><select>
     <option></option>
     <option></option>
   </select></p>
   </div>
   <div class="field padding-bottom--24">
-    <label for="workOrder">Enter Work Order number or click autogenerate</label>
+    <label htmlFor="workOrder">Enter Work Order number or click autogenerate</label>
     <input type="text" name="workOrder" />
     </div>
     </div>
   <div class="field padding-bottom--24">
-    <label for="">Enter Work Order planned quantity</label>
+    <label htmlFor="">Enter Work Order planned quantity</label>
     <input type="number" step='0.01' name="" />
   </div>
   <div class="field padding-bottom--24">
     <div class="grid">
-      <label for="promisedDate">Enter Work Order promised date</label>
+      <label htmlFor="promisedDate">Enter Work Order promised date</label>
     </div>
     <input type="date" name="promisedDate" />
   </div>
-  <label for="productionPrioroty">Production Prioroty</label>
+  <label htmlFor="productionPrioroty">Production Prioroty</label>
   <p><select>
     <option>Low</option>
     <option>Medium</option>

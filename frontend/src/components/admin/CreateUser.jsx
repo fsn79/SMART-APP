@@ -8,7 +8,7 @@ function CreateUser() {
   useEffect(() => {
     async function fetchAndSetWorkCenters() {
       const listWorkCenters = await fetchJson('/api/wc');
-      setworkCenters(listWorkCenters);
+      setworkCenters(listWorkCenters.message);
     }
 
     fetchAndSetWorkCenters();
@@ -30,43 +30,43 @@ function CreateUser() {
   };
 
   return (
-    <div class="flex-direction--column formbg padding-horizontal--48">
-      <span class="padding-bottom--15">Create a new employee</span>
+    <div className="flex-direction--column formbg padding-horizontal--48">
+      <span className="padding-bottom--15">Create a new employee</span>
       <form id="createUser" onSubmit={handleSubmitCreateUser}>
-        <div class="field padding-bottom--24">
-          <label for="lastname">Lastname</label>
-          <input type="text" name="lastname" autofocus/>
+        <div className="field padding-bottom--24">
+          <label htmlFor="lastname">Lastname</label>
+          <input type="text" name="lastname" autofocus />
         </div>
-        <div class="field padding-bottom--24">
-          <label for="firstname">Firstname</label>
+        <div className="field padding-bottom--24">
+          <label htmlFor="firstname">Firstname</label>
           <input type="text" name="firstname" />
         </div>
-        <div class="field padding-bottom--24">
-          <label for="email">Email</label>
+        <div className="field padding-bottom--24">
+          <label htmlFor="email">Email</label>
           <input type="email" name="email" />
         </div>
-        <div class="field padding-bottom--24">
-          <div class="grid--50-50">
-            <label for="password">Password</label>
+        <div className="field padding-bottom--24">
+          <div className="grid--50-50">
+            <label htmlFor="password">Password</label>
           </div>
           <input type="password" name="password" />
         </div>
-        <div class="grid--50-50">
-          <label for="jobtitle">Jobtitle</label>
+        <div className="grid--50-50">
+          <label htmlFor="jobtitle">Jobtitle</label>
         </div>
         <p><select name='jobtitle'>
           <option value='Worker'>Worker</option>
           <option value='Manager'>Manager</option>
         </select></p>
-        <div class="grid--50-50">
-          <label for="workcenter">Workcenter</label>
+        <div className="grid--50-50">
+          <label htmlFor="workcenter">Workcenter</label>
         </div>
         <p><select name='workcenter'>
           {
             workCenters.map((el) => <option key={el.id} value={el.id}>{el.name}</option>)
           }
         </select></p>
-        <div class="field padding-bottom--24">
+        <div className="field padding-bottom--24">
           <input type="submit" name="submit" value="Create" />
         </div>
       </form>

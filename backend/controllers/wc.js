@@ -1,10 +1,10 @@
 const router = require('express').Router();
 const createWorkCenter = require('../services/admin/createWorkCenter');
 const editWorkCenter = require('../services/admin/editWorkCenter');
-const allWorkCenters = require('../services/admin/allWorkCenters');
+const listingWorkCenters = require('../services/admin/listingWorkCenter');
 
+router.route('/').get(listingWorkCenters);
 router.route('/').post(createWorkCenter);
 router.route('/:id').put(editWorkCenter);
-router.route('/').get(allWorkCenters);
 
 module.exports = router;

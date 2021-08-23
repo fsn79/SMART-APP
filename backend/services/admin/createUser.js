@@ -29,7 +29,7 @@ async function createUser(req, res) {
       req.session.user = user;
       res.json({ user });
     } catch (error) {
-      console.log(error);
+      res.status(403).json(e);
     }
   }
 };

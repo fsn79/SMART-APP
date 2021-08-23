@@ -17,24 +17,24 @@ function EditUser() {
   }
   // Форма редактирования пользователя
   return (
-    <div class="flex-direction--column formbg padding-horizontal--48">
-        <span class="padding-bottom--15">Edit employee</span>
+    <div className="flex-direction--column formbg padding-horizontal--48">
+        <span className="padding-bottom--15">Edit employee</span>
     <form id="editUser" onSubmit={handleSubmitEditUser}>
-       <div class="field padding-bottom--24">
-        <label for="lastname">Edit Lastname</label>
+       <div className="field padding-bottom--24">
+        <label htmlFor="lastname">Edit Lastname</label>
         <input type="text" name="lastname" />
       </div>
-      <div class="field padding-bottom--24">
-        <label for="firstname">Edit Firstname</label>
+      <div className="field padding-bottom--24">
+        <label htmlFor="firstname">Edit Firstname</label>
         <input type="text" name="firstname" />
       </div>
-      <div class="field padding-bottom--24">
-        <label for="email">Edit Email</label>
+      <div className="field padding-bottom--24">
+        <label htmlFor="email">Edit Email</label>
         <input type="email" name="email" />
       </div>
-      <div class="field padding-bottom--24">
-        <div class="grid--50-50">
-          <label for="password">Edit Password</label>
+      <div className="field padding-bottom--24">
+        <div className="grid--50-50">
+          <label htmlFor="password">Edit Password</label>
         </div>
         <input type="password" name="password" />
       </div>
@@ -46,12 +46,12 @@ function EditUser() {
         <option>Manager</option>
         <option>Worker</option>
       </select></p>
-      <label for="status">Edit Status</label>
+      <label htmlFor="status">Edit Status</label>
       <p><select name='status'>
         <option>Active</option>
         <option>Retired</option>
       </select></p>
-      <div class="field padding-bottom--24">
+      <div className="field padding-bottom--24">
         <input type="submit" name="submit" value="Edit" />
       </div>
     </form>
