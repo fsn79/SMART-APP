@@ -20,7 +20,7 @@ function CreateOrder() {
     </div>
   <div class="field padding-bottom--24">
     <label for="">Enter Work Order planned quantity</label>
-    <input type="number" step='0.1' name="" />
+    <input type="number" step='0.01' name="" />
   </div>
   <div class="field padding-bottom--24">
     <div class="grid">

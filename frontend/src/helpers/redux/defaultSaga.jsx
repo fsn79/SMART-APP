@@ -4,6 +4,7 @@ import {
   createItemAC,
   createWorkCenterAC,
   editWorkCenterAC,
+  editUserAC,
 } from '../actionCreators';
 import { fetchJson } from '../fetchJson.jsx';
 
@@ -68,6 +69,19 @@ function* editWorkCenter(action) {
   }
 }
 
+function* editUser(action) {
+  try {
+    const response = yield call(fetchJson('/api/user/:id', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(action.payload),
+    }));
+    yield put(editUserAC(response));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 // Watcher
 export default function* defaultSaga() {
   yield takeEvery('TEST', loadData);
@@ -75,4 +89,5 @@ export default function* defaultSaga() {
   yield takeEvery('ITEM', createItem);
   yield takeEvery('WORK_CENTER', createWorkCenter);
   yield takeEvery('EDIT_WC', editWorkCenter);
+  yield takeEvery('EDIT_ONE_USER', editUser);
 }
