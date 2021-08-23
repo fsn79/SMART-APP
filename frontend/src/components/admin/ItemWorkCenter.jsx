@@ -16,6 +16,7 @@ function ItemWorkCenter({ wc }) {
     const { wcCapacity, wcName, wcStatus } = e.target;
     console.log(wcCapacity.value, wcName.value, wcStatus.value);
     console.log(wc.id);
+    setEdit(false);
   };
 
   return (
