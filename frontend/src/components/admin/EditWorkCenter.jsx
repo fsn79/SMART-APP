@@ -18,18 +18,18 @@ function EditWorkCenter() {
       <span className='padding-bottom--15'>Edit Work Center</span>
       <form onSubmit={handleSubmitEditCenter}>
         <div className='field padding-bottom--24'>
-          <label for='centerName'>Edit Work Center Name</label>
+          <label htmlFor='centerName'>Edit Work Center Name</label>
           <input type='text' name='centerName' />
         </div>
         <div className='field padding-bottom--24'>
-          <label for='code'>Edit Work Center code</label>
+          <label htmlFor='code'>Edit Work Center code</label>
           <input type='text' name='code' />
         </div>
         <div className='field padding-bottom--24'>
-          <label for='capacity'>Edit Work Center capacity</label>
+          <label htmlFor='capacity'>Edit Work Center capacity</label>
           <input type='number' step='0.01' name='capacity' />
         </div>
-        <label for='status'>Edit Status</label>
+        <label htmlFor='status'>Edit Status</label>
         <p>
           <select name='status' className='selectStatus'>
             <option>Active</option>
