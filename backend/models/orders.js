@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   };
-  orders.init({
+  Orders.init({
     id: {
       allowNull: false,
       autoIncrement: true,

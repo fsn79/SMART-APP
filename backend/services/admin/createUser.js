@@ -1,7 +1,7 @@
-const db = require('../models');
+const db = require('../../models');
 const bcrypt = require('bcrypt');
 
-function createUser(req, res) {
+async function createUser(req, res) {
   const { lastname, firstname, email, password, position } = req.body;
 
   const checkUser = await db.Employees.findOne({

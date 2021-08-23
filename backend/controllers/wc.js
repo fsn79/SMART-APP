@@ -5,4 +5,4 @@ const editWorkCenter = require('../services/admin/editWorkCenter');
 router.route('/').post(createWorkCenter);
 router.route('/:id').put(editWorkCenter);
 
-module.exports = router
+module.exports = router;

@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   };
-  workcenters.init({
+  Workcenters.init({
     id: {
       allowNull: false,
       autoIncrement: true,
