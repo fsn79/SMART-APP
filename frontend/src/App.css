@@ -671,9 +671,12 @@ select.selectStatus {
   box-shadow: 0 0 5px #9e9e9e;
   padding: 5px 15px;
 }
-.wc-list h1{
+.wc-list input {
+  border-radius: 0;
+}
+.wc-list h1 {
   font-size: 24px;
-  padding: 12px 5px; 
+  padding: 12px 5px;
   font-weight: 600;
   color: #364050;
 }
@@ -685,7 +688,7 @@ select.selectStatus {
 .wc-item div {
   padding: 5px 10px;
 }
-.wc-item.close{
+.wc-item.close {
   opacity: 0.5;
   background-color: #e1e1e1;
   border-radius: 5px;
@@ -693,7 +696,7 @@ select.selectStatus {
 .wc-item:last-child {
   border-bottom: none;
 }
-.wc-item.title div{
+.wc-item.title div {
   font-weight: 600;
   color: #364050;
 }
@@ -704,15 +707,32 @@ select.selectStatus {
   width: -webkit-fill-available;
   min-width: 250px;
 }
-.wc-capacity, .wc-status {
+form input.wc-name {
+  border-radius: 0;
+}
+.wc-capacity,
+.wc-status {
   min-width: 100px;
   text-align: center;
 }
-.wc-item.title .wc-edit{
+form input.wc-capacity,
+form .wc-status {
+  width: auto;
+  border-radius: 0;
+  padding: 0;
+  text-align: center;
+  text-align-last: center;
+}
+.wc-item.title .wc-edit {
   width: 50px;
 }
-.wc-edit img{
+.wc-edit img {
   width: 20px;
   margin: -4px 0;
   cursor: pointer;
+}
+.wc-edit button {
+  padding: 0;
+  border: none;
+  background-color: white;
 }
