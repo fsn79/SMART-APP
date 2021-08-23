@@ -75,8 +75,9 @@ function* editWorkCenter(action) {
 }
 
 function* editUser(action) {
+  console.log(action.payload.id);
   try {
-    const response = yield call(fetchJson, '/api/user/:id', {
+    const response = yield call(fetchJson, `/api/user/${action.payload.id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(action.payload),
@@ -105,7 +106,7 @@ function* getUsersList() {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     });
-    yield put(getUsersAC(response.message));
+    yield put(getUsersAC(response));
   } catch (e) {
     console.log(e);
   }
