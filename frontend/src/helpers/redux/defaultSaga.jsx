@@ -6,7 +6,9 @@ import {
   editWorkCenterAC,
   editUserAC,
   getWorkCentersAC,
-} from '../actionCreators';
+  createUserFailAC,
+  createUserSuccessAC,
+} from '../actionCreators.jsx';
 import { fetchJson } from '../fetchJson.jsx';
 
 // Worker
@@ -22,15 +24,20 @@ function* loadData() {
   }
 }
 function* createUser(action) {
+  yield put(createUserAC());
   try {
     const response = yield call(fetchJson, '/api/user', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(action.payload),
     });
-    yield put(createUserAC(response));
+    if (response.error) {
+      yield put(createUserFailAC(response.message));
+    } else {
+      yield put(createUserSuccessAC(response.message));
+    }
   } catch (e) {
-    console.log(e);
+    yield put(createUserFailAC('Connection error'));
   }
 }
 
@@ -101,7 +108,7 @@ function* getWorkCenters() {
 // Watcher
 export default function* defaultSaga() {
   yield takeEvery('TEST', loadData);
-  yield takeEvery('USER', createUser);
+  yield takeEvery('CREATE_USER_SAGA', createUser);
   yield takeEvery('ITEM', createItem);
   yield takeEvery('WORK_CENTER', createWorkCenter);
   yield takeEvery('EDIT_WC', editWorkCenter);
