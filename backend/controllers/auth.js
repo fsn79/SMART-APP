@@ -5,4 +5,5 @@ const login = require('../services/auth/loginUser');
 router.route('/logout').get(logout);
 router.route('/login').post(login);
 
+
 module.exports = router;
