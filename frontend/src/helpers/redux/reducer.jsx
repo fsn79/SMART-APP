@@ -4,10 +4,10 @@ import {
   CREATE_WORK_CENTER,
   EDIT_WORK_CENTER,
   EDIT_USER,
+  GET_WORK_CENTERS,
 } from '../actionTypes';
 
 const initState = {
-
   load: false,
   data: '',
   userList: [],
@@ -32,9 +32,16 @@ function reducer(state = initState, action) {
         ...state,
         workCenterList: [...state, action.payload],
       };
+    case GET_WORK_CENTERS:
+      return {
+        ...state,
+        workCenterList: action.payload,
+      };
     case EDIT_WORK_CENTER:
-    /* eslint-disable */
-      const index = state.workCenterList.findIndex((item) => item.id === action.payload);
+      /* eslint-disable */
+      const index = state.workCenterList.findIndex(
+        (item) => item.id === action.payload,
+      );
 
       const newState = {
         ...state,
@@ -46,7 +53,7 @@ function reducer(state = initState, action) {
 
     case EDIT_USER:
       const indexUser = state.userList.findIndex((item) => {
-        item.id === action.payload.id
+        item.id === action.payload.id;
       });
 
       const newStateUser = {
@@ -56,7 +63,7 @@ function reducer(state = initState, action) {
 
       newStateUser.userList.splice(indexUser, 1, action.payload);
       return newState;
-      
+
     /* eslint-enable */
     default:
       return state;
