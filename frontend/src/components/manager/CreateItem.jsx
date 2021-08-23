@@ -72,13 +72,13 @@ function CreateItem() {
       <div id="cycleTime">
         <div className="field padding-bottom--24">
           <label htmlFor="cycleTime">Cycle Time</label>
-          <input type="number" step="0.1" className="cycleTime" name="cycletime1"/>
+          <input type="number" step="0.01" className="cycleTime" name="cycletime1"/>
         </div>
         <div className="field padding-bottom--24">
-          <input type="number" step="0.1" className="cycleTime" name="cycletime2"/>
+          <input type="number" step="0.01" className="cycleTime" name="cycletime2"/>
         </div>
         <div className="field padding-bottom--24">
-          <input type="number" step="0.1" className="cycleTime" name="cycletime3"/>
+          <input type="number" step="0.01" className="cycleTime" name="cycletime3"/>
         </div>
       </div>
       </div>

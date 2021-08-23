@@ -7,4 +7,4 @@ router.route('/').post(createItem);
 router.route('/').get(allItems);
 router.route('/:id').put(editItem);
 
-module.exports =router
+module.exports =router;
