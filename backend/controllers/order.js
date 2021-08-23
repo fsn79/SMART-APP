@@ -9,4 +9,4 @@ router.route('/orders').post(orders);
 router.route('/progressive/:id').post(executionOrder);
 router.route('/progressive/:id').put(executionProgres);
 
-module.exports = router
+module.exports = router;

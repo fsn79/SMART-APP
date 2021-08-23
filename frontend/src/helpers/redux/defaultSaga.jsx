@@ -4,28 +4,40 @@ import {
   createItemAC,
   createWorkCenterAC,
   editWorkCenterAC,
-} from '../actionCreators';
+  editUserAC,
+  getWorkCentersAC,
+  createUserFailAC,
+  createUserSuccessAC,
+} from '../actionCreators.jsx';
 import { fetchJson } from '../fetchJson.jsx';
 
 // Worker
 function* loadData() {
   try {
-    const data = yield call(fetchJson('/'));
+    const data = yield call(fetchJson, '/');
     yield put({ type: 'OK', payload: { error: true, message: data } });
   } catch (e) {
-    yield put({ type: 'OK', payload: { error: true, message: "Can't connect to server" } });
+    yield put({
+      type: 'OK',
+      payload: { error: true, message: "Can't connect to server" },
+    });
   }
 }
 function* createUser(action) {
+  yield put(createUserAC());
   try {
     const response = yield call(fetchJson, '/api/user', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(action.payload),
     });
-    yield put(createUserAC(response));
+    if (response.error) {
+      yield put(createUserFailAC(response.message));
+    } else {
+      yield put(createUserSuccessAC(response.message));
+    }
   } catch (e) {
-    console.log(e);
+    yield put(createUserFailAC('Connection error'));
   }
 }
 
@@ -68,11 +80,38 @@ function* editWorkCenter(action) {
   }
 }
 
+function* editUser(action) {
+  try {
+    const response = yield call(fetchJson, '/api/user/:id', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(action.payload),
+    });
+    yield put(editUserAC(response));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+function* getWorkCenters() {
+  try {
+    const response = yield call(fetchJson, '/api/wc', {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    });
+    yield put(getWorkCentersAC(response.message));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 // Watcher
 export default function* defaultSaga() {
   yield takeEvery('TEST', loadData);
-  yield takeEvery('USER', createUser);
+  yield takeEvery('CREATE_USER_SAGA', createUser);
   yield takeEvery('ITEM', createItem);
   yield takeEvery('WORK_CENTER', createWorkCenter);
   yield takeEvery('EDIT_WC', editWorkCenter);
+  yield takeEvery('EDIT_ONE_USER', editUser);
+  yield takeEvery('GET_WCS', getWorkCenters);
 }
