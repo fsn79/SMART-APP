@@ -8,14 +8,14 @@ function ItemWorkCenter({ wc }) {
   useEffect(() => {}, [edit]);
 
   const editHandler = () => {
-    console.log('edit');
+    // console.log('edit');
     setEdit(true);
   };
   const submitHandler = (e) => {
     e.preventDefault();
-    const { wcCapacity, wcName, wcStatus } = e.target;
-    console.log(wcCapacity.value, wcName.value, wcStatus.value);
-    console.log(wc.id);
+    // const { wcCapacity, wcName, wcStatus } = e.target;
+    // console.log(wcCapacity.value, wcName.value, wcStatus.value);
+    // console.log(wc.id);
     setEdit(false);
   };
 
@@ -25,6 +25,7 @@ function ItemWorkCenter({ wc }) {
         <div className={wc.status ? 'wc-item' : 'wc-item close'} key={wc.id}>
           <div className='wc-id'>{wc.id}</div>
           <div className='wc-name'>{wc.name}</div>
+          <div className='wc-code'>{wc.code}</div>
           <div className='wc-capacity'>{wc.capacity}</div>
           <div className='wc-status'>{wc.status ? 'Open' : 'Close'}</div>
           <div className='wc-edit'>
@@ -39,6 +40,12 @@ function ItemWorkCenter({ wc }) {
             name='wcName'
             defaultValue={wc.name}
             className='wc-name'
+          />
+          <input
+            type='text'
+            name='wcCode'
+            defaultValue={wc.code}
+            className='wc-code'
           />
           <input
             type='text'

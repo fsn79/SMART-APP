@@ -5,9 +5,18 @@ import {
   createWorkCenterAC,
   editWorkCenterAC,
   editUserAC,
+  editOrderAC,
   getWorkCentersAC,
+  createUserFailAC,
+  createUserSuccessAC,
+  loginUserAC,
+  loginUserFailAC,
+  loginUserSuccessAC,
   getUsersAC,
-} from '../actionCreators';
+  getOrdersAC,
+  createItemFailAC,
+  createItemSuccessAC,
+} from '../actionCreators.jsx';
 import { fetchJson } from '../fetchJson.jsx';
 
 // Worker
@@ -22,29 +31,40 @@ function* loadData() {
     });
   }
 }
+
 function* createUser(action) {
+  yield put(createUserAC());
   try {
     const response = yield call(fetchJson, '/api/user', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(action.payload),
     });
-    yield put(createUserAC(response));
+    if (response.error) {
+      yield put(createUserFailAC(response.message));
+    } else {
+      yield put(createUserSuccessAC(response.message));
+    }
   } catch (e) {
-    console.log(e);
+    yield put(createUserFailAC('Connection error'));
   }
 }
 
 function* createItem(action) {
+  yield put(createItemAC());
   try {
     const response = yield call(fetchJson, '/api/item', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(action.payload),
     });
-    yield put(createItemAC(response));
+    if (response.error) {
+      yield put(createItemFailAC(response.message));
+    } else {
+      yield put(createItemSuccessAC(response.message));
+    }
   } catch (e) {
-    console.log(e);
+    yield put(createItemFailAC('Connection error'));
   }
 }
 
@@ -87,6 +107,18 @@ function* editUser(action) {
     console.log(e);
   }
 }
+function* editOrder(action) {
+  try {
+    const response = yield call(fetchJson, `/api/order/${action.payload.id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(action.payload),
+    });
+    yield put(editOrderAC(response));
+  } catch (e) {
+    console.log(e);
+  }
+}
 
 function* getWorkCenters() {
   try {
@@ -97,6 +129,25 @@ function* getWorkCenters() {
     yield put(getWorkCentersAC(response.message));
   } catch (e) {
     console.log(e);
+  }
+}
+function* loginUser(action) {
+  yield put(loginUserAC());
+  try {
+    const response = yield call(fetchJson, '/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(action.payload),
+    });
+    console.log(response);
+    if (!response.message.status || response.error) {
+      yield put(loginUserFailAC(response.message));
+    } else {
+      console.log('true');
+      yield put(loginUserSuccessAC(response.message));
+    }
+  } catch (e) {
+    yield put(loginUserFailAC('Connection error'));
   }
 }
 
@@ -111,15 +162,29 @@ function* getUsersList() {
     console.log(e);
   }
 }
+function* getOrdersList() {
+  try {
+    const response = yield call(fetchJson, '/api/order', {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    });
+    yield put(getOrdersAC(response));
+  } catch (e) {
+    console.log(e);
+  }
+}
 
 // Watcher
 export default function* defaultSaga() {
   yield takeEvery('TEST', loadData);
-  yield takeEvery('USER', createUser);
-  yield takeEvery('ITEM', createItem);
+  yield takeEvery('CREATE_USER_SAGA', createUser);
+  yield takeEvery('CREATE_ITEM_SAGA', createItem);
   yield takeEvery('WORK_CENTER', createWorkCenter);
   yield takeEvery('EDIT_WC', editWorkCenter);
   yield takeEvery('EDIT_ONE_USER', editUser);
-  yield takeEvery('GET_WCS', getWorkCenters);
+  yield takeEvery('EDIT_ONE_ORDER', editOrder);
+  yield takeEvery('GET_WCS_SAGA', getWorkCenters);
+  yield takeEvery('LOGIN_USER_SAGA', loginUser);
   yield takeEvery('GET_USERS_LIST', getUsersList);
+  yield takeEvery('GET_ORDER_LIST', getOrdersList);
 }

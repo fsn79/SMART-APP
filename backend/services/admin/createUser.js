@@ -1,37 +1,33 @@
-const db = require('../../models');
+const { Employees } = require('../../models');
 const bcrypt = require('bcrypt');
 
 async function createUser(req, res) {
   const { lastname, firstname, email, password, jobtitle, workcenterid } = req.body;
-
-  const checkUser = await db.Employees.findOne({
-    where: {
-      email
-    }
-  });
-
-  if (checkUser) {
-    res.json({ message: 'This email is already in use!' });
-  } else {
+  if (lastname && firstname && email && password && jobtitle && workcenterid) {
+    const hash = (hashPass = await bcrypt.hash(password, 10));
     try {
-      const hashPass = await bcrypt.hash(password, 10);
-
-      const user = await db.Employees.create({
-        lastname,
-        firstname,
-        email,
-        password: hashPass,
-        jobtitle,
-        workcenterid
+      const [user, created] = await Employees.findOrCreate({
+        where: { email },
+        defaults: {
+          lastname,
+          firstname,
+          email,
+          password: hash,
+          jobtitle,
+          workcenterid: +workcenterid,
+        },
+        raw: true,
       });
-
-      // формирование сессии, user добавляется в неё как объект
-      req.session.user = user;
-      res.json({ user });
-    } catch (error) {
-      res.status(403).json(e);
+      created
+        ? res.json({ error: false, message: `User was created. ID: ${user.id}` })
+        : res.json({ error: true, message: `Email (${email}) is already exist` });
+    } catch (e) {
+      console.log(e);
+      res.json({ error: true, message: 'DB error, try again' });
     }
+  } else {
+    res.json({ error: true, message: 'All fields must be require' });
   }
-};
+}
 
 module.exports = createUser;

@@ -1,9 +1,12 @@
 require('dotenv').config();
 
-async function logoutUser(req, res) {
-  res.clearCookie(process.env.KEY_SESSION);
-  req.session = null;
-  res.status(200).json({ massage: 'logout and clear session'})
+function logoutUser(req, res) {
+  req.session.destroy(() => {
+    res
+      .clearCookie(process.env.KEY_SESSION)
+      .status(200)
+      .json({ message: 'logout and clear session'})
+  });
 };
 
 module.exports = logoutUser;
