@@ -17,6 +17,10 @@ import {
   GET_LIST_OF_ITEMS,
   CREATE_ITEM_SUCCESS,
   CREATE_ITEM_FAIL,
+  GET_LIST_OF_ITEMS,
+  CREATE_ORDER,
+  CREATE_ORDER_FAIL,
+  CREATE_ORDER_SUCCESS,
 } from '../actionTypes.jsx';
 
 const initState = {
@@ -138,10 +142,12 @@ function reducer(state = initState, action) {
 
       newStateUser.userList.splice(indexUser, 1, action.payload);
       return newState;
-      
+
     case EDIT_ORDER:
-      const indexOrder = state.orderList.findIndex((item) => item.id === action.payload.id)
-      const copyOrderList = [...state.orderList]
+      const indexOrder = state.orderList.findIndex(
+        (item) => item.id === action.payload.id,
+      );
+      const copyOrderList = [...state.orderList];
       const copyOrderListItem = { ...copyOrderList[indexOrder] };
 
       copyOrderListItem.quantity = action.payload.quantity;
@@ -175,7 +181,7 @@ function reducer(state = initState, action) {
         ...state,
         itemList: copyItemList,
       };
- 
+
     // LOGIN USER
     case LOGIN_USER:
       return {
@@ -194,7 +200,7 @@ function reducer(state = initState, action) {
         jobtitle: action.payload.jobtitle,
         iduser: action.payload.id,
         status: action.payload.status,
-        message: action.payload
+        message: action.payload,
       };
     case LOGIN_USER_FAIL:
       return {
@@ -203,7 +209,38 @@ function reducer(state = initState, action) {
         error: true,
         message: action.payload,
       };
-     // LOGIN USER - END
+    // LOGIN USER - END
+    // GET ITEMS
+    case GET_LIST_OF_ITEMS:
+      return {
+        ...state,
+        error: false,
+        itemList: [...action.payload],
+      };
+    // GET ITEMS - END
+    // CREATE ORDER
+    case CREATE_ORDER:
+      return {
+        ...state,
+        error: false,
+        load: true,
+        message: '',
+      };
+    case CREATE_ORDER_FAIL:
+      return {
+        ...state,
+        error: true,
+        load: false,
+        message: action.payload,
+      };
+    case CREATE_ORDER_SUCCESS:
+      return {
+        ...state,
+        error: false,
+        load: false,
+        message: action.payload,
+      };
+    // CREATE ORDER - END
     /* eslint-enable */
     default:
       return state;
