@@ -31,10 +31,10 @@
   background-color: rgba(69, 71, 73, 0);
   max-height: 900px;
   overflow-y: auto;
-  margin: 100px 0;
   -ms-overflow-style: none;  
   scrollbar-width: none;
   overflow-y: auto;
+  margin-top: 6em;
 }
 
 .modal_content_wrapper::-webkit-scrollbar {

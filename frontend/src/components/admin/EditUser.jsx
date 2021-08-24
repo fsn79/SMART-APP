@@ -2,7 +2,6 @@ import { useDispatch } from 'react-redux';
 import closeIcon from '../../images/closeicon.svg';
 
 function EditUser({ user, setActive }) {
-  console.log(user);
   const dispatch = useDispatch();
   function handleSubmitEditUser(e) {
     e.preventDefault();
