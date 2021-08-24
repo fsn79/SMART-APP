@@ -795,6 +795,14 @@ form input.wc-code {
   min-width: 220px;
 }
 
+#editUserModal {
+  padding: 30px;
+}
+
+.selectEditUser {
+  width: 368px;
+  margin-left: 7px;
+}
 /* Orders */
 .orders-wrapper {
   background: white;
@@ -836,4 +844,14 @@ form .work-center-select-wrapper input,
 form .work-center-select-wrapper select {
   border-radius: 5px;
   border: solid 1px #ddd;
+}
+.flex-3-2 {
+  display: flex;
+  justify-content: space-between;
+}
+.flex-3-2 div:first-child {
+  width: 58%;
+}
+.flex-3-2 div:last-child {
+  width: 38%;
 }

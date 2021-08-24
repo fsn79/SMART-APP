@@ -10,10 +10,12 @@ import Logout from './components/index/Logout.jsx';
 import CreateOrder from './components/manager/CreateOrder.jsx';
 import CreateItem from './components/manager/CreateItem.jsx';
 import OrdersListing from './components/user/OrdersListing.jsx';
-import EditItem from './components/manager/EditItem.jsx';
-import EditOrder from './components/manager/EditOrder.jsx';
+// import EditItem from './components/manager/EditItem.jsx';
+// import EditOrder from './components/manager/EditOrder.jsx';
 import ListUsers from './components/admin/ListUsers.jsx';
 import ListWorkCenters from './components/admin/ListWorkCenters.jsx';
+import ListOrders from './components/manager/ListOrders.jsx';
+import ListItems from './components/manager/ListItems.jsx';
 
 function App() {
   // const { jobtitle } = useSelector((state) => state);
@@ -46,10 +48,10 @@ function App() {
                 <CreateItem />
               </Route>
               <Route path='/edit-item' exact>
-                <EditItem />
+                <ListItems />
               </Route>
               <Route path='/edit-order' exact>
-                <EditOrder />
+                <ListOrders />
               </Route>
               <Route path='/create-order' exact>
                 <CreateOrder />

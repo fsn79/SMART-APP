@@ -1,25 +1,23 @@
 import React, { useState } from 'react';
-import Modal from './Modal.jsx';
+import Modal from '../admin/Modal.jsx';
 import editIcon from '../../images/editIcon.svg';
-import EditUser from './EditUser.jsx';
+import EditOrder from './EditOrder.jsx';
 
-function ModalUser({ el }) {
-  console.log(el);
+function ModalOrders({ el }) {
   const [modalActive, setModalActive] = useState(false);
   return (
     <div className={el.status ? 'wc-item' : 'wc-item close'} key={el.id}>
       <div className='wc-id'>{el.id}</div>
-      <div className='listTable'>{el.lastname}</div>
-      <div className='listTable'>{el.firstname}</div>
-      <div className='listTableEmail'>{el.email}</div>
-      <div className='listTable'>{el.workcenterid}</div>
+      <div className='listTable'>{el.quantity}</div>
+      <div className='listTable'>{el.promiseddate}</div>
+      <div className='listTable'>{el.priority}</div>
       <div className='wc-edit'>
         <img onClick={() => setModalActive(true)} src={editIcon} alt='edit' />
         <Modal active={modalActive} setActive={setModalActive}>
-          <EditUser user={el} setActive={setModalActive} />
+          <EditOrder order={el} setActive={setModalActive} />
         </Modal>
       </div>
     </div>);
 }
 
-export default ModalUser;
+export default ModalOrders;

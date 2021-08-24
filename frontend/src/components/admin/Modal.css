@@ -19,21 +19,52 @@
   pointer-events: all;
   color: rgba(22, 19, 19, 0.774);
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  overflow-y: auto;
+  padding-top: 150px;
 }
 
-.modal_content {
+.modal_content_wrapper {
   padding: 20px;
   border-radius: 12px;
   background-color:white;
   width: 50vw;
   background-color: rgba(69, 71, 73, 0);
-  max-height: 800px;
+  max-height: 900px;
   overflow-y: auto;
-  margin: 100px 0;
   -ms-overflow-style: none;  
   scrollbar-width: none;
+  overflow-y: auto;
+  margin-top: 6em;
 }
 
-.modal_content::-webkit-scrollbar {
+.modal_content_wrapper::-webkit-scrollbar {
   display: none;
+}
+
+.modal_content {
+  position: relative;
+}
+
+.modal_close {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  font-size: 28px;
+  color: rgba(22, 19, 19, 0.774);
+}
+
+
+#form-header {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 24px;
+  padding: 12px 5px;
+  font-weight: 600;
+  color: #364050;
+  letter-spacing: -1px;
+}
+
+label {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
 }
