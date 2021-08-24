@@ -45,8 +45,8 @@ module.exports = {
       },
       priority: {
         allowNull: false,
-        type: Sequelize.STRING,
-        defaultValue: 'Low',
+        type: Sequelize.INTEGER,
+        defaultValue: 1,
       },
       status: {
         allowNull: false,
