@@ -29,12 +29,12 @@
   background-color:white;
   width: 50vw;
   background-color: rgba(69, 71, 73, 0);
-  max-height: 800px;
+  max-height: 900px;
   overflow-y: auto;
-  margin: 100px 0;
   -ms-overflow-style: none;  
   scrollbar-width: none;
   overflow-y: auto;
+  margin-top: 6em;
 }
 
 .modal_content_wrapper::-webkit-scrollbar {
@@ -47,8 +47,8 @@
 
 .modal_close {
   position: absolute;
-  top: 20px;
-  right: 29px;
+  top: 30px;
+  right: 30px;
   font-size: 28px;
   color: rgba(22, 19, 19, 0.774);
 }

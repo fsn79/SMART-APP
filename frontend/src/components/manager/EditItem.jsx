@@ -1,29 +1,42 @@
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-function EditItem() {
-  // const dispatch = useDispatch();
-  // function handleSubmitEditItem(e) {
-  //   e.preventDefault();
-  //   const payload = {
-  //   }
-  // }
-  // Форма редактирования продукта
+function EditItem({ item, setActive }) {
+  const dispatch = useDispatch();
+  function handleSubmitEditItem(e) {
+    e.preventDefault();
+    const payload = {
+      id: item.id,
+      workcenter1: e.target.workcenter1.value,
+      descrroute1: e.target.descrroute1.value,
+      cycletime1: e.target.cycletime1.value,
+      workcenter2: e.target.workcenter2.value,
+      descrroute2: e.target.descrroute2.value,
+      cycletime2: e.target.cycletime2.value,
+      workcenter3: e.target.workcenter3.value,
+      descrroute3: e.target.descrroute3.value,
+      cycletime3: e.target.cycletime3.value,
+      status: e.target.status.value,
+    };
+    dispatch({ type: 'EDIT_ONE_ITEM', payload });
+  }
+
   return (
     <div className="flex-direction--column formbg padding-horizontal--48" id="editItemDiv">
+      <button className="modal_close" onClick={() => setActive(false)}>&times;</button>
         <span className="padding-bottom--15">Edit item</span>
-    <form id="editItem">
-       <div className="field padding-bottom--24">
+    <form id="editItem" onSubmit={handleSubmitEditItem}>
+       {/* <div className="field padding-bottom--24">
         <label htmlFor="itemName">Edit Item Name</label>
-        <input type="text" name="itemName" />
-      </div>
-      <div className="field padding-bottom--24">
+        <input type="text" name="itemName" defaultValue={item.name} />
+      </div> */}
+      {/* <div className="field padding-bottom--24">
         <label htmlFor="partNumber">Edit Part Number</label>
-        <input type="text" name="partNumber" />
-      </div>
-      <div className="field padding-bottom--24">
+        <input type="text" name="partNumber" defaultValue={item.partnumber}/>
+      </div> */}
+      {/* <div className="field padding-bottom--24">
         <label htmlFor="itemDescription">Edit Item Description</label>
-        <input type="text" name="itemDescription" />
-      </div>
+        <input type="text" name="itemDescription" defaultValue={item.description} />
+      </div> */}
       <div id="routingDiv">
       <div id="selectCenter">
       <label htmlFor="selectCenter">Edit Work centers selection</label>
@@ -46,25 +59,25 @@ function EditItem() {
       <div id="centerDescription">
         <div className="field padding-bottom--24">
           <label htmlFor="routingDescription">Edit Routing Description</label>
-          <input type="text" className="routingDescription" name="descrroute1"/>
+          <input type="text" className="routingDescription" name="descrroute1" defaultValue={item.descrroute1}/>
         </div>
         <div className="field padding-bottom--24">
-          <input type="text" className="routingDescription" name="descrroute2"/>
+          <input type="text" className="routingDescription" name="descrroute2" defaultValue={item.descrroute2} />
         </div>
         <div className="field padding-bottom--24">
-          <input type="text" className="routingDescription" name="descrroute3"/>
+          <input type="text" className="routingDescription" name="descrroute3" defaultValue={item.descrroute3} />
         </div>
       </div>
       <div id="cycleTime">
         <div className="field padding-bottom--24">
           <label htmlFor="cycleTime">Edit Cycle Time</label>
-          <input type="number" step="0.01" className="cycleTime" name="cycletime1"/>
+          <input type="number" step="0.01" className="cycleTime" name="cycletime1" defaultValue={item.cycletime1}/>
         </div>
         <div className="field padding-bottom--24">
-          <input type="number" step="0.01" className="cycleTime" name="cycletime2"/>
+          <input type="number" step="0.01" className="cycleTime" name="cycletime2" defaultValue={item.cycletime2}/>
         </div>
         <div className="field padding-bottom--24">
-          <input type="number" step="0.01" className="cycleTime" name="cycletime3"/>
+          <input type="number" step="0.01" className="cycleTime" name="cycletime3" defaultValue={item.cycletime3}/>
         </div>
       </div>
       </div>

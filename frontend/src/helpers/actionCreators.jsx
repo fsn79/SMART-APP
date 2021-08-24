@@ -15,6 +15,7 @@ import {
   LOGIN_USER_SUCCESS,
   GET_LIST_OF_USERS,
   GET_LIST_OF_ORDERS,
+  GET_LIST_OF_ITEMS,
   CREATE_ITEM_SUCCESS,
   CREATE_ITEM_FAIL,
   GET_LIST_OF_ITEMS,
@@ -100,4 +101,8 @@ export function getUsersAC(payload) {
 }
 export function getOrdersAC(payload) {
   return { type: GET_LIST_OF_ORDERS, payload };
+}
+
+export function getItemsAC(payload) {
+  return { type: GET_LIST_OF_ITEMS, payload };
 }
