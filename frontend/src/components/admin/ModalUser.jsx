@@ -16,8 +16,8 @@ function ModalUser({ el }) {
       <div className='wc-edit'>
         <img onClick={() => setModalActive(true)} src={editIcon} alt='edit' />
         <Modal active={modalActive} setActive={setModalActive}>
-   <EditUser props={el}/>
-</Modal>
+          <EditUser user={el} setActive={setModalActive} />
+        </Modal>
       </div>
     </div>);
 }
