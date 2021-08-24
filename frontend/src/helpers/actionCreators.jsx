@@ -11,6 +11,7 @@ import {
   CREATE_USER_SUCCESS,
   CREATE_USER_FAIL,
   LOGIN_USER,
+  GET_LIST_OF_USERS,
 } from './actionTypes.jsx';
 
 // CREATE USER AC
@@ -59,4 +60,8 @@ export function getWorkCentersAC(payload) {
 
 export function loginUserAC(payload) {
   return { type: LOGIN_USER, payload };
+}
+
+export function getUsersAC(payload) {
+  return { type: GET_LIST_OF_USERS, payload };
 }
