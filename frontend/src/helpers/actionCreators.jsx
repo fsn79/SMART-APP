@@ -18,6 +18,7 @@ import {
   GET_LIST_OF_ITEMS,
   CREATE_ITEM_SUCCESS,
   CREATE_ITEM_FAIL,
+  LOGOUT_USER,
   CREATE_ORDER_FAIL,
   CREATE_ORDER_SUCCESS,
 } from './actionTypes.jsx';
@@ -98,6 +99,11 @@ export function getWorkCentersAC(payload) {
 export function getUsersAC(payload) {
   return { type: GET_LIST_OF_USERS, payload };
 }
+
+export function getLogoutUser(payload) {
+  return { type: LOGOUT_USER, payload };
+}
+
 export function getOrdersAC(payload) {
   return { type: GET_LIST_OF_ORDERS, payload };
 }

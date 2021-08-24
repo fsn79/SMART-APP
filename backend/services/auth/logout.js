@@ -5,7 +5,7 @@ function logoutUser(req, res) {
     res
       .clearCookie(process.env.KEY_SESSION)
       .status(200)
-      .json({ message: 'logout and clear session'})
+      .json({ jobtitle: false, message: 'logout and clear session'})
   });
 };
 
