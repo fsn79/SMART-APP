@@ -20,8 +20,7 @@ const corsOptions = {
 
 //session
 const sConfig = {
-  name: 'uSID',
-  key: process.env.KEY_SESSION,
+  name: process.env.KEY_SESSION,
   store: new FileStore(),
   secret: process.env.SESSION_SECRET,
   resave: true,

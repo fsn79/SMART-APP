@@ -9,6 +9,8 @@ import {
   createUserFailAC,
   createUserSuccessAC,
   loginUserAC,
+  loginUserFailAC,
+  loginUserSuccessAC,
 } from '../actionCreators.jsx';
 import { fetchJson } from '../fetchJson.jsx';
 
@@ -106,15 +108,23 @@ function* getWorkCenters() {
   }
 }
 function* loginUser(action) {
+  yield put(loginUserAC());
   try {
     const response = yield call(fetchJson, '/api/auth/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(action.payload),
     });
-    yield put(loginUserAC(response.message));
+    console.log(response);
+    if (!response.message.status || response.error) {
+      yield put(loginUserFailAC(response.message));
+    } else {
+      console.log('true');
+      yield put(loginUserSuccessAC(response.message));
+    }
+    // yield put(loginUserAC(response.message));
   } catch (e) {
-    console.log(e);
+    yield put(loginUserFailAC('Connection error'));
   }
 }
 

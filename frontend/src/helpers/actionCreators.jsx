@@ -11,6 +11,8 @@ import {
   CREATE_USER_SUCCESS,
   CREATE_USER_FAIL,
   LOGIN_USER,
+  LOGIN_USER_FAIL,
+  LOGIN_USER_SUCCESS,
 } from './actionTypes.jsx';
 
 // CREATE USER AC
@@ -24,6 +26,19 @@ export function createUserFailAC(payload) {
   return { type: CREATE_USER_FAIL, payload };
 }
 // CREATE USER AC - END
+
+// LOGIN USER AC
+
+export function loginUserFailAC(payload) {
+  return { type: LOGIN_USER_FAIL, payload };
+}
+export function loginUserAC(payload) {
+  return { type: LOGIN_USER, payload };
+}
+export function loginUserSuccessAC(payload) {
+  return { type: LOGIN_USER_SUCCESS, payload };
+}
+// LOGIN USER AC - END
 
 export function createWorkCenterAC(payload) {
   return { type: CREATE_WORK_CENTER, payload };
@@ -55,8 +70,4 @@ export function editOrderAC(payload) {
 
 export function getWorkCentersAC(payload) {
   return { type: GET_WORK_CENTERS, payload };
-}
-
-export function loginUserAC(payload) {
-  return { type: LOGIN_USER, payload };
 }
