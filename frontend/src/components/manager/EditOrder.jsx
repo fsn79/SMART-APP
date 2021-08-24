@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+import closeIcon from '../../images/closeicon.svg';
 
 function EditOrder({ order, setActive }) {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ function EditOrder({ order, setActive }) {
   // Форма редактирования задачи
   return (
     <div className="flex-direction--column formbg padding-horizontal--48">
-      <button className="modal_close" onClick={() => setActive(false)}>&times;</button>
+      <img className="modal_close" alt="close" src={closeIcon} onClick={() => setActive(false)} />
       <span className="padding-bottom--15">Edit Work Order</span>
       <form id="editOrder" onSubmit={handleSubmitEditOrder}>
         <div className="field padding-bottom--24">
