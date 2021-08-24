@@ -680,6 +680,7 @@ select.selectStatus {
   border-radius: 5px;
   box-shadow: 0 0 5px #9e9e9e;
   padding: 5px 15px;
+  min-height: 600px;
 }
 .wc-list input {
   border-radius: 0;
@@ -721,12 +722,14 @@ form input.wc-name {
   border-radius: 0;
 }
 .wc-capacity,
-.wc-status {
+.wc-status,
+.wc-code {
   min-width: 100px;
   text-align: center;
 }
 form input.wc-capacity,
-form .wc-status {
+form .wc-status,
+form input.wc-code {
   width: auto;
   border-radius: 0;
   padding: 0;
@@ -746,6 +749,7 @@ form .wc-status {
   border: none;
   background-color: white;
 }
+/* Work Centers Listing - END */
 .output {
   text-align: center;
   padding: 10px;
@@ -789,4 +793,47 @@ form .wc-status {
 }
 .listTableEmail {
   min-width: 220px;
+}
+
+/* Orders */
+.orders-wrapper {
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #9e9e9e;
+  padding: 5px 15px;
+}
+.orders-wrapper h2 {
+  font-size: 26px;
+  margin: 15px 0;
+  color: #364050;
+}
+.no-order {
+  background: #f1f1f1;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin: 10px 0;
+  font-size: 18px;
+}
+
+.work-center-select-wrapper,
+.work-center-select-titles {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+.work-center-select-wrapper div,
+.work-center-select-titles div {
+  width: 30%;
+}
+.work-center-select-wrapper input {
+  height: 40px;
+}
+.work-center-select-wrapper select {
+  height: 44px;
+}
+form .work-center-select-wrapper input,
+form .work-center-select-wrapper select {
+  border-radius: 5px;
+  border: solid 1px #ddd;
 }

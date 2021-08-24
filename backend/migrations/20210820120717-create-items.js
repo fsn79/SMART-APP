@@ -36,7 +36,7 @@ module.exports = {
       },
       cycletime1: {
         allowNull: false,
-        type: Sequelize.INTEGER,
+        type: Sequelize.FLOAT,
       },
       workcenter2: {
         type: Sequelize.STRING,
@@ -45,7 +45,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       cycletime2: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.FLOAT,
       },
       workcenter3: {
         type: Sequelize.STRING,
@@ -54,7 +54,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       cycletime3: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.FLOAT,
       },
       createdAt: {
         allowNull: false,

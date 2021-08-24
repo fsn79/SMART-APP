@@ -47,7 +47,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       cycletime1: {
         allowNull: false,
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
       },
       workcenter2: {
         type: DataTypes.STRING,
@@ -56,7 +56,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
       },
       cycletime2: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
       },
       workcenter3: {
         type: DataTypes.STRING,
@@ -65,7 +65,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
       },
       cycletime3: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
       },
       createdAt: {
         allowNull: false,

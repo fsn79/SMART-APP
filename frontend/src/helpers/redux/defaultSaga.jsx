@@ -12,6 +12,8 @@ import {
   loginUserFailAC,
   loginUserSuccessAC,
   getUsersAC,
+  createItemFailAC,
+  createItemSuccessAC,
 } from '../actionCreators.jsx';
 import { fetchJson } from '../fetchJson.jsx';
 
@@ -27,6 +29,7 @@ function* loadData() {
     });
   }
 }
+
 function* createUser(action) {
   yield put(createUserAC());
   try {
@@ -46,15 +49,20 @@ function* createUser(action) {
 }
 
 function* createItem(action) {
+  yield put(createItemAC());
   try {
     const response = yield call(fetchJson, '/api/item', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(action.payload),
     });
-    yield put(createItemAC(response));
+    if (response.error) {
+      yield put(createItemFailAC(response.message));
+    } else {
+      yield put(createItemSuccessAC(response.message));
+    }
   } catch (e) {
-    console.log(e);
+    yield put(createItemFailAC('Connection error'));
   }
 }
 
@@ -146,11 +154,11 @@ function* getUsersList() {
 export default function* defaultSaga() {
   yield takeEvery('TEST', loadData);
   yield takeEvery('CREATE_USER_SAGA', createUser);
-  yield takeEvery('ITEM', createItem);
+  yield takeEvery('CREATE_ITEM_SAGA', createItem);
   yield takeEvery('WORK_CENTER', createWorkCenter);
   yield takeEvery('EDIT_WC', editWorkCenter);
   yield takeEvery('EDIT_ONE_USER', editUser);
-  yield takeEvery('GET_WCS', getWorkCenters);
+  yield takeEvery('GET_WCS_SAGA', getWorkCenters);
   yield takeEvery('LOGIN_USER_SAGA', loginUser);
   yield takeEvery('GET_USERS_LIST', getUsersList);
 }
