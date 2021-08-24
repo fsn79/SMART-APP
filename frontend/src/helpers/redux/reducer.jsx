@@ -10,6 +10,7 @@ import {
   LOGIN_USER,
   LOGIN_USER_FAIL,
   LOGIN_USER_SUCCESS,
+  GET_LIST_OF_USERS,
 } from '../actionTypes.jsx';
 
 const initState = {
@@ -68,6 +69,11 @@ function reducer(state = initState, action) {
       return {
         ...state,
         workCenterList: action.payload,
+      };
+    case GET_LIST_OF_USERS:
+      return {
+        ...state,
+        userList: action.payload,
       };
     case EDIT_WORK_CENTER:
       /* eslint-disable */
