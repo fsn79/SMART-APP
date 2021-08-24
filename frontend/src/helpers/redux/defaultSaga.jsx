@@ -197,9 +197,10 @@ function* getUsersList() {
     console.log(e);
   }
 }
-function* getOrdersList() {
+function* getOrdersList(payload) {
+  console.log(payload);
   try {
-    const response = yield call(fetchJson, '/api/order', {
+    const response = yield call(fetchJson, `/api/order/${payload.status}`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     });
@@ -233,7 +234,7 @@ export default function* defaultSaga() {
   yield takeEvery('GET_WCS_SAGA', getWorkCenters);
   yield takeEvery('LOGIN_USER_SAGA', loginUser);
   yield takeEvery('GET_USERS_LIST', getUsersList);
-  yield takeEvery('GET_ORDER_LIST', getOrdersList);
+  yield takeEvery('GET_ORDERS_LIST', getOrdersList);
   yield takeEvery('GET_ITEMS_LIST_SAGA', getItemsList);
   yield takeEvery('CREATE_ORDER_SAGA', createOrder);
 }

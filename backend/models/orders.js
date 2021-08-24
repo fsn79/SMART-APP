@@ -56,8 +56,8 @@ module.exports = (sequelize, DataTypes) => {
       },
       priority: {
         allowNull: false,
-        type: DataTypes.STRING,
-        defaultValue: 'Low',
+        type: DataTypes.INTEGER,
+        defaultValue: 1,
       },
       status: {
         allowNull: false,

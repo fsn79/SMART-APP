@@ -71,11 +71,11 @@ function CreateOrder() {
         <label htmlFor='priority'>Production Prioroty</label>
         <p>
           <select name='priority' required>
-            <option defaultValue value='low'>
+            <option defaultValue value='1'>
               Low
             </option>
-            <option value='medium'>Medium</option>
-            <option value='high'>High</option>
+            <option value='2'>Medium</option>
+            <option value='3'>High</option>
           </select>
         </p>
         <div className='field padding-bottom--24'>

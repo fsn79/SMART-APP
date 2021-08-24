@@ -6,7 +6,11 @@ import OrderNotSelected from './OrderNotSelected.jsx';
 function OrdersListing() {
   const dispatch = useDispatch();
   const currentOrderId = useSelector((state) => state.currentOrderId);
-  useEffect(() => {}, [dispatch]);
+  const { orderList } = useSelector((state) => state);
+  useEffect(() => {
+    dispatch({ type: 'GET_ORDERS_LIST', status: 'T-1' });
+  }, [dispatch]);
+  console.log(orderList);
   // Список доступных задач + текущая активная задача
   return (
     <div className='orders-wrapper'>
