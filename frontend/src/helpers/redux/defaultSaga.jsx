@@ -18,7 +18,6 @@ import {
   getItemsAC,
   createItemFailAC,
   createItemSuccessAC,
-  getItemsAC,
   createOrderAC,
   createOrderFailAC,
   createOrderSuccessAC,
@@ -216,18 +215,6 @@ function* getItemsList() {
       headers: { 'Content-Type': 'application/json' },
     });
     yield put(getItemsAC(response.message));
-  } catch (e) {
-    console.log(e);
-  }
-}
-
-function* getItemsList() {
-  try {
-    const response = yield call(fetchJson, '/api/item', {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
-    });
-    yield put(getItemsAC(response));
   } catch (e) {
     console.log(e);
   }

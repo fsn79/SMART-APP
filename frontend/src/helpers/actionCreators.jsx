@@ -18,7 +18,6 @@ import {
   GET_LIST_OF_ITEMS,
   CREATE_ITEM_SUCCESS,
   CREATE_ITEM_FAIL,
-  GET_LIST_OF_ITEMS,
   CREATE_ORDER_FAIL,
   CREATE_ORDER_SUCCESS,
 } from './actionTypes.jsx';
@@ -101,8 +100,4 @@ export function getUsersAC(payload) {
 }
 export function getOrdersAC(payload) {
   return { type: GET_LIST_OF_ORDERS, payload };
-}
-
-export function getItemsAC(payload) {
-  return { type: GET_LIST_OF_ITEMS, payload };
 }

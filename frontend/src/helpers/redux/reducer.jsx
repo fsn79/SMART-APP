@@ -17,7 +17,6 @@ import {
   GET_LIST_OF_ITEMS,
   CREATE_ITEM_SUCCESS,
   CREATE_ITEM_FAIL,
-  GET_LIST_OF_ITEMS,
   CREATE_ORDER,
   CREATE_ORDER_FAIL,
   CREATE_ORDER_SUCCESS,
@@ -160,9 +159,11 @@ function reducer(state = initState, action) {
         userList: copyOrderList,
       };
 
-      case EDIT_ITEM:
-      const indexItem = state.itemList.findIndex((item) => item.id === action.payload.id)
-      const copyItemList = [...state.itemList]
+    case EDIT_ITEM:
+      const indexItem = state.itemList.findIndex(
+        (item) => item.id === action.payload.id,
+      );
+      const copyItemList = [...state.itemList];
       const copyItemListItem = { ...copyItemList[indexItem] };
 
       copyItemListItem.workcenter1 = action.payload.workcenter1;
@@ -191,7 +192,6 @@ function reducer(state = initState, action) {
         message: '',
       };
     case LOGIN_USER_SUCCESS:
-      console.log(action);
       return {
         ...state,
         load: false,
