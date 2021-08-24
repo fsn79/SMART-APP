@@ -762,3 +762,31 @@ form .wc-status {
   background-color: #e3e3e3;
   border-radius: 5px;
 }
+.listTableDiv {
+  width: 900px;
+  font-size: 15px;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #9e9e9e;
+  padding: 5px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.listTableDiv input {
+  border-radius: 0;
+}
+.listTableDiv h1 {
+  font-size: 24px;
+  padding: 12px 5px;
+  font-weight: 600;
+  color: #364050;
+}
+
+.listTable {
+  min-width: 170px;
+}
+.listTableEmail {
+  min-width: 220px;
+}

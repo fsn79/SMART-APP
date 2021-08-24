@@ -8,6 +8,7 @@ import {
   getWorkCentersAC,
   createUserFailAC,
   createUserSuccessAC,
+  getUsersAC,
 } from '../actionCreators.jsx';
 import { fetchJson } from '../fetchJson.jsx';
 
@@ -81,8 +82,9 @@ function* editWorkCenter(action) {
 }
 
 function* editUser(action) {
+  console.log(action.payload.id);
   try {
-    const response = yield call(fetchJson, '/api/user/:id', {
+    const response = yield call(fetchJson, `/api/user/${action.payload.id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(action.payload),
@@ -105,6 +107,18 @@ function* getWorkCenters() {
   }
 }
 
+function* getUsersList() {
+  try {
+    const response = yield call(fetchJson, '/api/user', {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    });
+    yield put(getUsersAC(response));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 // Watcher
 export default function* defaultSaga() {
   yield takeEvery('TEST', loadData);
@@ -114,4 +128,5 @@ export default function* defaultSaga() {
   yield takeEvery('EDIT_WC', editWorkCenter);
   yield takeEvery('EDIT_ONE_USER', editUser);
   yield takeEvery('GET_WCS', getWorkCenters);
+  yield takeEvery('GET_USERS_LIST', getUsersList);
 }
