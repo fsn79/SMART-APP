@@ -795,6 +795,14 @@ form input.wc-code {
   min-width: 220px;
 }
 
+#editUserModal {
+  padding: 30px;
+}
+
+.selectEditUser {
+  width: 368px;
+  margin-left: 7px;
+}
 /* Orders */
 .orders-wrapper {
   background: white;

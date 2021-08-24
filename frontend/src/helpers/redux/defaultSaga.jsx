@@ -5,6 +5,7 @@ import {
   createWorkCenterAC,
   editWorkCenterAC,
   editUserAC,
+  editOrderAC,
   getWorkCentersAC,
   createUserFailAC,
   createUserSuccessAC,
@@ -12,6 +13,7 @@ import {
   loginUserFailAC,
   loginUserSuccessAC,
   getUsersAC,
+  getOrdersAC,
   createItemFailAC,
   createItemSuccessAC,
 } from '../actionCreators.jsx';
@@ -105,6 +107,18 @@ function* editUser(action) {
     console.log(e);
   }
 }
+function* editOrder(action) {
+  try {
+    const response = yield call(fetchJson, `/api/order/${action.payload.id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(action.payload),
+    });
+    yield put(editOrderAC(response));
+  } catch (e) {
+    console.log(e);
+  }
+}
 
 function* getWorkCenters() {
   try {
@@ -148,6 +162,17 @@ function* getUsersList() {
     console.log(e);
   }
 }
+function* getOrdersList() {
+  try {
+    const response = yield call(fetchJson, '/api/order', {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    });
+    yield put(getOrdersAC(response));
+  } catch (e) {
+    console.log(e);
+  }
+}
 
 // Watcher
 export default function* defaultSaga() {
@@ -157,7 +182,9 @@ export default function* defaultSaga() {
   yield takeEvery('WORK_CENTER', createWorkCenter);
   yield takeEvery('EDIT_WC', editWorkCenter);
   yield takeEvery('EDIT_ONE_USER', editUser);
+  yield takeEvery('EDIT_ONE_ORDER', editOrder);
   yield takeEvery('GET_WCS_SAGA', getWorkCenters);
   yield takeEvery('LOGIN_USER_SAGA', loginUser);
   yield takeEvery('GET_USERS_LIST', getUsersList);
+  yield takeEvery('GET_ORDER_LIST', getOrdersList);
 }
