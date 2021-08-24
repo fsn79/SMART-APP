@@ -17,6 +17,9 @@ import {
   GET_LIST_OF_ORDERS,
   CREATE_ITEM_SUCCESS,
   CREATE_ITEM_FAIL,
+  GET_LIST_OF_ITEMS,
+  CREATE_ORDER_FAIL,
+  CREATE_ORDER_SUCCESS,
 } from './actionTypes.jsx';
 
 // CREATE USER AC
@@ -58,10 +61,20 @@ export function createItemFailAC(payload) {
   return { type: CREATE_ITEM_FAIL, payload };
 }
 // CREATE ITEM AC - END
+export function getItemsAC(payload) {
+  return { type: GET_LIST_OF_ITEMS, payload };
+}
+// CREATE ORDER AC
 export function createOrderAC(payload) {
   return { type: CREATE_ORDER, payload };
 }
-
+export function createOrderFailAC(payload) {
+  return { type: CREATE_ORDER_FAIL, payload };
+}
+export function createOrderSuccessAC(payload) {
+  return { type: CREATE_ORDER_SUCCESS, payload };
+}
+// CREATE ORDER AC - END
 export function editUserAC(payload) {
   return { type: EDIT_USER, payload };
 }

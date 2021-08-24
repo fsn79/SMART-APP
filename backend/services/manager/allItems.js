@@ -1,11 +1,11 @@
-const db = require('../../models/index')
+const { Items } = require('../../models/index');
 async function allItems(req, res) {
   try {
-    const allItems = await db.items.findAll()
-    res.status(200).json({ error: false, allItems })
+    const allItems = await Items.findAll({ raw: true, where: { status: true } });
+    res.json({ error: false, message: allItems });
   } catch (e) {
-    res.status(404).json({ error: true, message: 'DB error, try again' })
-  };
-};
+    res.json({ error: true, message: 'DB error, try again' });
+  }
+}
 
 module.exports = allItems;

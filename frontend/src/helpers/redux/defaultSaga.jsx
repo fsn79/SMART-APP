@@ -16,6 +16,10 @@ import {
   getOrdersAC,
   createItemFailAC,
   createItemSuccessAC,
+  getItemsAC,
+  createOrderAC,
+  createOrderFailAC,
+  createOrderSuccessAC,
 } from '../actionCreators.jsx';
 import { fetchJson } from '../fetchJson.jsx';
 
@@ -62,6 +66,23 @@ function* createItem(action) {
       yield put(createItemFailAC(response.message));
     } else {
       yield put(createItemSuccessAC(response.message));
+    }
+  } catch (e) {
+    yield put(createItemFailAC('Connection error'));
+  }
+}
+function* createOrder(action) {
+  yield put(createOrderAC());
+  try {
+    const response = yield call(fetchJson, '/api/order', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(action.payload),
+    });
+    if (response.error) {
+      yield put(createOrderFailAC(response.message));
+    } else {
+      yield put(createOrderSuccessAC(response.message));
     }
   } catch (e) {
     yield put(createItemFailAC('Connection error'));
@@ -173,6 +194,17 @@ function* getOrdersList() {
     console.log(e);
   }
 }
+function* getItemsList() {
+  try {
+    const response = yield call(fetchJson, '/api/item', {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    });
+    yield put(getItemsAC(response.message));
+  } catch (e) {
+    console.log(e);
+  }
+}
 
 // Watcher
 export default function* defaultSaga() {
@@ -187,4 +219,6 @@ export default function* defaultSaga() {
   yield takeEvery('LOGIN_USER_SAGA', loginUser);
   yield takeEvery('GET_USERS_LIST', getUsersList);
   yield takeEvery('GET_ORDER_LIST', getOrdersList);
+  yield takeEvery('GET_ITEMS_LIST_SAGA', getItemsList);
+  yield takeEvery('CREATE_ORDER_SAGA', createOrder);
 }
