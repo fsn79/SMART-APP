@@ -19,6 +19,7 @@ const initState = {
   userList: [],
   itemList: [],
   workCenterList: [],
+  currentOrderId: null,
 };
 
 function reducer(state = initState, action) {
@@ -92,14 +93,14 @@ function reducer(state = initState, action) {
 
       newStateUser.userList.splice(indexUser, 1, action.payload);
       return newState;
-    
+
     case LOGIN_USER:
       return {
         ...state,
         user: action.payload.name,
         jobtitle: action.payload.jobtitle,
         iduser: action.payload.id,
-      }
+      };
 
     /* eslint-enable */
     default:
