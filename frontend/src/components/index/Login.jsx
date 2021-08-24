@@ -1,15 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { fetchJson } from '../../helpers/fetchJson.jsx';
+import Loader from '../../helpers/Loader.jsx';
+import Output from '../../helpers/Output.jsx';
 
 function Login() {
   const dispatch = useDispatch();
-  const { name } = useSelector((state) => state);
-  const [log, setLog] = useState(null);
-
-  useEffect(() => {
-    setLog(name);
-  });
+  const { load, error, message } = useSelector((state) => state);
+  console.log(message, error);
   // Форма авторизации
   const handleLogin = (e) => {
     e.preventDefault();
@@ -37,7 +35,10 @@ function Login() {
           <div className="field padding-bottom--24">
             <input type="submit" name="submit" value="Continue" className="button"/>
           </div>
-          <p>{log}</p>
+          <div>
+            {load && <Loader />}
+            {message && <Output message={`вы вошли ${message.jobtitle} ${message.name}`} error={error} />}
+          </div>
         </form>
   </div>
   );

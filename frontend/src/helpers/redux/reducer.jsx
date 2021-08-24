@@ -8,6 +8,8 @@ import {
   CREATE_USER_FAIL,
   CREATE_USER_SUCCESS,
   LOGIN_USER,
+  LOGIN_USER_FAIL,
+  LOGIN_USER_SUCCESS,
   GET_LIST_OF_USERS,
   CREATE_ITEM_SUCCESS,
   CREATE_ITEM_FAIL,
@@ -35,6 +37,13 @@ function reducer(state = initState, action) {
         message: '',
       };
     case CREATE_USER_FAIL:
+      return {
+        ...state,
+        load: false,
+        error: true,
+        message: action.payload,
+      };
+    case LOGIN_USER_FAIL:
       return {
         ...state,
         load: false,
@@ -113,15 +122,34 @@ function reducer(state = initState, action) {
 
       newStateUser.userList.splice(indexUser, 1, action.payload);
       return newState;
-
+    // LOGIN USER
     case LOGIN_USER:
       return {
         ...state,
+        load: true,
+        error: false,
+        message: '',
+      };
+    case LOGIN_USER_SUCCESS:
+      console.log(action);
+      return {
+        ...state,
+        load: false,
+        error: false,
         user: action.payload.name,
         jobtitle: action.payload.jobtitle,
         iduser: action.payload.id,
+        status: action.payload.status,
+        message: action.payload
       };
-
+    case LOGIN_USER_FAIL:
+      return {
+        ...state,
+        load: false,
+        error: true,
+        message: action.payload,
+      };
+     // LOGIN USER - END
     /* eslint-enable */
     default:
       return state;

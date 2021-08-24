@@ -13,5 +13,7 @@ export const EDIT_ITEM = 'EDIT_ITEM';
 export const EDIT_ORDER = 'CEDIT_ORDER';
 export const GET_WORK_CENTERS = 'GET_WORK_CENTERS';
 export const LOGIN_USER = 'LOGIN_USER';
+export const LOGIN_USER_FAIL = 'LOGIN_USER_FAIL';
+export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
 
 export const GET_LIST_OF_USERS = 'GET_LIST_OF_USERS';
