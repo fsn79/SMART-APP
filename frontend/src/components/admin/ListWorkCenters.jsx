@@ -16,6 +16,7 @@ function ListWorkCenters() {
         <div className='wc-item title'>
           <div className='wc-id'>ID</div>
           <div className='wc-name'>Work Center Name</div>
+          <div className='wc-code'>Code</div>
           <div className='wc-capacity'>Capacity</div>
           <div className='wc-status'>Status</div>
           <div className='wc-edit'></div>

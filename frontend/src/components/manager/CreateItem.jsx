@@ -66,7 +66,7 @@ function CreateItem() {
                   </option>
                   {centers.map((center) => (
                     <option key={center.id} value={center.code}>
-                      {center.name}
+                      [{center.code}] {center.name}
                     </option>
                   ))}
                 </select>

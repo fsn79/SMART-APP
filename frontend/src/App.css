@@ -680,6 +680,7 @@ select.selectStatus {
   border-radius: 5px;
   box-shadow: 0 0 5px #9e9e9e;
   padding: 5px 15px;
+  min-height: 600px;
 }
 .wc-list input {
   border-radius: 0;
@@ -721,12 +722,14 @@ form input.wc-name {
   border-radius: 0;
 }
 .wc-capacity,
-.wc-status {
+.wc-status,
+.wc-code {
   min-width: 100px;
   text-align: center;
 }
 form input.wc-capacity,
-form .wc-status {
+form .wc-status,
+form input.wc-code {
   width: auto;
   border-radius: 0;
   padding: 0;
