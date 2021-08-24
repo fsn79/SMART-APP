@@ -22,7 +22,7 @@ function EditUser({ user, setActive }) {
   return (
     <div id='editUserModal' className="modal_content flex-direction--column formbg padding-horizontal--48">
       {/* <button className="modal_close" onClick={() => setActive(false)}>&times;</button> */}
-      <img alt="close" src={closeIcon} onClick={() => setActive(false)} />
+      <img className="modal_close" alt="close" src={closeIcon} onClick={() => setActive(false)} />
       <span id="form-header" className="padding-bottom--15">Edit employee</span>
       <form id="editUser" onSubmit={handleSubmitEditUser}>
         <div className="field padding-bottom--24">
