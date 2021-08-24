@@ -4,11 +4,13 @@ import {
   CREATE_WORK_CENTER,
   EDIT_WORK_CENTER,
   EDIT_USER,
+  EDIT_ORDER,
   GET_WORK_CENTERS,
   CREATE_USER_FAIL,
   CREATE_USER_SUCCESS,
   LOGIN_USER,
   GET_LIST_OF_USERS,
+  GET_LIST_OF_ORDERS,
 } from '../actionTypes.jsx';
 
 const initState = {
@@ -19,6 +21,7 @@ const initState = {
   userList: [],
   itemList: [],
   workCenterList: [],
+  orderList: [],
 };
 
 function reducer(state = initState, action) {
@@ -66,6 +69,11 @@ function reducer(state = initState, action) {
         ...state,
         userList: action.payload,
       };
+    case GET_LIST_OF_ORDERS:
+      return {
+        ...state,
+        orderList: action.payload,
+      };
     case EDIT_WORK_CENTER:
       /* eslint-disable */
       const index = state.workCenterList.findIndex(
@@ -92,7 +100,20 @@ function reducer(state = initState, action) {
 
       newStateUser.userList.splice(indexUser, 1, action.payload);
       return newState;
-    
+    case EDIT_ORDER:
+      const indexOrder = state.orderList.findIndex((item) => item.id === action.payload.id)
+      const copyOrderList = [...state.orderList]
+      const copyOrderListItem = { ...copyOrderList[indexOrder] };
+
+      copyOrderListItem.quantity = action.payload.quantity;
+      copyOrderListItem.promiseddate = action.payload.promiseddate;
+      copyOrderListItem.prioroty = action.payload.prioroty;
+      copyOrderList[indexOrder] = copyOrderListItem;
+
+      return {
+        ...state,
+        userList: copyOrderListItem
+      };
     case LOGIN_USER:
       return {
         ...state,

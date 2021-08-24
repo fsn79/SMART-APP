@@ -790,3 +790,12 @@ form .wc-status {
 .listTableEmail {
   min-width: 220px;
 }
+
+#editUserModal {
+  padding: 30px;
+}
+
+.selectEditUser {
+  width: 368px;
+  margin-left: 7px;
+}

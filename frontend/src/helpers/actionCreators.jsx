@@ -12,6 +12,7 @@ import {
   CREATE_USER_FAIL,
   LOGIN_USER,
   GET_LIST_OF_USERS,
+  GET_LIST_OF_ORDERS,
 } from './actionTypes.jsx';
 
 // CREATE USER AC
@@ -64,4 +65,7 @@ export function loginUserAC(payload) {
 
 export function getUsersAC(payload) {
   return { type: GET_LIST_OF_USERS, payload };
+}
+export function getOrdersAC(payload) {
+  return { type: GET_LIST_OF_ORDERS, payload };
 }
