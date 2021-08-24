@@ -126,7 +126,7 @@ function reducer(state = initState, action) {
     case EDIT_WORK_CENTER:
       /* eslint-disable */
       const index = state.workCenterList.findIndex(
-        (item) => item.id === action.payload,
+        (item) => item.id === action.payload.id,
       );
 
       const newState = {
