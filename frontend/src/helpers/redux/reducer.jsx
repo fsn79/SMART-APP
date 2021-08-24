@@ -17,6 +17,7 @@ import {
   GET_LIST_OF_ITEMS,
   CREATE_ITEM_SUCCESS,
   CREATE_ITEM_FAIL,
+  LOGOUT_USER,
   CREATE_ORDER,
   CREATE_ORDER_FAIL,
   CREATE_ORDER_SUCCESS,
@@ -209,6 +210,15 @@ function reducer(state = initState, action) {
         error: true,
         message: action.payload,
       };
+     // LOGIN USER - END
+    // LOGOUT USER
+    case LOGOUT_USER:
+      console.log(action);
+      return {
+        ...state,
+        jobtitle: action.payload.jobtitle,
+        message: null
+      }
     // LOGIN USER - END
     // GET ITEMS
     case GET_LIST_OF_ITEMS:

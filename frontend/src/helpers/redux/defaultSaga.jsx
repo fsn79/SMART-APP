@@ -18,6 +18,7 @@ import {
   getItemsAC,
   createItemFailAC,
   createItemSuccessAC,
+  getLogoutUser,
   createOrderAC,
   createOrderFailAC,
   createOrderSuccessAC,
@@ -117,7 +118,6 @@ function* editWorkCenter(action) {
 }
 
 function* editUser(action) {
-  console.log(action.payload.id);
   try {
     const response = yield call(fetchJson, `/api/user/${action.payload.id}`, {
       method: 'PUT',
@@ -174,11 +174,9 @@ function* loginUser(action) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(action.payload),
     });
-    console.log(response);
     if (!response.message.status || response.error) {
       yield put(loginUserFailAC(response.message));
     } else {
-      console.log('true');
       yield put(loginUserSuccessAC(response.message));
     }
   } catch (e) {
@@ -220,6 +218,15 @@ function* getItemsList() {
   }
 }
 
+function* logoutUser() {
+  try {
+    const response = yield call(fetchJson, '/api/auth/logout');
+    yield put(getLogoutUser(response));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 // Watcher
 export default function* defaultSaga() {
   yield takeEvery('TEST', loadData);
@@ -233,6 +240,7 @@ export default function* defaultSaga() {
   yield takeEvery('GET_WCS_SAGA', getWorkCenters);
   yield takeEvery('LOGIN_USER_SAGA', loginUser);
   yield takeEvery('GET_USERS_LIST', getUsersList);
+  yield takeEvery('LOGOUT_USER_SAGA', logoutUser);
   yield takeEvery('GET_ORDER_LIST', getOrdersList);
   yield takeEvery('GET_ITEMS_LIST_SAGA', getItemsList);
   yield takeEvery('CREATE_ORDER_SAGA', createOrder);
