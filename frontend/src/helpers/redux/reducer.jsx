@@ -21,6 +21,7 @@ import {
   CREATE_ORDER,
   CREATE_ORDER_FAIL,
   CREATE_ORDER_SUCCESS,
+  CLEAR_MESSAGE,
 } from '../actionTypes.jsx';
 
 const initState = {
@@ -38,6 +39,12 @@ const initState = {
 function reducer(state = initState, action) {
   switch (action.type) {
     // CREATE USER
+    case CLEAR_MESSAGE:
+      return {
+        ...state,
+        error: false,
+        message: '',
+      };
     case CREATE_USER:
       return {
         ...state,
@@ -201,7 +208,7 @@ function reducer(state = initState, action) {
         jobtitle: action.payload.jobtitle,
         iduser: action.payload.id,
         status: action.payload.status,
-        message: action.payload,
+        message: 'Successfull',
       };
     case LOGIN_USER_FAIL:
       return {
@@ -210,15 +217,15 @@ function reducer(state = initState, action) {
         error: true,
         message: action.payload,
       };
-     // LOGIN USER - END
+    // LOGIN USER - END
     // LOGOUT USER
     case LOGOUT_USER:
       console.log(action);
       return {
         ...state,
         jobtitle: action.payload.jobtitle,
-        message: null
-      }
+        message: null,
+      };
     // LOGIN USER - END
     // GET ITEMS
     case GET_LIST_OF_ITEMS:

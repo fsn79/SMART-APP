@@ -103,3 +103,7 @@ export function getUsersAC(payload) {
 export function getLogoutUser(payload) {
   return { type: LOGOUT_USER, payload };
 }
+
+export function getOrdersAC(payload) {
+  return { type: GET_LIST_OF_ORDERS, payload };
+}

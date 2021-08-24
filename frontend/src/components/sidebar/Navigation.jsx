@@ -69,7 +69,7 @@ function Navigation() {
             </Link>
           </li>
         </ul>
-      </ nav>
+      </nav>
     );
   }
   if (jobtitle === 'Worker') {
@@ -77,18 +77,8 @@ function Navigation() {
       <nav id='nav'>
         <ul>
           <li>
-            <Link className='link' to='/create-item'>
-              Create Item
-            </Link>
-          </li>
-          <li>
-            <Link className='link' to='/edit-order'>
-              Edit Order
-            </Link>
-          </li>
-          <li>
-            <Link className='link' to='/edit-item'>
-              Edit Item
+            <Link className='link' to='/orders'>
+              Orders
             </Link>
           </li>
           <li>
@@ -101,10 +91,7 @@ function Navigation() {
     );
   }
 
-  return (
-    <nav id='nav'>
-    </nav>
-  );
+  return <nav id='nav'></nav>;
 }
 
 export default Navigation;
