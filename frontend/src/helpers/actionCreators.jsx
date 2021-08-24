@@ -81,10 +81,6 @@ export function getWorkCentersAC(payload) {
   return { type: GET_WORK_CENTERS, payload };
 }
 
-export function loginUserAC(payload) {
-  return { type: LOGIN_USER, payload };
-}
-
 export function getUsersAC(payload) {
   return { type: GET_LIST_OF_USERS, payload };
 }

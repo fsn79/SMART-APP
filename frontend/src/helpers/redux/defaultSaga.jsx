@@ -132,7 +132,6 @@ function* loginUser(action) {
       console.log('true');
       yield put(loginUserSuccessAC(response.message));
     }
-    // yield put(loginUserAC(response.message));
   } catch (e) {
     yield put(loginUserFailAC('Connection error'));
   }
