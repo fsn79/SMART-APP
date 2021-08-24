@@ -35,9 +35,9 @@ function CreateOrder() {
         <label htmlFor='productionPrioroty'>Production Prioroty</label>
         <p>
           <select>
-            <option>Low</option>
-            <option>Medium</option>
-            <option>High</option>
+            <option value='low'>Low</option>
+            <option value='medium'>Medium</option>
+            <option value='high'>High</option>
           </select>
         </p>
         <div className='field padding-bottom--24'>

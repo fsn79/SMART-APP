@@ -16,6 +16,7 @@ import {
   GET_LIST_OF_USERS,
   CREATE_ITEM_SUCCESS,
   CREATE_ITEM_FAIL,
+  GET_LIST_OF_ITEMS,
 } from './actionTypes.jsx';
 
 // CREATE USER AC
@@ -57,6 +58,9 @@ export function createItemFailAC(payload) {
   return { type: CREATE_ITEM_FAIL, payload };
 }
 // CREATE ITEM AC - END
+export function getItemsAC(payload) {
+  return { type: GET_LIST_OF_ITEMS, payload };
+}
 export function createOrderAC(payload) {
   return { type: CREATE_ORDER, payload };
 }
