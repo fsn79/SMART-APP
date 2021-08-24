@@ -18,8 +18,11 @@ function CreateOrder() {
     e.preventDefault();
     // eslint-disable-next-line object-curly-newline
     const { itemId, order, quantity, date, priority } = e.target;
+    const itemIndex = itemList.findIndex((el) => el.id === +itemId.value);
     const payload = {
       itemId: itemId.value,
+      itemName: itemList[itemIndex].name,
+      partnumber: itemList[itemIndex].partnumber,
       order: order.value,
       quantity: quantity.value,
       date: date.value,
