@@ -7,7 +7,6 @@ import Output from '../../helpers/Output.jsx';
 function Login() {
   const dispatch = useDispatch();
   const { load, error, message } = useSelector((state) => state);
-  console.log(message, error);
   // Форма авторизации
   const handleLogin = (e) => {
     e.preventDefault();
@@ -15,7 +14,6 @@ function Login() {
       email: e.target.email.value,
       password: e.target.password.value,
     };
-
     dispatch({ type: 'LOGIN_USER_SAGA', payload });
   };
   return (

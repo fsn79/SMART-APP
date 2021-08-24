@@ -13,6 +13,7 @@ import {
   GET_LIST_OF_USERS,
   CREATE_ITEM_SUCCESS,
   CREATE_ITEM_FAIL,
+  LOGOUT_USER,
 } from '../actionTypes.jsx';
 
 const initState = {
@@ -131,7 +132,6 @@ function reducer(state = initState, action) {
         message: '',
       };
     case LOGIN_USER_SUCCESS:
-      console.log(action);
       return {
         ...state,
         load: false,
@@ -150,6 +150,14 @@ function reducer(state = initState, action) {
         message: action.payload,
       };
      // LOGIN USER - END
+    // LOGOUT USER
+    case LOGOUT_USER:
+      console.log(action);
+      return {
+        ...state,
+        jobtitle: action.payload.jobtitle,
+        message: null
+      }
     /* eslint-enable */
     default:
       return state;

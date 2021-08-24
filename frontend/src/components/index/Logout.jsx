@@ -1,16 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { fetchJson } from '../../helpers/fetchJson.jsx';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 function Logout() {
-  const [logout, setLogout] = useState(false);
+  const dispatch = useDispatch();
   useEffect(() => {
-    async function logoutUser() {
-      const response = await fetchJson('/api/auth/logout');
-      setLogout(response.message);
-    }
-    logoutUser();
-  }, []);
+    dispatch({ type: 'LOGOUT_USER_SAGA' });
+  }, [dispatch]);
+
   // Выход из системы
-  return <div>{ logout }</div>;
+  return <Redirect to="/" />;
 }
 export default Logout;

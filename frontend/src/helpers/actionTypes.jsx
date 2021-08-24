@@ -15,5 +15,5 @@ export const GET_WORK_CENTERS = 'GET_WORK_CENTERS';
 export const LOGIN_USER = 'LOGIN_USER';
 export const LOGIN_USER_FAIL = 'LOGIN_USER_FAIL';
 export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
-
+export const LOGOUT_USER = 'LOGOUT_USER';
 export const GET_LIST_OF_USERS = 'GET_LIST_OF_USERS';
