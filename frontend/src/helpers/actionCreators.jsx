@@ -11,8 +11,12 @@ import {
   CREATE_USER_SUCCESS,
   CREATE_USER_FAIL,
   LOGIN_USER,
+  LOGIN_USER_FAIL,
+  LOGIN_USER_SUCCESS,
   GET_LIST_OF_USERS,
   GET_LIST_OF_ORDERS,
+  CREATE_ITEM_SUCCESS,
+  CREATE_ITEM_FAIL,
 } from './actionTypes.jsx';
 
 // CREATE USER AC
@@ -27,14 +31,33 @@ export function createUserFailAC(payload) {
 }
 // CREATE USER AC - END
 
+// LOGIN USER AC
+export function loginUserFailAC(payload) {
+  return { type: LOGIN_USER_FAIL, payload };
+}
+export function loginUserAC(payload) {
+  return { type: LOGIN_USER, payload };
+}
+export function loginUserSuccessAC(payload) {
+  return { type: LOGIN_USER_SUCCESS, payload };
+}
+// LOGIN USER AC - END
+
 export function createWorkCenterAC(payload) {
   return { type: CREATE_WORK_CENTER, payload };
 }
 
+// CREATE ITEM AC
 export function createItemAC(payload) {
   return { type: CREATE_ITEM, payload };
 }
-
+export function createItemSuccessAC(payload) {
+  return { type: CREATE_ITEM_SUCCESS, payload };
+}
+export function createItemFailAC(payload) {
+  return { type: CREATE_ITEM_FAIL, payload };
+}
+// CREATE ITEM AC - END
 export function createOrderAC(payload) {
   return { type: CREATE_ORDER, payload };
 }
@@ -57,10 +80,6 @@ export function editOrderAC(payload) {
 
 export function getWorkCentersAC(payload) {
   return { type: GET_WORK_CENTERS, payload };
-}
-
-export function loginUserAC(payload) {
-  return { type: LOGIN_USER, payload };
 }
 
 export function getUsersAC(payload) {

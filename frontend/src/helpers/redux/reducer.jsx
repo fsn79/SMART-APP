@@ -9,8 +9,12 @@ import {
   CREATE_USER_FAIL,
   CREATE_USER_SUCCESS,
   LOGIN_USER,
+  LOGIN_USER_FAIL,
+  LOGIN_USER_SUCCESS,
   GET_LIST_OF_USERS,
   GET_LIST_OF_ORDERS,
+  CREATE_ITEM_SUCCESS,
+  CREATE_ITEM_FAIL,
 } from '../actionTypes.jsx';
 
 const initState = {
@@ -22,6 +26,7 @@ const initState = {
   itemList: [],
   workCenterList: [],
   orderList: [],
+  currentOrderId: null,
 };
 
 function reducer(state = initState, action) {
@@ -41,6 +46,13 @@ function reducer(state = initState, action) {
         error: true,
         message: action.payload,
       };
+    case LOGIN_USER_FAIL:
+      return {
+        ...state,
+        load: false,
+        error: true,
+        message: action.payload,
+      };
     case CREATE_USER_SUCCESS:
       return {
         ...state,
@@ -49,11 +61,29 @@ function reducer(state = initState, action) {
         message: action.payload,
       };
     // CREATE USER - END
+    // CREATE ITEM
     case CREATE_ITEM:
       return {
         ...state,
-        itemList: [...state, action.payload],
+        load: true,
+        error: false,
+        message: '',
       };
+    case CREATE_ITEM_FAIL:
+      return {
+        ...state,
+        load: false,
+        error: true,
+        message: action.payload,
+      };
+    case CREATE_ITEM_SUCCESS:
+      return {
+        ...state,
+        load: false,
+        error: false,
+        message: action.payload,
+      };
+    // CREATE ITEM - END
     case CREATE_WORK_CENTER:
       return {
         ...state,
@@ -100,6 +130,7 @@ function reducer(state = initState, action) {
 
       newStateUser.userList.splice(indexUser, 1, action.payload);
       return newState;
+      
     case EDIT_ORDER:
       const indexOrder = state.orderList.findIndex((item) => item.id === action.payload.id)
       const copyOrderList = [...state.orderList]
@@ -114,14 +145,35 @@ function reducer(state = initState, action) {
         ...state,
         userList: copyOrderListItem
       };
+ 
+    // LOGIN USER
     case LOGIN_USER:
       return {
         ...state,
+        load: true,
+        error: false,
+        message: '',
+      };
+    case LOGIN_USER_SUCCESS:
+      console.log(action);
+      return {
+        ...state,
+        load: false,
+        error: false,
         user: action.payload.name,
         jobtitle: action.payload.jobtitle,
         iduser: action.payload.id,
-      }
-
+        status: action.payload.status,
+        message: action.payload
+      };
+    case LOGIN_USER_FAIL:
+      return {
+        ...state,
+        load: false,
+        error: true,
+        message: action.payload,
+      };
+     // LOGIN USER - END
     /* eslint-enable */
     default:
       return state;
