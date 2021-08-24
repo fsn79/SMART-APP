@@ -8,6 +8,8 @@ import {
   CREATE_USER_FAIL,
   CREATE_USER_SUCCESS,
   LOGIN_USER,
+  LOGIN_USER_FAIL,
+  LOGIN_USER_SUCCESS,
   GET_LIST_OF_USERS,
 } from '../actionTypes.jsx';
 
@@ -32,6 +34,13 @@ function reducer(state = initState, action) {
         message: '',
       };
     case CREATE_USER_FAIL:
+      return {
+        ...state,
+        load: false,
+        error: true,
+        message: action.payload,
+      };
+    case LOGIN_USER_FAIL:
       return {
         ...state,
         load: false,
@@ -96,11 +105,29 @@ function reducer(state = initState, action) {
     case LOGIN_USER:
       return {
         ...state,
+        load: true,
+        error: false,
+        message: '',
+      };
+    case LOGIN_USER_SUCCESS:
+      console.log(action);
+      return {
+        ...state,
+        load: false,
+        error: false,
         user: action.payload.name,
         jobtitle: action.payload.jobtitle,
         iduser: action.payload.id,
-      }
-
+        status: action.payload.status,
+        message: action.payload
+      };
+    case LOGIN_USER_FAIL:
+      return {
+        ...state,
+        load: false,
+        error: true,
+        message: action.payload,
+      };
     /* eslint-enable */
     default:
       return state;
