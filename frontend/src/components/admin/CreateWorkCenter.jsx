@@ -26,7 +26,7 @@ function CreateWorkCenter() {
         </div>
         <div className="field padding-bottom--24">
           <label htmlFor="capacity">Work Center capacity</label>
-          <input type="number" step='0.1' name="capacity" />
+          <input type="number" step='1' name="capacity" />
         </div>
         <div className="field padding-bottom--24">
           <input type="submit" name="submit" value="Create" />

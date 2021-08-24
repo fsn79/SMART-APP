@@ -14,6 +14,7 @@ import {
   LOGIN_USER_FAIL,
   LOGIN_USER_SUCCESS,
   GET_LIST_OF_USERS,
+  GET_LIST_OF_ORDERS,
   CREATE_ITEM_SUCCESS,
   CREATE_ITEM_FAIL,
   GET_LIST_OF_ITEMS,
@@ -87,4 +88,7 @@ export function getWorkCentersAC(payload) {
 
 export function getUsersAC(payload) {
   return { type: GET_LIST_OF_USERS, payload };
+}
+export function getOrdersAC(payload) {
+  return { type: GET_LIST_OF_ORDERS, payload };
 }

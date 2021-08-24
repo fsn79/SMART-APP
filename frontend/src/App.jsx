@@ -12,9 +12,10 @@ import CreateOrder from './components/manager/CreateOrder.jsx';
 import CreateItem from './components/manager/CreateItem.jsx';
 import OrdersListing from './components/user/OrdersListing.jsx';
 import EditItem from './components/manager/EditItem.jsx';
-import EditOrder from './components/manager/EditOrder.jsx';
+// import EditOrder from './components/manager/EditOrder.jsx';
 import ListUsers from './components/admin/ListUsers.jsx';
 import ListWorkCenters from './components/admin/ListWorkCenters.jsx';
+import ListOrders from './components/manager/ListOrders.jsx';
 
 function App() {
   return (
@@ -49,7 +50,7 @@ function App() {
                 <EditItem />
               </Route>
               <Route path='/edit-order' exact>
-                <EditOrder />
+                <ListOrders />
               </Route>
               <Route path='/create-order' exact>
                 <CreateOrder />
