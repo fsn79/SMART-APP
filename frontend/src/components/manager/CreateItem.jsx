@@ -1,8 +1,17 @@
-import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import Loader from '../../helpers/Loader.jsx';
+import Output from '../../helpers/Output.jsx';
 
 function CreateItem() {
   // Форма создания продукта
   const dispatch = useDispatch();
+  const { load, message, error } = useSelector((store) => store);
+  const count = [1, 2, 3];
+  const centers = useSelector((state) => state.workCenterList);
+  useEffect(() => {
+    dispatch({ type: 'GET_WCS_SAGA' });
+  }, [dispatch]);
   const handlerCreateItem = (e) => {
     e.preventDefault();
     const payload = {
@@ -19,73 +28,74 @@ function CreateItem() {
       descrroute3: e.target.descrroute3.value,
       cycletime3: e.target.cycletime3.value,
     };
-    dispatch({ type: 'ITEM', payload });
+    dispatch({ type: 'CREATE_ITEM_SAGA', payload });
   };
 
   return (
-    <div className="flex-direction--column formbg padding-horizontal--48" id="createItemDiv">
-        <span className="padding-bottom--15">Create a new item</span>
-    <form id="createItem" onSubmit={handlerCreateItem}>
-       <div className="field padding-bottom--24">
-        <label htmlFor="itemName">Item Name</label>
-        <input type="text" name="itemName" />
-      </div>
-      <div className="field padding-bottom--24">
-        <label htmlFor="partNumber">Part Number</label>
-        <input type="text" name="partNumber" />
-      </div>
-      <div className="field padding-bottom--24">
-        <label htmlFor="itemDescription">Item Description</label>
-        <input type="text" name="itemDescription" />
-      </div>
-      <div id="routingDiv">
-      <div id="selectCenter">
-      <label htmlFor="selectCenter">Work centers selection</label>
-        <p><select className="selectCenter" name="workcenter1">
-        <option>Centebbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbr 1</option>
-        <option>Center 2</option>
-        <option>Center 3</option>
-       </select></p>
-       <p><select className="selectCenter" name="workcenter2">
-        <option>Center 1</option>
-        <option>Center 2</option>
-        <option>Center 3</option>
-       </select></p>
-       <p><select className="selectCenter" name="workcenter3">
-        <option>Center 1</option>
-        <option>Center 2</option>
-        <option>Center 3</option>
-       </select></p>
-      </div>
-      <div id="centerDescription">
-        <div className="field padding-bottom--24">
-          <label htmlFor="routingDescription">Routing Description</label>
-          <input type="text" className="routingDescription" name="descrroute1"/>
+    <div
+      className='flex-direction--column formbg padding-horizontal--48'
+      id='createItemDiv'>
+      <span className='padding-bottom--15'>Create a new item</span>
+      <form id='createItem' onSubmit={handlerCreateItem}>
+        <div className='field padding-bottom--24'>
+          <label htmlFor='itemName'>Item Name</label>
+          <input type='text' name='itemName' />
         </div>
-        <div className="field padding-bottom--24">
-          <input type="text" className="routingDescription" name="descrroute2"/>
+        <div className='field padding-bottom--24'>
+          <label htmlFor='partNumber'>Part Number</label>
+          <input type='text' name='partNumber' />
         </div>
-        <div className="field padding-bottom--24">
-          <input type="text" className="routingDescription" name="descrroute3"/>
+        <div className='field padding-bottom--24'>
+          <label htmlFor='itemDescription'>Item Description</label>
+          <input type='text' name='itemDescription' />
         </div>
-      </div>
-      <div id="cycleTime">
-        <div className="field padding-bottom--24">
-          <label htmlFor="cycleTime">Cycle Time</label>
-          <input type="number" step="0.01" className="cycleTime" name="cycletime1"/>
+
+        <div className='field padding-bottom--24'>
+          <label>Item Routing</label>
+          <div className='work-center-select-titles'>
+            <div>Work Centers Selections</div>
+            <div>Routing Descriptor</div>
+            <div>Cycle Time (min)</div>
+          </div>
+          {count.map((num, i) => (
+            <div className='work-center-select-wrapper' key={`wc${i}`}>
+              <div className='work-center-label'>
+                <select name={`workcenter${num}`}>
+                  <option value='empty' defaultValue>
+                    -
+                  </option>
+                  {centers.map((center) => (
+                    <option key={center.id} value={center.code}>
+                      {center.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className='work-center-label'>
+                <input
+                  type='text'
+                  className='routingDescription'
+                  name={`descrroute${num}`}
+                />
+              </div>
+              <div className='work-center-label'>
+                <input
+                  type='number'
+                  step='0.01'
+                  className='cycleTime'
+                  name={`cycletime${num}`}
+                />
+              </div>
+            </div>
+          ))}
         </div>
-        <div className="field padding-bottom--24">
-          <input type="number" step="0.01" className="cycleTime" name="cycletime2"/>
+
+        <div className='field padding-bottom--24'>
+          <input type='submit' name='submit' value='Create' />
         </div>
-        <div className="field padding-bottom--24">
-          <input type="number" step="0.01" className="cycleTime" name="cycletime3"/>
-        </div>
-      </div>
-      </div>
-      <div className="field padding-bottom--24">
-        <input type="submit" name="submit" value="Create" />
-      </div>
-    </form>
+        {load && <Loader />}
+        {message && <Output message={message} error={error} />}
+      </form>
     </div>
   );
 }

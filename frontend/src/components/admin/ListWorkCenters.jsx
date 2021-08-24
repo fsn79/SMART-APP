@@ -6,7 +6,7 @@ function ListWorkCenters() {
   const dispatch = useDispatch();
   const list = useSelector((state) => state.workCenterList);
   useEffect(() => {
-    dispatch({ type: 'GET_WCS' });
+    dispatch({ type: 'GET_WCS_SAGA' });
   }, [dispatch]);
 
   return (

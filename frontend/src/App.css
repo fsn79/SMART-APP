@@ -811,3 +811,26 @@ form .wc-status {
   margin: 10px 0;
   font-size: 18px;
 }
+
+.work-center-select-wrapper,
+.work-center-select-titles {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+.work-center-select-wrapper div,
+.work-center-select-titles div {
+  width: 30%;
+}
+.work-center-select-wrapper input {
+  height: 40px;
+}
+.work-center-select-wrapper select {
+  height: 44px;
+}
+form .work-center-select-wrapper input,
+form .work-center-select-wrapper select {
+  border-radius: 5px;
+  border: solid 1px #ddd;
+}
