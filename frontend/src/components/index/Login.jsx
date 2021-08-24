@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { fetchJson } from '../../helpers/fetchJson.jsx';
 
 function Login() {
   const dispatch = useDispatch();
   const { name } = useSelector((state) => state);
+  const [log, setLog] = useState(null);
+
+  useEffect(() => {
+    setLog(name);
+  });
   // Форма авторизации
   const handleLogin = (e) => {
     e.preventDefault();
-
     const payload = {
       email: e.target.email.value,
       password: e.target.password.value,
@@ -33,7 +37,7 @@ function Login() {
           <div className="field padding-bottom--24">
             <input type="submit" name="submit" value="Continue" className="button"/>
           </div>
-          <p>{name}</p>
+          <p>{log}</p>
         </form>
   </div>
   );
