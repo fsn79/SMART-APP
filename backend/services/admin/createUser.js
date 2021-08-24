@@ -4,7 +4,6 @@ const bcrypt = require('bcrypt');
 async function createUser(req, res) {
   const { lastname, firstname, email, password, jobtitle, workcenterid } = req.body;
   if (lastname && firstname && email && password && jobtitle && workcenterid) {
-    console.log(req.body);
     const hash = (hashPass = await bcrypt.hash(password, 10));
     try {
       const [user, created] = await Employees.findOrCreate({
