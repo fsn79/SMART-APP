@@ -22,6 +22,7 @@ import {
   CREATE_ORDER_FAIL,
   CREATE_ORDER_SUCCESS,
   CLEAR_MESSAGE,
+  TAKE_ORDER_IN_WORK,
 } from '../actionTypes.jsx';
 
 const initState = {
@@ -115,7 +116,7 @@ function reducer(state = initState, action) {
     case GET_LIST_OF_ORDERS:
       return {
         ...state,
-        orderList: action.payload,
+        orderList: action.payload.message,
       };
 
     case GET_LIST_OF_ITEMS:
@@ -259,6 +260,11 @@ function reducer(state = initState, action) {
         message: action.payload,
       };
     // CREATE ORDER - END
+    case TAKE_ORDER_IN_WORK:
+      return {
+        ...state,
+        currentOrderId: action.payload,
+      };
     /* eslint-enable */
     default:
       return state;
