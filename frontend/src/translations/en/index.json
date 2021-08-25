@@ -82,5 +82,30 @@
   "ordersListing": {
     "title1": "Current Order",
     "title2": "Available Orders"
+  },
+  "editUser": {
+    "title": "Edit employee",
+    "eLastname": "Edit Lastname",
+    "eFirstname": "Edit Firstname",
+    "eEmail": "Edit Email",
+    "ePassword": "Edit Password",
+    "eJobtitle": "Edit Jobtitle",
+    "oManager": "Manager",
+    "oWorker": "Worker",
+    "eWC": "Edit Work Center",
+    "eStatus": "Edit Status",
+    "eActive": "Active",
+    "eRetired": "Retired",
+    "btn-edit": "Edit"
+  },
+  "editWorkCenter": {
+    "title": "Edit Work Center",
+    "eCenterName": "Edit Work Center Name",
+    "eCode": "Edit Work Center code",
+    "eCapacity": "Edit Work Center capacity",
+    "eStatus": "Edit Status",
+    "oActive": "Active",
+    "oDisabled": "Disabled",
+    "btn-edit": "Edit"
   }
 }
