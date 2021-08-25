@@ -1,7 +1,9 @@
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import closeIcon from '../../images/closeicon.svg';
 
 function EditUser({ user, setActive }) {
+  const [t] = useTranslation('global');
   const dispatch = useDispatch();
   function handleSubmitEditUser(e) {
     e.preventDefault();
@@ -22,47 +24,47 @@ function EditUser({ user, setActive }) {
     <div id='editUserModal' className="modal_content flex-direction--column formbg padding-horizontal--48">
       {/* <button className="modal_close" onClick={() => setActive(false)}>&times;</button> */}
       <img className="modal_close" alt="close" src={closeIcon} onClick={() => setActive(false)} />
-      <span id="form-header" className="padding-bottom--15">Edit employee</span>
+      <span id="form-header" className="padding-bottom--15">{t('editUser.title')}</span>
       <form id="editUser" onSubmit={handleSubmitEditUser}>
         <div className="field padding-bottom--24">
-          <label htmlFor="lastname">Edit Lastname</label>
+          <label htmlFor="lastname">{t('editUser.eLastname')}</label>
           <input type="text" name="lastname" defaultValue={user.lastname} autoFocus/>
         </div>
         <div className="field padding-bottom--24">
-          <label htmlFor="firstname">Edit Firstname</label>
+          <label htmlFor="firstname">{t('editUser.eFirstname')}</label>
           <input type="text" name="firstname" defaultValue={user.firstname} />
         </div>
         <div className="field padding-bottom--24">
-          <label htmlFor="email">Edit Email</label>
+          <label htmlFor="email">{t('editUser.eEmail')}</label>
           <input type="email" name="email" defaultValue={user.email} />
         </div>
         <div className="field padding-bottom--24">
-          <label htmlFor="password">Edit Password</label>
+          <label htmlFor="password">{t('editUser.ePassword')}</label>
           <input type="password" name="password" defaultValue={user.password} />
         </div>
         <div className="grid--50-50">
-          <label htmlFor="jobtitle">Edit Jobtitle</label>
+          <label htmlFor="jobtitle">{t('editUser.eJobtitle')}</label>
         </div>
         <p><select className="selectEditUser" name='jobtitle'>
-          <option>Manager</option>
-          <option>Worker</option>
+          <option>{t('editUser.oManager')}</option>
+          <option>{t('editUser.oWorker')}</option>
         </select></p>
         <div className="grid--50-50">
-          <label htmlFor="workcenter">Edit Work Center</label>
+          <label htmlFor="workcenter">{t('editUser.eWC')}</label>
         </div>
         <p><select className="selectEditUser" name='workcenter'>
-          <option>Manager</option>
-          <option>Worker</option>
+          <option>{t('editUser.oManager')}</option>
+          <option>{t('editUser.oWorker')}</option>
         </select></p>
         <div className="grid--50-50">
-          <label htmlFor="status">Edit Status</label>
+          <label htmlFor="status">{t('editUser.eStatus')}</label>
         </div>
         <p><select className="selectEditUser" name='status'>
-          <option>Active</option>
-          <option>Retired</option>
+          <option>{t('editUser.eActive')}</option>
+          <option>{t('editUser.eRetired')}</option>
         </select></p>
         <div className="field padding-bottom--24">
-          <input type="submit" name="submit" value="Edit" />
+          <input type="submit" name="submit" value={t('editUser.btn-edit')} />
         </div>
       </form>
     </div>
