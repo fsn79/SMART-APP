@@ -23,6 +23,7 @@ import {
   CREATE_ORDER_SUCCESS,
   CLEAR_MESSAGE,
   TAKE_ORDER_IN_WORK,
+  GET_ORDER_IN_WORK,
 } from '../actionTypes.jsx';
 
 const initState = {
@@ -222,11 +223,8 @@ function reducer(state = initState, action) {
     // LOGIN USER - END
     // LOGOUT USER
     case LOGOUT_USER:
-      console.log(action);
       return {
-        ...state,
-        jobtitle: action.payload.jobtitle,
-        message: null,
+        ...initState,
       };
     // LOGIN USER - END
     // GET ITEMS
@@ -263,7 +261,13 @@ function reducer(state = initState, action) {
     case TAKE_ORDER_IN_WORK:
       return {
         ...state,
-        currentOrderId: action.payload,
+        currentOrderId: action.payload.orderId,
+      };
+    case GET_ORDER_IN_WORK:
+      return {
+        ...state,
+        currentOrder: action.payload.data,
+        currentOrderId: action.payload.data.id,
       };
     /* eslint-enable */
     default:

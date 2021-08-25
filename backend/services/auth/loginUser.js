@@ -1,7 +1,6 @@
 require('dotenv').config();
 const { Employees, Workcenters } = require('../../models');
 const bcrypt = require('bcrypt');
-
 async function loginUser(req, res) {
   const { email, password } = req.body;
 
@@ -35,13 +34,21 @@ async function loginUser(req, res) {
             message: `Authorization successful, ${checkUser.firstname}`,
           });
         } else {
-          res.json({ error: true, message: 'Authorization error' });
+          res.json({
+            error: true,
+            message: 'Uncorrect password',
+            data: { status: false },
+          });
         }
       } else {
-        res.json({ error: true, message: 'Authorization error' });
+        res.json({
+          error: true,
+          message: 'Uncorrect email',
+          data: { status: false },
+        });
       }
     } catch (e) {
-      res.json({ massage: 'Unauthorized' });
+      res.json({ error: true, massage: 'Unauthorized', data: { status: false } });
     }
   }
 }
