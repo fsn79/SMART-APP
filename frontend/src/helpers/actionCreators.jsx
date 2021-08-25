@@ -21,6 +21,7 @@ import {
   LOGOUT_USER,
   CREATE_ORDER_FAIL,
   CREATE_ORDER_SUCCESS,
+  TAKE_ORDER_IN_WORK,
 } from './actionTypes.jsx';
 
 // CREATE USER AC
@@ -106,4 +107,8 @@ export function getLogoutUser(payload) {
 
 export function getOrdersAC(payload) {
   return { type: GET_LIST_OF_ORDERS, payload };
+}
+
+export function takeOrderInWorkAC(payload) {
+  return { type: TAKE_ORDER_IN_WORK, payload };
 }

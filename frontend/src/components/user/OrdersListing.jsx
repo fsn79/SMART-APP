@@ -14,10 +14,7 @@ function OrdersListing() {
   // Список доступных задач + текущая активная задача
   return (
     <div className='orders-wrapper'>
-      <div className='current-order'>
-        <h2>Current Order</h2>
-        {currentOrderId ? <Order /> : <OrderNotSelected />}
-      </div>
+      {currentOrderId ? <Order /> : <OrderNotSelected />}
       <div className='avaliable-orders'>
         <h2>Pending orders</h2>
         <div className='orders-listing-wrapper'>

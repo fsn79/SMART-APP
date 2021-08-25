@@ -1,4 +1,7 @@
+import { useDispatch } from 'react-redux';
+
 function OrdersListingItem({ order }) {
+  const dispatch = useDispatch();
   const priorityName = (priority) => {
     switch (priority) {
       case 3:
@@ -11,7 +14,8 @@ function OrdersListingItem({ order }) {
   };
   const promisedDate = (date) => date.split('T')[0];
   const buttonHandler = () => {
-    console.log('work', 'id: ', order.id);
+    console.log('button-click');
+    dispatch({ type: 'TAKE_ORDER_IN_WORK_SAGA', orderId: order.id });
   };
   const date = promisedDate(order.promiseddate);
   const priority = priorityName(order.priority);

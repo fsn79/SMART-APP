@@ -22,6 +22,7 @@ import {
   createOrderAC,
   createOrderFailAC,
   createOrderSuccessAC,
+  takeOrderInWorkAC,
 } from '../actionCreators.jsx';
 import { fetchJson } from '../fetchJson.jsx';
 
@@ -228,6 +229,16 @@ function* logoutUser() {
   }
 }
 
+function* takeOrderInWork(payload) {
+  console.log('take-order-saga');
+  try {
+    const response = payload.orderId;
+    yield put(takeOrderInWorkAC(response));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 // Watcher
 export default function* defaultSaga() {
   yield takeEvery('TEST', loadData);
@@ -245,4 +256,5 @@ export default function* defaultSaga() {
   yield takeEvery('GET_ORDERS_LIST', getOrdersList);
   yield takeEvery('GET_ITEMS_LIST_SAGA', getItemsList);
   yield takeEvery('CREATE_ORDER_SAGA', createOrder);
+  yield takeEvery('TAKE_ORDER_IN_WORK_SAGA', takeOrderInWork);
 }
