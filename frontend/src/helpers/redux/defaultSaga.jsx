@@ -176,12 +176,14 @@ function* loginUser(action) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(action.payload),
     });
+    console.log(response);
     if (!response.data.status || response.error) {
       yield put(loginUserFailAC(response.message));
     } else {
       yield put(loginUserSuccessAC(response));
     }
   } catch (e) {
+    console.log(e);
     yield put(loginUserFailAC('Connection error'));
   }
 }
@@ -198,7 +200,6 @@ function* getUsersList() {
   }
 }
 function* getOrdersList(payload) {
-  console.log(payload);
   try {
     const response = yield call(fetchJson, `/api/order/${payload.status}`, {
       method: 'GET',
@@ -238,7 +239,6 @@ function* takeOrderInWork(action) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(action.payload),
     });
-    console.log(response);
     yield put(takeOrderInWorkAC(response));
   } catch (e) {
     console.log(e);

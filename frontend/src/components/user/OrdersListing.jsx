@@ -16,7 +16,13 @@ function OrdersListing() {
       type: 'GET_ORDER_IN_WORK_SAGA',
       payload: { userId: iduser, wcCode: wccode },
     });
-  }, [dispatch, wccode]);
+  }, [dispatch, wccode, iduser]);
+  useEffect(() => {
+    dispatch({
+      type: 'GET_ORDER_IN_WORK_SAGA',
+      payload: { userId: iduser, wcCode: wccode },
+    });
+  }, [currentOrderId]);
   // console.log(orderList);
   // Список доступных задач + текущая активная задача
   return (
