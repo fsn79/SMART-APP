@@ -644,9 +644,12 @@ select.selectStatus {
   outline-color: rgb(84 105 212 / 0.5);
 }
 
-#createItemDiv,
+#createItemDiv {
+  max-width: 40em;
+}
 #editItemDiv {
   max-width: 40em;
+  padding: 30px;
 }
 
 .borderDiv {
@@ -739,6 +742,7 @@ form input.wc-code {
 .wc-item.title .wc-edit {
   width: 50px;
 }
+
 .wc-edit img {
   width: 20px;
   margin: -4px 0;
@@ -848,6 +852,12 @@ form input.wc-code {
   justify-content: space-between;
   padding-bottom: 10px;
 }
+
+.work-center-select-titles div{
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 500;
+}
+
 .work-center-select-wrapper div,
 .work-center-select-titles div {
   width: 30%;

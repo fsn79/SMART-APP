@@ -22,9 +22,9 @@ function EditItem({ item, setActive }) {
   }
 
   return (
-    <div id="createItemDiv" className="flex-direction--column formbg padding-horizontal--48" id="editItemDiv">
+    <div className="modal_content flex-direction--column formbg padding-horizontal--48" id="editItemDiv">
       <img className="modal_close" alt="close" src={closeIcon} onClick={() => setActive(false)} />
-        <span className="padding-bottom--15">Edit item</span>
+        <span id="form-header" className="padding-bottom--15">Edit item</span>
     <form id="editItem" onSubmit={handleSubmitEditItem}>
        {/* <div className="field padding-bottom--24">
         <label htmlFor="itemName">Edit Item Name</label>
