@@ -18,7 +18,7 @@ function CreateWorkCenter() {
       <form onSubmit={handleSubmitCenter}>
         <div className="field padding-bottom--24">
           <label htmlFor="centerName">Work Center Name</label>
-          <input type="text" name="centerName" />
+          <input type="text" name="centerName" autoFocus/>
         </div>
         <div className="field padding-bottom--24">
           <label htmlFor="code">Work Center code</label>

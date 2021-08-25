@@ -52,6 +52,12 @@ function CreateUser() {
           </div>
           <input type='password' name='password' required />
         </div>
+        <div className='field padding-bottom--24'>
+          <div className='grid--50-50'>
+            <label htmlFor='password'>Repeat Password</label>
+          </div>
+          <input type='password' name='repeatpassword' required />
+        </div>
         <div className='grid--50-50'>
           <label htmlFor='jobtitle'>Jobtitle</label>
         </div>

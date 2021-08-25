@@ -10,15 +10,15 @@ function ListWorkCenters() {
   }, [dispatch]);
 
   return (
-    <div className='wc-list'>
+    <div className='listTableDiv'>
       <h1>Work Centers List</h1>
       {list.length !== 0 && (
         <div className='wc-item title'>
           <div className='wc-id'>ID</div>
-          <div className='wc-name'>Work Center Name</div>
-          <div className='wc-code'>Code</div>
-          <div className='wc-capacity'>Capacity</div>
-          <div className='wc-status'>Status</div>
+          <div className='listTable'>Work Center Name</div>
+          <div className='listTable'>Code</div>
+          <div className='listTable'>Capacity</div>
+          <div className='listTable'>Status</div>
           <div className='wc-edit'></div>
         </div>
       )}
