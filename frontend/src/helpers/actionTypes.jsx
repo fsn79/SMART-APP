@@ -32,3 +32,4 @@ export const TAKE_ORDER_IN_WORK = 'TAKE_ORDER_IN_WORK';
 export const GET_ORDER_IN_WORK = 'GET_ORDER_IN_WORK';
 
 export const SUBMIT_ITEM_PARTS = 'SUBMIT_ITEM_PARTS';
+export const CLOSE_ORDER = 'CLOSE_ORDER';

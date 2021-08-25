@@ -30,6 +30,7 @@ async function loginUser(req, res) {
               status: checkUser.status,
               jobtitle: checkUser.jobtitle,
               wccode: checkUser['Workcenter.code'],
+              wcid: checkUser.workcenterid,
             },
             message: `Authorization successful, ${checkUser.firstname}`,
           });

@@ -25,6 +25,7 @@ import {
   TAKE_ORDER_IN_WORK,
   GET_ORDER_IN_WORK,
   SUBMIT_ITEM_PARTS,
+  CLOSE_ORDER,
 } from '../actionTypes.jsx';
 
 const initState = {
@@ -211,6 +212,7 @@ function reducer(state = initState, action) {
         iduser: action.payload.data.id,
         wccode: action.payload.data.wccode,
         status: action.payload.data.status,
+        wcid: action.payload.data.wcid,
         message: action.payload.message,
       };
     case LOGIN_USER_FAIL:
@@ -276,6 +278,13 @@ function reducer(state = initState, action) {
           ...state.currentOrder,
           ...action.payload.data,
         },
+      };
+    case CLOSE_ORDER:
+      console.log('reducer');
+      return {
+        ...state,
+        currentOrderId: null,
+        currentOrder: null,
       };
     /* eslint-enable */
     default:

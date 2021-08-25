@@ -1,10 +1,16 @@
-const { Orders, Items } = require('../../models/index');
+const { Orders, Items, Infoorders, Employees } = require('../../models/index');
 const { Op } = require('sequelize');
 
 async function getOrders(req, res) {
-  const { wcCode } = req.params;
+  const { wcCode, wcId } = req.params;
+  console.log(req.params);
   Items.hasMany(Orders, { foreignKey: 'itemsid' });
   Orders.belongsTo(Items, { foreignKey: 'itemsid' });
+  Orders.hasMany(Infoorders, { foreignKey: 'ordersid' });
+  Infoorders.belongsTo(Orders, { foreignKey: 'ordersid' });
+  Employees.hasMany(Infoorders, { foreignKey: 'employeesid' });
+  Infoorders.belongsTo(Employees, { foreignKey: 'employeesid' });
+
   try {
     const orders = await Orders.findAll({
       where: {
@@ -25,6 +31,7 @@ async function getOrders(req, res) {
         },
       ],
     });
+    console.log(orders);
     res.json({ error: false, message: orders });
   } catch (e) {
     console.log(e);

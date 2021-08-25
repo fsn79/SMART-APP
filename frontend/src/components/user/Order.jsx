@@ -24,6 +24,7 @@ function Order() {
       type: 'SUBMIT_PARTS_SAGA',
       payload: { num: num.value, type: 'good', pk: currentOrder.id },
     });
+    e.target.reset();
   };
   const badPartReport = (e) => {
     e.preventDefault();
@@ -31,6 +32,13 @@ function Order() {
     dispatch({
       type: 'SUBMIT_PARTS_SAGA',
       payload: { num: num.value, type: 'bad' },
+    });
+    e.target.reset();
+  };
+  const closeOrder = () => {
+    dispatch({
+      type: 'CLOSE_ORDER_SAGA',
+      payload: { pk: currentOrder.id },
     });
   };
   return (
@@ -90,6 +98,15 @@ function Order() {
                 </form>
               </div>
             </div>
+          </div>
+          <div className='order-close'>
+            {currentOrder.quantitycomplete >= currentOrder['Order.quantity'] ? (
+              <button type='button' onClick={closeOrder}>
+                Close order
+              </button>
+            ) : (
+              ''
+            )}
           </div>
         </div>
       </div>

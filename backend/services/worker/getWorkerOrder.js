@@ -32,6 +32,7 @@ async function getWorkerOrder(req, res) {
         }
       }
     });
+    console.log('here');
     res.json({
       error: false,
       message: `Order executed succsessfull. ID: ${orderInfo.id}`,
