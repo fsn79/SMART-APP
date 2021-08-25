@@ -1,0 +1,86 @@
+{
+  "header": {
+    "hello-world": "Привет Мир"
+  },
+  "login": {
+    "title": "Войдите в свою учётную запись",
+    "password": "Пароль",
+    "btn-login": "Войти"
+  },
+  "CreateWorkCenter": {
+    "title": "Создать новый отдел",
+    "wcn": "Название отдела",
+    "wcc": "Код отдела",
+    "wcCa": "Нагрузка для отдела",
+    "btn-create": "Создать"
+  },
+  "createUser": {
+    "title": "Создать нового сотрудника",
+    "lastName": "Фамилия",
+    "firstname": "Имя",
+    "password": "Пароль",
+    "repeatPassword": "Повторите пароль",
+    "jobtitle": "Должность",
+    "workcenter": "Отдел",
+    "btn-create": "Создать",
+    "statusW": "Рабочий",
+    "statusM": "Менеджер"
+  },
+  "listUsers": {
+    "title": "Список сотрудников",
+    "lastName": "Фамилия",
+    "firstname": "Имя",
+    "wc": "Отдел",
+    "loading": "Загрузка..."
+  },
+  "listWC": {
+    "title": "Список отделов",
+    "wcn": "Название отдела",
+    "wcc": "Код",
+    "wcCa": "Нагрузка",
+    "statusWC": "Статус",
+    "loading": "Загрузка..."
+  },
+  "createItem": {
+    "title": "Создать продукт",
+    "name": "Название продукта",
+    "pNumber": "Идентификатор",
+    "iDescription": "Описание",
+    "iRouting": "Этапы создания продукта",
+    "wcs": "Выбор отделов",
+    "rDescriptor": "Описание этапа",
+    "cycleTime": "Время цикла (мин)",
+    "btn-create": "Создать"
+  },
+  "listItems": {
+    "title": "Список продуктов",
+    "name": "Название",
+    "pNumber": "Номер",
+    "Description": "Описание",
+    "loading": "Загрузка..."
+  },
+  "listOrders": {
+    "title": "Список заказ-нарядов",
+    "Quantity": "Количество",
+    "Promiseddate": "Срок исполнения",
+    "Priority": "Приоритет",
+    "loading": "Загрузка..."
+  },
+  "createOrder": {
+    "title": "Создать новый заказ-наряд",
+    "name": "Название",
+    "ewonOrca": "Enter Work Order number or click autogenerate",
+    "btn-generate": "Generate",
+    "ewopq": "Введите номер заказ-наряда или нажмите сгенерировать",
+    "ewopd": "Введите количество",
+    "pPriority": "Приоритет",
+    "value1": "Низкий",
+    "value2": "Средний",
+    "value3": "Высокий",
+    "btn-create": "Создать"
+  },
+  "ordersListing": {
+    "title1": "Текущий заказ-наряд",
+    "title2": "Доступные заказ-наряды"
+  }
+}

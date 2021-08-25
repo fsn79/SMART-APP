@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import Loader from '../../helpers/Loader.jsx';
 import Output from '../../helpers/Output.jsx';
 
 function CreateItem() {
   // Форма создания продукта
+  const [t] = useTranslation('global');
   const dispatch = useDispatch();
   const { load, message, error } = useSelector((store) => store);
   const count = [1, 2, 3];
@@ -35,27 +37,27 @@ function CreateItem() {
     <div
       className='flex-direction--column formbg padding-horizontal--48'
       id='createItemDiv'>
-      <span className='padding-bottom--15'>Create a new item</span>
+      <span className='padding-bottom--15'>{t('createItem.title')}</span>
       <form id='createItem' onSubmit={handlerCreateItem}>
         <div className='field padding-bottom--24'>
-          <label htmlFor='itemName'>Item Name</label>
+          <label htmlFor='itemName'>{t('createItem.name')}</label>
           <input type='text' name='itemName' autoFocus/>
         </div>
         <div className='field padding-bottom--24'>
-          <label htmlFor='partNumber'>Part Number</label>
+          <label htmlFor='partNumber'>{t('createItem.pNumber')}</label>
           <input type='text' name='partNumber' />
         </div>
         <div className='field padding-bottom--24'>
-          <label htmlFor='itemDescription'>Item Description</label>
+          <label htmlFor='itemDescription'>{t('createItem.iDescription')}</label>
           <input type='text' name='itemDescription' />
         </div>
 
         <div className='field padding-bottom--24'>
-          <label>Item Routing</label>
+          <label>{t('createItem.iRouting')}</label>
           <div className='work-center-select-titles'>
-            <div>Work Centers Selections</div>
-            <div>Routing Descriptor</div>
-            <div>Cycle Time (min)</div>
+            <div>{t('createItem.wcs')}</div>
+            <div>{t('createItem.rDescriptor')}</div>
+            <div>{t('createItem.cycleTime')}</div>
           </div>
           {count.map((num, i) => (
             <div className='work-center-select-wrapper' key={`wc${i}`}>
@@ -91,7 +93,7 @@ function CreateItem() {
         </div>
 
         <div className='field padding-bottom--24'>
-          <input type='submit' name='submit' value='Create' />
+          <input type='submit' name='submit' value={t('createItem.btn-create')} />
         </div>
         {load && <Loader />}
         {message && <Output message={message} error={error} />}

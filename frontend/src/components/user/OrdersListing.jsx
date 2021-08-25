@@ -1,9 +1,11 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import Order from './Order.jsx';
 import OrderNotSelected from './OrderNotSelected.jsx';
 
 function OrdersListing() {
+  const [t] = useTranslation('global');
   const dispatch = useDispatch();
   const currentOrderId = useSelector((state) => state.currentOrderId);
   const { orderList } = useSelector((state) => state);
@@ -15,11 +17,11 @@ function OrdersListing() {
   return (
     <div className='orders-wrapper'>
       <div className='current-order'>
-        <h2>Current Order</h2>
+        <h2>{t('ordersListing.title1')}</h2>
         {currentOrderId ? <Order /> : <OrderNotSelected />}
       </div>
       <div className='avaliable-orders'>
-        <h2>Available Orders</h2>
+        <h2>{t('ordersListing.title2')}</h2>
       </div>
     </div>
   );
