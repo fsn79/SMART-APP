@@ -6,9 +6,16 @@ import OrdersListingItem from './OrdersListingItem.jsx';
 
 function OrdersListing() {
   const dispatch = useDispatch();
-  const { currentOrderId, orderList, wccode } = useSelector((state) => state);
+  // eslint-disable-next-line
+  const { currentOrderId, orderList, wccode, iduser } = useSelector(
+    (state) => state,
+  );
   useEffect(() => {
-    dispatch({ type: 'GET_ORDERS_LIST', status: wccode });
+    dispatch({ type: 'GET_ORDERS_LIST_SAGA', status: wccode });
+    dispatch({
+      type: 'GET_ORDER_IN_WORK_SAGA',
+      payload: { userId: iduser, wcCode: wccode },
+    });
   }, [dispatch, wccode]);
   // console.log(orderList);
   // Список доступных задач + текущая активная задача

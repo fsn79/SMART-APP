@@ -23,6 +23,7 @@ import {
   createOrderFailAC,
   createOrderSuccessAC,
   takeOrderInWorkAC,
+  getOrderInWorkAC,
 } from '../actionCreators.jsx';
 import { fetchJson } from '../fetchJson.jsx';
 
@@ -229,11 +230,28 @@ function* logoutUser() {
   }
 }
 
-function* takeOrderInWork(payload) {
-  console.log('take-order-saga');
+function* takeOrderInWork(action) {
+  console.log(action);
   try {
-    const response = payload.orderId;
+    const response = yield call(fetchJson, '/api/order/progressive/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(action.payload),
+    });
+    console.log(response);
     yield put(takeOrderInWorkAC(response));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+function* getOrderInWork(action) {
+  const { userId, wcCode } = action.payload;
+  try {
+    const response = yield call(fetchJson, `/api/order/worker/${userId}/${wcCode}`);
+    if (response.data) {
+      yield put(getOrderInWorkAC(response));
+    }
   } catch (e) {
     console.log(e);
   }
@@ -253,8 +271,9 @@ export default function* defaultSaga() {
   yield takeEvery('LOGIN_USER_SAGA', loginUser);
   yield takeEvery('GET_USERS_LIST', getUsersList);
   yield takeEvery('LOGOUT_USER_SAGA', logoutUser);
-  yield takeEvery('GET_ORDERS_LIST', getOrdersList);
+  yield takeEvery('GET_ORDERS_LIST_SAGA', getOrdersList);
   yield takeEvery('GET_ITEMS_LIST_SAGA', getItemsList);
   yield takeEvery('CREATE_ORDER_SAGA', createOrder);
   yield takeEvery('TAKE_ORDER_IN_WORK_SAGA', takeOrderInWork);
+  yield takeEvery('GET_ORDER_IN_WORK_SAGA', getOrderInWork);
 }

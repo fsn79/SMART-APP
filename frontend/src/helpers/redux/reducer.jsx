@@ -23,6 +23,7 @@ import {
   CREATE_ORDER_SUCCESS,
   CLEAR_MESSAGE,
   TAKE_ORDER_IN_WORK,
+  GET_ORDER_IN_WORK,
 } from '../actionTypes.jsx';
 
 const initState = {
@@ -263,7 +264,13 @@ function reducer(state = initState, action) {
     case TAKE_ORDER_IN_WORK:
       return {
         ...state,
-        currentOrderId: action.payload,
+        // currentOrderId: action.payload,
+      };
+    case GET_ORDER_IN_WORK:
+      return {
+        ...state,
+        currentOrder: action.payload.data,
+        currentOrderId: action.payload.data.id,
       };
     /* eslint-enable */
     default:
