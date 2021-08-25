@@ -36,22 +36,24 @@ function Order() {
           <div className='order-complete-info'>
             <div className='good-part-info'>
               <div className='time-to-complete'>Time to complete (min): 102</div>
+              <div className='order-report-wrapper'>
+                <form>
+                  <h4>Good part report</h4>
+                  <input type='text' />
+                  <button>Submit</button>
+                </form>
+              </div>
             </div>
             <div className='bad-part-info'>
               <div className='quality-info'>Quality: 96%</div>
+              <div className='order-report-wrapper'>
+                <form>
+                  <h4>Report defective parts</h4>
+                  <input type='text' />
+                  <button>Submit</button>
+                </form>
+              </div>
             </div>
-          </div>
-          <div className='order-report-wrapper'>
-            <form>
-              <h4>Good part report</h4>
-              <input type='text' />
-              <button>Submit</button>
-            </form>
-            <form>
-              <h4>Report defective parts</h4>
-              <input type='text' />
-              <button>Submit</button>
-            </form>
           </div>
         </div>
       </div>

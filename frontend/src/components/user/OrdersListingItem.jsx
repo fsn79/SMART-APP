@@ -1,7 +1,8 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 function OrdersListingItem({ order }) {
   const dispatch = useDispatch();
+  const { currentOrderId } = useSelector((state) => state);
   const priorityName = (priority) => {
     switch (priority) {
       case 3:
@@ -14,11 +15,11 @@ function OrdersListingItem({ order }) {
   };
   const promisedDate = (date) => date.split('T')[0];
   const buttonHandler = () => {
-    console.log('button-click');
     dispatch({ type: 'TAKE_ORDER_IN_WORK_SAGA', orderId: order.id });
   };
   const date = promisedDate(order.promiseddate);
   const priority = priorityName(order.priority);
+
   return (
     <div className={`order-item ${priority.toLocaleLowerCase()}`}>
       <div className='order-id'>{order.id}</div>
@@ -28,7 +29,10 @@ function OrdersListingItem({ order }) {
       <div className='order-ipn'>{order.itempartnum}</div>
       <div className='order-iname'>{order['Item.name']}</div>
       <div className='order-button'>
-        <button type='button' onClick={buttonHandler}>
+        <button
+          type='button'
+          disabled={currentOrderId && true}
+          onClick={buttonHandler}>
           Take to work
         </button>
       </div>
