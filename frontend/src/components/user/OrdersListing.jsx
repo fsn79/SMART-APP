@@ -8,8 +8,9 @@ import OrdersListingItem from './OrdersListingItem.jsx';
 function OrdersListing() {
   const [t] = useTranslation('global');
   const dispatch = useDispatch();
-  // eslint-disable-next-line
-  const { currentOrderId, orderList, wccode, iduser } = useSelector(
+  const {
+    currentOrderId, orderList, wccode, iduser,
+  } = useSelector(
     (state) => state,
   );
   useEffect(() => {
