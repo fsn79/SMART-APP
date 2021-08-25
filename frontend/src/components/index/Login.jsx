@@ -17,28 +17,28 @@ function Login() {
     dispatch({ type: 'LOGIN_USER_SAGA', payload });
   };
   return (
-  <div className="flex-direction--column formbg padding-horizontal--48">
-        <span className="padding-bottom--15">Sign in to your account</span>
-        <form onSubmit={handleLogin} id="login">
-          <div className="field padding-bottom--24">
-            <label htmlFor="email">Email</label>
-            <input type="email" name="email" autoFocus/>
-          </div>
-          <div className="field padding-bottom--24">
-            <div>
-              <label htmlFor="password">Password</label>
-            </div>
-            <input type="password" name="password" />
-          </div>
-          <div className="field padding-bottom--24">
-            <input type="submit" name="submit" value="Continue" className="button"/>
-          </div>
+    <div className='flex-direction--column formbg padding-horizontal--48'>
+      <span className='padding-bottom--15'>Sign in to your account</span>
+      <form onSubmit={handleLogin} id='login'>
+        <div className='field padding-bottom--24'>
+          <label htmlFor='email'>Email</label>
+          <input type='email' name='email' autoFocus />
+        </div>
+        <div className='field padding-bottom--24'>
           <div>
-            {load && <Loader />}
-            {message && <Output message={`вы вошли ${message.jobtitle} ${message.name}`} error={error} />}
+            <label htmlFor='password'>Password</label>
           </div>
-        </form>
-  </div>
+          <input type='password' name='password' />
+        </div>
+        <div className='field padding-bottom--24'>
+          <input type='submit' name='submit' value='Continue' className='button' />
+        </div>
+        <div>
+          {load && <Loader />}
+          {message && <Output message={message} error={error} />}
+        </div>
+      </form>
+    </div>
   );
 }
 

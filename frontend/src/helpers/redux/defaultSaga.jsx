@@ -174,10 +174,10 @@ function* loginUser(action) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(action.payload),
     });
-    if (!response.message.status || response.error) {
+    if (!response.data.status || response.error) {
       yield put(loginUserFailAC(response.message));
     } else {
-      yield put(loginUserSuccessAC(response.message));
+      yield put(loginUserSuccessAC(response));
     }
   } catch (e) {
     yield put(loginUserFailAC('Connection error'));
@@ -242,7 +242,7 @@ export default function* defaultSaga() {
   yield takeEvery('LOGIN_USER_SAGA', loginUser);
   yield takeEvery('GET_USERS_LIST', getUsersList);
   yield takeEvery('LOGOUT_USER_SAGA', logoutUser);
-  yield takeEvery('GET_ORDER_LIST', getOrdersList);
+  yield takeEvery('GET_ORDERS_LIST', getOrdersList);
   yield takeEvery('GET_ITEMS_LIST_SAGA', getItemsList);
   yield takeEvery('CREATE_ORDER_SAGA', createOrder);
 }
