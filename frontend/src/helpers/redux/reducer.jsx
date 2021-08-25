@@ -115,7 +115,7 @@ function reducer(state = initState, action) {
     case GET_LIST_OF_ORDERS:
       return {
         ...state,
-        orderList: action.payload,
+        orderList: action.payload.message,
       };
 
     case GET_LIST_OF_ITEMS:
