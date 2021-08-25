@@ -204,11 +204,12 @@ function reducer(state = initState, action) {
         ...state,
         load: false,
         error: false,
-        user: action.payload.name,
-        jobtitle: action.payload.jobtitle,
-        iduser: action.payload.id,
-        status: action.payload.status,
-        message: 'Successfull',
+        user: action.payload.data.name,
+        jobtitle: action.payload.data.jobtitle,
+        iduser: action.payload.data.id,
+        wccode: action.payload.data.wccode,
+        status: action.payload.data.status,
+        message: action.payload.message,
       };
     case LOGIN_USER_FAIL:
       return {
