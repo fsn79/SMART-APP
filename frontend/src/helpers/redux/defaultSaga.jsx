@@ -201,7 +201,7 @@ function* getUsersList() {
 }
 function* getOrdersList(payload) {
   try {
-    const response = yield call(fetchJson, `/api/order/${payload.status}`, {
+    const response = yield call(fetchJson, `/api/order/${payload.code}`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     });
