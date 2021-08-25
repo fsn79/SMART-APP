@@ -73,8 +73,8 @@ function CreateUser() {
             <label htmlFor='repeatpassword'>Repeat Password</label>
           </div>
           <input type='password' name='repeatpassword' id='repeatpassword' required onChange={handleVerification}/>
+          {!passState && <p id='red'>Passwords do not match</p>}
         </div>
-        {!passState && <p>Passwords do not match</p>}
         {/* Пароли не совпадают */}
         <div className='grid--50-50'>
           <label htmlFor='jobtitle'>Jobtitle</label>
