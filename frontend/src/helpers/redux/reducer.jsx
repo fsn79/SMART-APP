@@ -24,6 +24,7 @@ import {
   CLEAR_MESSAGE,
   TAKE_ORDER_IN_WORK,
   GET_ORDER_IN_WORK,
+  SUBMIT_ITEM_PARTS,
 } from '../actionTypes.jsx';
 
 const initState = {
@@ -115,7 +116,6 @@ function reducer(state = initState, action) {
         userList: action.payload,
       };
     case GET_LIST_OF_ORDERS:
-      console.log(action);
       return {
         ...state,
         orderList: [...action.payload.message],
@@ -268,6 +268,14 @@ function reducer(state = initState, action) {
         ...state,
         currentOrder: action.payload.data,
         currentOrderId: action.payload.data.id,
+      };
+    case SUBMIT_ITEM_PARTS:
+      return {
+        ...state,
+        currentOrder: {
+          ...state.currentOrder,
+          ...action.payload.data,
+        },
       };
     /* eslint-enable */
     default:
