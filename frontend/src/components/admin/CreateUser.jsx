@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchJson } from '../../helpers/fetchJson.jsx';
 import Loader from '../../helpers/Loader.jsx';
@@ -7,6 +8,7 @@ import Output from '../../helpers/Output.jsx';
 function CreateUser() {
   // Форма создания пользователя
   const [workCenters, setworkCenters] = useState([]);
+  const [t] = useTranslation('global');
   const { load, error, message } = useSelector((state) => state);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -32,14 +34,14 @@ function CreateUser() {
 
   return (
     <div className='flex-direction--column formbg padding-horizontal--48'>
-      <span className='padding-bottom--15'>Create a new employee</span>
+      <span className='padding-bottom--15'>{t('createUser.title')}</span>
       <form id='createUser' onSubmit={handleSubmitCreateUser}>
         <div className='field padding-bottom--24'>
-          <label htmlFor='lastname'>Lastname</label>
+          <label htmlFor='lastname'>{t('createUser.lastName')}</label>
           <input type='text' name='lastname' autoFocus required />
         </div>
         <div className='field padding-bottom--24'>
-          <label htmlFor='firstname'>Firstname</label>
+          <label htmlFor='firstname'>{t('createUser.firstname')}</label>
           <input type='text' name='firstname' required />
         </div>
         <div className='field padding-bottom--24'>
@@ -48,27 +50,27 @@ function CreateUser() {
         </div>
         <div className='field padding-bottom--24'>
           <div className='grid--50-50'>
-            <label htmlFor='password'>Password</label>
+            <label htmlFor='password'>{t('createUser.password')}</label>
           </div>
           <input type='password' name='password' required />
         </div>
         <div className='field padding-bottom--24'>
           <div className='grid--50-50'>
-            <label htmlFor='password'>Repeat Password</label>
+            <label htmlFor='password'>{t('createUser.repeatPassword')}</label>
           </div>
           <input type='password' name='repeatpassword' required />
         </div>
         <div className='grid--50-50'>
-          <label htmlFor='jobtitle'>Jobtitle</label>
+          <label htmlFor='jobtitle'>{t('createUser.jobtitle')}</label>
         </div>
         <p>
           <select name='jobtitle' required>
-            <option value='Worker'>Worker</option>
-            <option value='Manager'>Manager</option>
+            <option value='Worker'>{t('createUser.statusW')}</option>
+            <option value='Manager'>{t('createUser.statusM')}</option>
           </select>
         </p>
         <div className='grid--50-50'>
-          <label htmlFor='workcenter'>Workcenter</label>
+          <label htmlFor='workcenter'>{t('createUser.workcenter')}</label>
         </div>
         <p>
           <select name='workcenter' required>
@@ -80,7 +82,7 @@ function CreateUser() {
           </select>
         </p>
         <div className='field padding-bottom--24'>
-          <button type='submit'>Create</button>
+          <button type='submit'>{t('createUser.btn-create')}</button>
         </div>
         {load && <Loader />}
         {message && <Output message={message} error={error} />}

@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import Order from './Order.jsx';
 import OrderNotSelected from './OrderNotSelected.jsx';
 import OrdersListingItem from './OrdersListingItem.jsx';
 
 function OrdersListing() {
+  const [t] = useTranslation('global');
   const dispatch = useDispatch();
   // eslint-disable-next-line
   const { currentOrderId, orderList, wccode, iduser } = useSelector(
@@ -37,6 +39,12 @@ function OrdersListing() {
             <OrdersListingItem order={order} key={order.id} />
           ))}
         </div>
+      {/* <div className='current-order'>
+        <h2>{t('ordersListing.title1')}</h2>
+        {currentOrderId ? <Order /> : <OrderNotSelected />}
+      </div>
+      <div className='avaliable-orders'>
+        <h2>{t('ordersListing.title2')}</h2> */}
       </div>
     </div>
   );
