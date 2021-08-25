@@ -7,6 +7,9 @@ async function getOrders(req, res) {
   Orders.belongsTo(Items, { foreignKey: 'itemsid' });
   try {
     const orders = await Orders.findAll({
+      where: {
+        [Op.or]: [{ status: 'Created' }, { status: 'Open' }],
+      },
       raw: true,
       order: [['priority', 'DESC']],
       include: [

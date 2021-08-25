@@ -115,11 +115,11 @@ function reducer(state = initState, action) {
         userList: action.payload,
       };
     case GET_LIST_OF_ORDERS:
+      console.log(action);
       return {
         ...state,
-        orderList: action.payload.message,
+        orderList: [...action.payload.message],
       };
-
     case GET_LIST_OF_ITEMS:
       return {
         ...state,

@@ -11,20 +11,13 @@ function OrdersListing() {
     (state) => state,
   );
   useEffect(() => {
-    dispatch({ type: 'GET_ORDERS_LIST_SAGA', status: wccode });
+    dispatch({ type: 'GET_ORDERS_LIST_SAGA', code: wccode });
     dispatch({
       type: 'GET_ORDER_IN_WORK_SAGA',
       payload: { userId: iduser, wcCode: wccode },
     });
-  }, [dispatch, wccode, iduser]);
-  useEffect(() => {
-    dispatch({
-      type: 'GET_ORDER_IN_WORK_SAGA',
-      payload: { userId: iduser, wcCode: wccode },
-    });
-  }, [currentOrderId]);
-  // console.log(orderList);
-  // Список доступных задач + текущая активная задача
+  }, [dispatch, currentOrderId, iduser, wccode]);
+
   return (
     <div className='orders-wrapper'>
       {currentOrderId ? <Order /> : <OrderNotSelected />}
