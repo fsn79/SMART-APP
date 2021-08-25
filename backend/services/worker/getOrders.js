@@ -31,7 +31,6 @@ async function getOrders(req, res) {
         },
       ],
     });
-    console.log(orders);
     res.json({ error: false, message: orders });
   } catch (e) {
     console.log(e);

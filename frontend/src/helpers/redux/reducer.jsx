@@ -261,9 +261,12 @@ function reducer(state = initState, action) {
       };
     // CREATE ORDER - END
     case TAKE_ORDER_IN_WORK:
+      console.log('reducer');
+      console.log(action.payload);
       return {
         ...state,
         currentOrderId: action.payload.orderId,
+        currentOrder: null,
       };
     case GET_ORDER_IN_WORK:
       return {
@@ -280,7 +283,6 @@ function reducer(state = initState, action) {
         },
       };
     case CLOSE_ORDER:
-      console.log('reducer');
       return {
         ...state,
         currentOrderId: null,
