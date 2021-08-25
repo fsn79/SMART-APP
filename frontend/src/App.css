@@ -803,9 +803,14 @@ form input.wc-code {
   text-overflow: ellipsis;
 }
 
-#editUserModal, #editWCModal, #editOrderModal {
+#editUserModal, #editWCModal {
   padding: 30px;
   margin-top: 150px;
+}
+
+#editOrderModal {
+  margin-top: 10px;
+  padding: 30px;
 }
 
 .selectEditUser {
