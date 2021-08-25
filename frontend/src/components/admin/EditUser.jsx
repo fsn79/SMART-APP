@@ -26,7 +26,7 @@ function EditUser({ user, setActive }) {
       <form id="editUser" onSubmit={handleSubmitEditUser}>
         <div className="field padding-bottom--24">
           <label htmlFor="lastname">Edit Lastname</label>
-          <input type="text" name="lastname" defaultValue={user.lastname} />
+          <input type="text" name="lastname" defaultValue={user.lastname} autoFocus/>
         </div>
         <div className="field padding-bottom--24">
           <label htmlFor="firstname">Edit Firstname</label>

@@ -20,11 +20,11 @@
   color: rgba(22, 19, 19, 0.774);
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   overflow-y: auto;
-  padding-top: 150px;
+  /* padding-top: 150px; */
 }
 
 .modal_content_wrapper {
-  padding: 20px;
+  /* padding: 30px; */
   border-radius: 12px;
   background-color:white;
   width: 50vw;
@@ -34,7 +34,6 @@
   -ms-overflow-style: none;  
   scrollbar-width: none;
   overflow-y: auto;
-  margin-top: 6em;
 }
 
 .modal_content_wrapper::-webkit-scrollbar {
@@ -53,6 +52,13 @@
   color: rgba(22, 19, 19, 0.774);
 }
 
+.modal_close_button{
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  font-size: 28px;
+  color: rgba(22, 19, 19, 0.774);
+}
 
 #form-header {
   font-family: 'Source Sans Pro', sans-serif;

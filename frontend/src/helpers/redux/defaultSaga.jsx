@@ -22,6 +22,7 @@ import {
   createOrderAC,
   createOrderFailAC,
   createOrderSuccessAC,
+  takeOrderInWorkAC,
 } from '../actionCreators.jsx';
 import { fetchJson } from '../fetchJson.jsx';
 
@@ -174,10 +175,10 @@ function* loginUser(action) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(action.payload),
     });
-    if (!response.message.status || response.error) {
+    if (!response.data.status || response.error) {
       yield put(loginUserFailAC(response.message));
     } else {
-      yield put(loginUserSuccessAC(response.message));
+      yield put(loginUserSuccessAC(response));
     }
   } catch (e) {
     yield put(loginUserFailAC('Connection error'));
@@ -228,6 +229,16 @@ function* logoutUser() {
   }
 }
 
+function* takeOrderInWork(payload) {
+  console.log('take-order-saga');
+  try {
+    const response = payload.orderId;
+    yield put(takeOrderInWorkAC(response));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 // Watcher
 export default function* defaultSaga() {
   yield takeEvery('TEST', loadData);
@@ -242,7 +253,8 @@ export default function* defaultSaga() {
   yield takeEvery('LOGIN_USER_SAGA', loginUser);
   yield takeEvery('GET_USERS_LIST', getUsersList);
   yield takeEvery('LOGOUT_USER_SAGA', logoutUser);
-  yield takeEvery('GET_ORDER_LIST', getOrdersList);
+  yield takeEvery('GET_ORDERS_LIST', getOrdersList);
   yield takeEvery('GET_ITEMS_LIST_SAGA', getItemsList);
   yield takeEvery('CREATE_ORDER_SAGA', createOrder);
+  yield takeEvery('TAKE_ORDER_IN_WORK_SAGA', takeOrderInWork);
 }

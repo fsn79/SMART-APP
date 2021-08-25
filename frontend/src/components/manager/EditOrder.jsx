@@ -15,13 +15,13 @@ function EditOrder({ order, setActive }) {
   }
   // Форма редактирования задачи
   return (
-    <div className="flex-direction--column formbg padding-horizontal--48">
+    <div id='editOrderModal' className="modal_content flex-direction--column formbg padding-horizontal--48">
       <img className="modal_close" alt="close" src={closeIcon} onClick={() => setActive(false)} />
       <span className="padding-bottom--15">Edit Work Order</span>
       <form id="editOrder" onSubmit={handleSubmitEditOrder}>
         <div className="field padding-bottom--24">
           <label htmlFor="plannedQuantity">Edit Work Order planned quantity</label>
-          <input type="number" step='1' name="plannedQuantity" defaultValue={order.quantity} />
+          <input type="number" step='1' name="plannedQuantity" defaultValue={order.quantity} autoFocus/>
         </div>
         <div className="field padding-bottom--24">
           <div className="grid">

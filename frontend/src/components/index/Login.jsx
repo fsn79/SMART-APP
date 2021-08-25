@@ -33,12 +33,12 @@ function Login() {
           <div className="field padding-bottom--24">
             <input type="submit" name="submit" value="Continue" className="button"/>
           </div>
-          <div>
-            {load && <Loader />}
-            {message && <Output message={`вы вошли ${message.jobtitle} ${message.name}`} error={error} />}
-          </div>
-        </form>
-  </div>
+        <div>
+          {load && <Loader />}
+          {message && <Output message={message} error={error} />}
+        </div>
+      </form>
+    </div>
   );
 }
 
