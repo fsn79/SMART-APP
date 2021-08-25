@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import ModalOrders from './ModalOrders.jsx';
+import ModalItems from './ModalItems.jsx';
 
 function ListItems() {
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ function ListItems() {
       }
       {
         list.length
-          ? list.map((el) => <ModalOrders el={el} key={el.id} />)
+          ? list.map((el) => <ModalItems el={el} key={el.id} />)
           : 'Loading...'
       }
     </div>

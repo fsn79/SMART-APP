@@ -31,7 +31,7 @@ function EditOrder({ order, setActive }) {
         </div>
         <div className="field padding-bottom--24">
         <label htmlFor="productionPrioroty">Edit Production Prioroty</label>
-        <p><select className="selectEditUser" name="prioroty">
+        <p><select className="selectEditOrder" name="prioroty">
           <option>Low</option>
           <option>Medium</option>
           <option>High</option>

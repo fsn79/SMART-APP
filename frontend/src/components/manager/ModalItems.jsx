@@ -14,10 +14,10 @@ function ModalItems({ el }) {
       <div className='wc-edit'>
         <img onClick={() => setModalActive(true)} src={editIcon} alt='edit' />
         <Modal active={modalActive} setActive={setModalActive}>
-          <EditItem order={el} setActive={setModalActive} />
+          <EditItem item={el} setActive={setModalActive} />
         </Modal>
       </div>
     </div>);
 }
 
-export default ModalOrders;
+export default ModalItems;
