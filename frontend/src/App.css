@@ -892,4 +892,9 @@ form .work-center-select-wrapper select {
 .flex-3-2 div:last-child {
   width: 38%;
 }
-
+.red{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  align-items: center;
+  outline-color:red;
+}
