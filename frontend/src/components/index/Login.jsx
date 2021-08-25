@@ -22,7 +22,7 @@ function Login() {
         <form onSubmit={handleLogin} id="login">
           <div className="field padding-bottom--24">
             <label htmlFor="email">Email</label>
-            <input type="email" name="email" />
+            <input type="email" name="email" autoFocus/>
           </div>
           <div className="field padding-bottom--24">
             <div>

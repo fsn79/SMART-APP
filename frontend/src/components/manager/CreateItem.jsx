@@ -39,7 +39,7 @@ function CreateItem() {
       <form id='createItem' onSubmit={handlerCreateItem}>
         <div className='field padding-bottom--24'>
           <label htmlFor='itemName'>Item Name</label>
-          <input type='text' name='itemName' />
+          <input type='text' name='itemName' autoFocus/>
         </div>
         <div className='field padding-bottom--24'>
           <label htmlFor='partNumber'>Part Number</label>
