@@ -845,6 +845,13 @@ form input.wc-code {
   font-size: 18px;
 }
 
+#header {
+  font-size: 20px;
+  font-weight: 600;
+  color:rgba(0, 0, 0, 0.747);
+  margin-bottom: 10px;
+}
+
 .work-center-select-wrapper,
 .work-center-select-titles {
   display: flex;

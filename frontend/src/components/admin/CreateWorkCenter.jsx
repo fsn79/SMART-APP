@@ -14,7 +14,7 @@ function CreateWorkCenter() {
   // Форма создания отдела
   return (
     <div className="flex-direction--column formbg padding-horizontal--48">
-      <span className="padding-bottom--15">Create a New Work Center</span>
+      <span id="header" className="padding-bottom--15">Create a New Work Center</span>
       <form onSubmit={handleSubmitCenter}>
         <div className="field padding-bottom--24">
           <label htmlFor="centerName">Work Center Name</label>

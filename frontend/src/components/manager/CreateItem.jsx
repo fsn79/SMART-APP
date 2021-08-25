@@ -35,7 +35,7 @@ function CreateItem() {
     <div
       className='flex-direction--column formbg padding-horizontal--48'
       id='createItemDiv'>
-      <span className='padding-bottom--15'>Create a new item</span>
+      <span id="header" className='padding-bottom--15'>Create a new item</span>
       <form id='createItem' onSubmit={handlerCreateItem}>
         <div className='field padding-bottom--24'>
           <label htmlFor='itemName'>Item Name</label>

@@ -32,7 +32,7 @@ function CreateUser() {
 
   return (
     <div className='flex-direction--column formbg padding-horizontal--48'>
-      <span className='padding-bottom--15'>Create a new employee</span>
+      <span id="header" className='padding-bottom--15'>Create a new employee</span>
       <form id='createUser' onSubmit={handleSubmitCreateUser}>
         <div className='field padding-bottom--24'>
           <label htmlFor='lastname'>Lastname</label>

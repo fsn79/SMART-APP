@@ -32,7 +32,7 @@ function CreateOrder() {
   };
   return (
     <div className='flex-direction--column formbg padding-horizontal--48'>
-      <span className='padding-bottom--15'>Create a New Work Order</span>
+      <span id="header" className='padding-bottom--15'>Create a New Work Order</span>
       <form id='createOrder' onSubmit={submitHandler}>
         <div className='field padding-bottom--24'>
           <label htmlFor='itemId'>Item Name</label>
