@@ -1,47 +1,40 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Orders', {
+    await queryInterface.createTable('Infoorders', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER
       },
-      itemname: {
-        allowNull: false,
-        type: Sequelize.STRING,
-      },
-      itempartnum: {
-        allowNull: false,
-        type: Sequelize.STRING,
-      },
-      itemsid: {
-        allowNull: false,
+      employeesid: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Items',
+          model: 'Employees',
           key: 'id',
           onUpdate: 'cascade',
           onDelete: 'cascade',
         },
       },
-      number: {
-        allowNull: false,
-        type: Sequelize.STRING,
+      ordersid: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Orders',
+          key: 'id',
+          onUpdate: 'cascade',
+          onDelete: 'cascade',
+        },
       },
-      quantity: {
+      quantitycomplete: {
         allowNull: false,
         type: Sequelize.INTEGER,
+        defaultValue: 0,
       },
-      promiseddate: {
-        allowNull: false,
-        type: Sequelize.DATE,
-      },
-      priority: {
+      quantitydefect: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        defaultValue: 1,
+        defaultValue: 0,
       },
       status: {
         allowNull: false,
@@ -50,15 +43,15 @@ module.exports = {
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE,
+        type: Sequelize.DATE
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE,
-      },
+        type: Sequelize.DATE
+      }
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Orders');
-  },
+    await queryInterface.dropTable('Infoorders');
+  }
 };
