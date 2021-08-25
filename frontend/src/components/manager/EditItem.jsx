@@ -76,13 +76,13 @@ function EditItem({ item, setActive }) {
             </p></div>
             <div className='work-center-label'>
             <p>
-              <input type="number" step="0.01" className="cycleTime" name="cycletime1" defaultValue={item.cycletime1} />
+              <input type="number" step="0.01" min='0' className="cycleTime" name="cycletime1" defaultValue={item.cycletime1} />
             </p>
             <p>
-              <input type="number" step="0.01" className="cycleTime" name="cycletime2" defaultValue={item.cycletime2} />
+              <input type="number" step="0.01" min='0' className="cycleTime" name="cycletime2" defaultValue={item.cycletime2} />
             </p>
             <p>
-              <input type="number" step="0.01" className="cycleTime" name="cycletime3" defaultValue={item.cycletime3} />
+              <input type="number" step="0.01" min='0' className="cycleTime" name="cycletime3" defaultValue={item.cycletime3} />
             </p></div>
           </div>
         </div>

@@ -30,7 +30,7 @@ function EditWorkCenter({ center, setActive }) {
   </div>
   <div className="field padding-bottom--24">
     <label htmlFor="capacity">Edit Work Center capacity</label>
-    <input type="number" step='0.01' name="capacity" defaultValue={center.capacity} />
+    <input type="number" step='0.01' min='0' name="capacity" defaultValue={center.capacity} />
   </div>
   <div className="field padding-bottom--24">
   <label htmlFor="status">Edit Status</label>

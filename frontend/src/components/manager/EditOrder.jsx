@@ -21,7 +21,7 @@ function EditOrder({ order, setActive }) {
       <form id="editOrder" onSubmit={handleSubmitEditOrder}>
         <div className="field padding-bottom--24">
           <label htmlFor="plannedQuantity">Edit Work Order planned quantity</label>
-          <input type="number" step='1' name="plannedQuantity" defaultValue={order.quantity} autoFocus/>
+          <input type="number" step='1' min='0' name="plannedQuantity" defaultValue={order.quantity} autoFocus/>
         </div>
         <div className="field padding-bottom--24">
           {/* <div className="grid"> */}
