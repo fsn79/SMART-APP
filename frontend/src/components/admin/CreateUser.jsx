@@ -6,6 +6,7 @@ import Output from '../../helpers/Output.jsx';
 
 function CreateUser() {
   // Форма создания пользователя
+  const [selectStatus, setSelectStatus] = useState(true);
   const [workCenters, setworkCenters] = useState([]);
   const { load, error, message } = useSelector((state) => state);
   const dispatch = useDispatch();
@@ -28,6 +29,15 @@ function CreateUser() {
       workcenterid: e.target.workcenter.value,
     };
     dispatch({ type: 'CREATE_USER_SAGA', payload });
+  };
+
+  const selectJobTitle = (e) => {
+    const { value } = e.target.selectedOptions[0];
+    if (value === 'Manager') {
+      setSelectStatus(false);
+    } else {
+      setSelectStatus(true);
+    }
   };
 
   return (
@@ -62,24 +72,23 @@ function CreateUser() {
           <label htmlFor='jobtitle'>Jobtitle</label>
         </div>
         <p>
-          <select name='jobtitle' required>
+          <select onChange={selectJobTitle} name='jobtitle' required>
             <option value='Worker'>Worker</option>
             <option value='Manager'>Manager</option>
           </select>
         </p>
-        <div className='grid--50-50'>
+        {selectStatus === true && <><div className='grid--50-50'>
           <label htmlFor='workcenter'>Workcenter</label>
         </div>
-        <p>
-          <select name='workcenter' required>
+        <p><select name='workcenter' required>
             {workCenters.map((el) => (
               <option key={el.id} value={el.id}>
                 {el.name}
               </option>
             ))}
           </select>
-        </p>
-        <div className='field padding-bottom--24'>
+        </p></>}
+       <div className='field padding-bottom--24'>
           <button type='submit'>Create</button>
         </div>
         {load && <Loader />}
