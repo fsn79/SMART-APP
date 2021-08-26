@@ -8,11 +8,13 @@ async function getWorkerOrder(req, res) {
   Orders.belongsTo(Items, { foreignKey: 'itemsid' });
   const count = [1, 2, 3];
   const { userId, wcCode } = req.params;
+  console.log('Get order worker find');
   const orderInfo = await Infoorders.findOne({
     where: { employeesid: userId, status: 'Open' },
     include: [{ model: Orders, include: [{ model: Items }] }],
     raw: true,
   });
+  console.log(orderInfo);
   if (orderInfo) {
     count.forEach((el) => {
       if (Object.hasOwnProperty.call(orderInfo, `Order.Item.workcenter${el}`)) {
@@ -32,10 +34,16 @@ async function getWorkerOrder(req, res) {
         }
       }
     });
+    console.log('Get order worker send');
     res.json({
       error: false,
       message: `Order executed succsessfull. ID: ${orderInfo.id}`,
       data: orderInfo,
+    });
+  } else {
+    res.json({
+      error: false,
+      message: 'No active orders',
     });
   }
 }

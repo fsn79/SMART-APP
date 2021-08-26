@@ -12,6 +12,7 @@ async function executionOrder(req, res) {
     },
     { raw: true },
   );
+  console.log(workerOrder);
   res.json({
     error: false,
     message: 'Order up to work',
