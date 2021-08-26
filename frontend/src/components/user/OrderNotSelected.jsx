@@ -1,7 +1,11 @@
+import { useTranslation } from 'react-i18next';
+
 function OrderNotSelected() {
+  const [t] = useTranslation('global');
+
   return (
     <div className='no-order'>
-      There are no active orders. Select an order from the list below.
+      {t('orderNotSelected.msg')}
     </div>
   );
 }

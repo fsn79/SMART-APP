@@ -97,7 +97,7 @@ function CreateUser() {
             required
             onChange={handleVerification}
           />
-          {!passState && <p id='red'>Passwords do not match</p>}
+          {!passState && <p id='red'>{t('createUser.passwVerif')}</p>}
         </div>
         {/* Пароли не совпадают */}
         <div className='grid--50-50'>

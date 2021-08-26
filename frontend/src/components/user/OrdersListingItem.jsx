@@ -1,16 +1,18 @@
+import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 
 function OrdersListingItem({ order }) {
+  const [t] = useTranslation('global');
   const dispatch = useDispatch();
   const { currentOrderId, iduser } = useSelector((state) => state);
   const priorityName = (priority) => {
     switch (priority) {
       case 3:
-        return 'Hight';
+        return t('orderListingItem.high');
       case 2:
-        return 'Medium';
+        return t('orderListingItem.medium');
       default:
-        return 'Low';
+        return t('orderListingItem.low');
     }
   };
   const promisedDate = (date) => date.split('T')[0];
@@ -36,7 +38,7 @@ function OrdersListingItem({ order }) {
           type='button'
           disabled={currentOrderId && true}
           onClick={buttonHandler}>
-          Take to work
+          {t('orderListingItem.takeToWork')}
         </button>
       </div>
     </div>
