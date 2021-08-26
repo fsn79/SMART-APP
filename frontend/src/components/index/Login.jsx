@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 // import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,27 +12,16 @@ function Login() {
   const { load, error, message, jobtitle } = useSelector((state) => state);
   const [t] = useTranslation('global');
   /* eslint-disable */
-  const [jobtitle1, setJobtitle1] = useState(jobtitle);
-  useEffect(() => {
-    setJobtitle1(jobtitle);
-    if (jobtitle === 'admin') {
-      history.push('/list-users');
-    }
-    if (jobtitle === 'Manager') {
-      history.push('/edit-order');
-    }
-    if (jobtitle === 'Worker') {
-      history.push('/orders');
-    }
-  }, [jobtitle]);
   // Форма авторизации
   const handleLogin = (e) => {
     e.preventDefault();
-    const payload = {
-      email: e.target.email.value,
-      password: e.target.password.value,
-    };
-    dispatch({ type: 'LOGIN_USER_SAGA', payload });
+    if (e.target.email.value && e.target.password.value) {
+      const payload = {
+        email: e.target.email.value,
+        password: e.target.password.value,
+      };
+      dispatch({ type: 'LOGIN_USER_SAGA', payload });
+    }
   };
 
   return (
@@ -44,13 +32,13 @@ function Login() {
       <form onSubmit={handleLogin} id='login'>
         <div className='field padding-bottom--24'>
           <label htmlFor='email'>Email</label>
-          <input type='email' name='email' autoFocus />
+          <input type='email' name='email' autoFocus required />
         </div>
         <div className='field padding-bottom--24'>
           <div>
             <label htmlFor='password'>{t('login.password')}</label>
           </div>
-          <input type='password' name='password' />
+          <input type='password' name='password' required />
         </div>
         <div className='field padding-bottom--24'>
           <input
