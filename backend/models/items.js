@@ -67,14 +67,6 @@ module.exports = (sequelize, DataTypes) => {
       cycletime3: {
         type: DataTypes.FLOAT,
       },
-      createdAt: {
-        allowNull: false,
-        type: DataTypes.DATE,
-      },
-      updatedAt: {
-        allowNull: false,
-        type: DataTypes.DATE,
-      },
       createdAt: DataTypes.DATE,
       updatedAt: DataTypes.DATE,
     },

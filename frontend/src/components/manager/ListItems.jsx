@@ -9,7 +9,7 @@ function ListItems() {
   const list = useSelector((state) => state.itemList);
   useEffect(() => {
     dispatch({ type: 'GET_ITEMS_LIST' });
-  }, [dispatch]);
+  }, []);
   return (
     <div className='listTableDiv'>
       <h1>{t('listItems.title')}</h1>

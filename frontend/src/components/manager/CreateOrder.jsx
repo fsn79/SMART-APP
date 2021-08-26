@@ -37,7 +37,9 @@ function CreateOrder() {
   };
   return (
     <div className='flex-direction--column formbg padding-horizontal--48'>
-      <span className='padding-bottom--15'>{t('createOrder.title')}</span>
+      <span id='header' className='padding-bottom--15'>
+        {t('createOrder.title')}
+      </span>
       <form id='createOrder' onSubmit={submitHandler}>
         <div className='field padding-bottom--24'>
           <label htmlFor='itemId'>{t('createOrder.name')}</label>
@@ -54,7 +56,7 @@ function CreateOrder() {
           <label htmlFor='order'>{t('createOrder.ewonOrca')}</label>
           <div className='flex-3-2'>
             <div>
-              <input type='text' name='order' required />
+              <input type='text' name='order' required autoFocus />
             </div>
             <div>
               <button type='button' onClick={randomWorkOrderNumber}>
@@ -65,7 +67,7 @@ function CreateOrder() {
         </div>
         <div className='field padding-bottom--24'>
           <label htmlFor='quantity'>{t('createOrder.ewopq')}</label>
-          <input type='number' step='0.01' name='quantity' required />
+          <input type='number' min='1' step='1' name='quantity' required />
         </div>
         <div className='field padding-bottom--24'>
           <label htmlFor='date'>{t('createOrder.ewopd')}</label>

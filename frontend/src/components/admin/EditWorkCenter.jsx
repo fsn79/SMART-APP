@@ -49,6 +49,7 @@ function EditWorkCenter({ center, setActive }) {
           <input
             type='number'
             step='0.01'
+            min='0'
             name='capacity'
             defaultValue={center.capacity}
           />
