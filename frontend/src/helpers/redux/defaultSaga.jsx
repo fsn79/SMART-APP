@@ -30,6 +30,8 @@ import {
   getRandomOrderNumAC,
   editUserSuccessAC,
   editUserFailAC,
+  getItemsFailAC,
+  getItemsSuccessAC,
 } from '../actionCreators.jsx';
 import { fetchJson } from '../fetchJson.jsx';
 
@@ -225,12 +227,17 @@ function* getOrdersList(action) {
   }
 }
 function* getItemsList() {
+  yield put(getItemsAC());
   try {
     const response = yield call(fetchJson, '/api/item', {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     });
-    yield put(getItemsAC(response.message));
+    if (response.error) {
+      yield put(getItemsFailAC(response.message));
+    } else {
+      yield put(getItemsSuccessAC(response.data));
+    }
   } catch (e) {
     console.log(e);
   }

@@ -163,7 +163,7 @@
   "editItem": {
     "editItem": "Edit item",
     "itemRouting": "Item Routing",
-    "editWorkCsel": "Edit Work centers selections",
+    "editWorkCsel": "Work Center Name",
     "editRoutingDescr": "Edit Routing Description",
     "editCycleTime": "Edit Cycle Time",
     "editStatus": "Edit Status",

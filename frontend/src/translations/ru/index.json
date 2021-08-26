@@ -163,7 +163,7 @@
   "editItem": {
     "editItem": "Редактировать продукт",
     "itemRouting": "Изменить этапы создания продукта",
-    "editWorkCsel": "Изменить отдел",
+    "editWorkCsel": "Название отдела",
     "editRoutingDescr": "Изменить описание этапа",
     "editCycleTime": "Изменить время создания продукта",
     "editStatus": "Изменить статус",

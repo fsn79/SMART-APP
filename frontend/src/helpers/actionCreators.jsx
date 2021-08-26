@@ -29,6 +29,8 @@ import {
   GET_RANDOM_ORDER_NUM,
   EDIT_USER_SUCCESS,
   EDIT_USER_FAIL,
+  GET_LIST_OF_ITEMS_SUCCESS,
+  GET_LIST_OF_ITEMS_FAIL,
 } from './actionTypes.jsx';
 
 // CREATE USER AC
@@ -72,6 +74,12 @@ export function createItemFailAC(payload) {
 // CREATE ITEM AC - END
 export function getItemsAC(payload) {
   return { type: GET_LIST_OF_ITEMS, payload };
+}
+export function getItemsSuccessAC(payload) {
+  return { type: GET_LIST_OF_ITEMS_SUCCESS, payload };
+}
+export function getItemsFailAC(payload) {
+  return { type: GET_LIST_OF_ITEMS_FAIL, payload };
 }
 // CREATE ORDER AC
 export function createOrderAC(payload) {

@@ -30,6 +30,8 @@ import {
   GET_RANDOM_ORDER_NUM,
   EDIT_USER_SUCCESS,
   EDIT_USER_FAIL,
+  GET_LIST_OF_ITEMS_SUCCESS,
+  GET_LIST_OF_ITEMS_FAIL,
 } from '../actionTypes.jsx';
 
 const initState = {
@@ -138,7 +140,21 @@ function reducer(state = persistedState ?? initState, action) {
     case GET_LIST_OF_ITEMS:
       return {
         ...state,
-        itemList: action.payload,
+        itemList: [],
+      };
+    case GET_LIST_OF_ITEMS_SUCCESS:
+      return {
+        ...state,
+        load: false,
+        error: false,
+        itemList: [...action.payload],
+      };
+    case GET_LIST_OF_ITEMS_FAIL:
+      return {
+        ...state,
+        load: false,
+        error: true,
+        message: action.payload,
       };
     case EDIT_WORK_CENTER:
       /* eslint-disable */
@@ -195,27 +211,9 @@ function reducer(state = persistedState ?? initState, action) {
       };
 
     case EDIT_ITEM:
-      const indexItem = state.itemList.findIndex(
-        (item) => item.id === action.payload.id,
-      );
-      const copyItemList = [...state.itemList];
-      const copyItemListItem = { ...copyItemList[indexItem] };
-
-      copyItemListItem.workcenter1 = action.payload.workcenter1;
-      copyItemListItem.descrroute1 = action.payload.descrroute1;
-      copyItemListItem.cycletime1 = action.payload.cycletime1;
-      copyItemListItem.workcenter2 = action.payload.workcenter2;
-      copyItemListItem.descrroute2 = action.payload.descrroute2;
-      copyItemListItem.cycletime2 = action.payload.cycletime2;
-      copyItemListItem.workcenter3 = action.payload.workcenter3;
-      copyItemListItem.descrroute3 = action.payload.descrroute3;
-      copyItemListItem.cycletime3 = action.payload.cycletime3;
-      copyItemListItem.status = action.payload.status;
-      copyItemList[indexItem] = copyItemListItem;
-
       return {
         ...state,
-        itemList: copyItemList,
+        // itemList: copyItemList,
       };
 
     // LOGIN USER

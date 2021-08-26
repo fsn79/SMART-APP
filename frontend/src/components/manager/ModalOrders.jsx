@@ -24,9 +24,11 @@ function ModalOrders({ el }) {
       </div>
       <div className='wc-edit'>
         <img onClick={() => setModalActive(true)} src={editIcon} alt='edit' />
-        <Modal active={modalActive} setActive={setModalActive}>
-          <EditOrder order={el} setActive={setModalActive} />
-        </Modal>
+        {modalActive && (
+          <Modal active={modalActive} setActive={setModalActive}>
+            <EditOrder order={el} setActive={setModalActive} />
+          </Modal>
+        )}
       </div>
     </div>
   );
