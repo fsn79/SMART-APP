@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchJson } from '../../helpers/fetchJson.jsx';
@@ -15,7 +15,7 @@ function CreateUser() {
   const [t] = useTranslation('global');
   const { load, error, message } = useSelector((state) => state);
   const dispatch = useDispatch();
-  const history = useHistory();
+  // const history = useHistory();
   useEffect(() => {
     async function fetchAndSetWorkCenters() {
       const listWorkCenters = await fetchJson('/api/wc');
@@ -47,7 +47,10 @@ function CreateUser() {
       };
     }
     dispatch({ type: 'CREATE_USER_SAGA', payload });
-    history.push('/list-users');
+    if (!error) {
+      e.target.reset();
+    }
+    // history.push('/list-users');
   };
 
   const handleVerification = (e) => {
@@ -72,7 +75,9 @@ function CreateUser() {
 
   return (
     <div className='flex-direction--column formbg padding-horizontal--48'>
-      <span id='header' className='padding-bottom--15'>{t('createUser.title')}</span>
+      <span id='header' className='padding-bottom--15'>
+        {t('createUser.title')}
+      </span>
       <form id='createUser' onSubmit={handleSubmitCreateUser}>
         <div className='field padding-bottom--24'>
           <label htmlFor='lastname'>{t('createUser.lastName')}</label>

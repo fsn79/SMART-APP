@@ -1,10 +1,11 @@
-import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+// import { useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 function CreateWorkCenter() {
   const dispatch = useDispatch();
-  const history = useHistory();
+  // const history = useHistory();
+  const { error } = useSelector((state) => state);
   const [t] = useTranslation('global');
   const handleSubmitCenter = (e) => {
     e.preventDefault();
@@ -14,7 +15,10 @@ function CreateWorkCenter() {
       capacity: e.target.capacity.value,
     };
     dispatch({ type: 'WORK_CENTER', payload });
-    history.push('/edit-work-center');
+    // history.push('/edit-work-center');
+    if (!error) {
+      e.target.reset();
+    }
   };
   // Форма создания отдела
   return (

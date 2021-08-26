@@ -14,7 +14,6 @@ async function getWorkerOrder(req, res) {
     include: [{ model: Orders, include: [{ model: Items }] }],
     raw: true,
   });
-  console.log(orderInfo);
   if (orderInfo) {
     count.forEach((el) => {
       if (Object.hasOwnProperty.call(orderInfo, `Order.Item.workcenter${el}`)) {
@@ -34,7 +33,6 @@ async function getWorkerOrder(req, res) {
         }
       }
     });
-    console.log('Get order worker send');
     res.json({
       error: false,
       message: `Order executed succsessfull. ID: ${orderInfo.id}`,

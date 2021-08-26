@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import Loader from '../../helpers/Loader.jsx';
@@ -9,14 +9,16 @@ function CreateOrder() {
   const [t] = useTranslation('global');
   // Форма создания задачи
   const dispatch = useDispatch();
-  const history = useHistory();
+  // const history = useHistory();
   // eslint-disable-next-line object-curly-newline
-  const { itemList, load, message, error } = useSelector((store) => store);
+  const { itemList, load, message, error, randomOrderNum } = useSelector(
+    (store) => store,
+  );
   useEffect(() => {
     dispatch({ type: 'GET_ITEMS_LIST_SAGA' });
   }, [dispatch]);
-  const randomWorkOrderNumber = (e) => {
-    e.target.form.order.value = 'Generate?';
+  const randomWorkOrderNumber = () => {
+    dispatch({ type: 'GET_RANDOM_ORDER_NUM_SAGA' });
   };
   const submitHandler = (e) => {
     e.preventDefault();
@@ -33,7 +35,10 @@ function CreateOrder() {
       priority: priority.value,
     };
     dispatch({ type: 'CREATE_ORDER_SAGA', payload });
-    history.push('/orders');
+    // history.push('/orders');
+    if (!error) {
+      e.target.reset();
+    }
   };
   return (
     <div className='flex-direction--column formbg padding-horizontal--48'>
@@ -44,7 +49,6 @@ function CreateOrder() {
         <div className='field padding-bottom--24'>
           <label htmlFor='itemId'>{t('createOrder.name')}</label>
           <select name='itemId' required>
-            <option value='empty'>-</option>
             {itemList.map((item) => (
               <option value={item.id} key={item.partnumber}>
                 {item.name} ({item.partnumber})
@@ -56,7 +60,13 @@ function CreateOrder() {
           <label htmlFor='order'>{t('createOrder.ewonOrca')}</label>
           <div className='flex-3-2'>
             <div>
-              <input type='text' name='order' required autoFocus />
+              <input
+                type='text'
+                name='order'
+                defaultValue={randomOrderNum && randomOrderNum}
+                required
+                autoFocus
+              />
             </div>
             <div>
               <button type='button' onClick={randomWorkOrderNumber}>

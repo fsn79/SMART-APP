@@ -894,6 +894,32 @@ form .work-center-select-wrapper select {
 .flex-3-2 div:last-child {
   width: 38%;
 }
+.button-lang {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  top: 0.85em;
+  right: 1.5em;
+  width:4rem;
+  height: 1.5rem;
+  padding: none;
+}
+.btn-lang {
+  width: 5rem;
+  background-color: rgba(0, 0, 0, 0);
+  color: rgb(255, 248, 248);
+  padding: 0px;
+  border: 0;
+
+}
+.btn-lang:hover {
+  transition: 1s;
+  background-color: rgba(0, 0, 0, 0);
+  font-family: 'Open Sans Condensed', sans-serif;
+  color:rgb(255, 255, 255);
+  border: 0;
+  border: solid 1px #ddd;
+}
 #red {
   color: red;
   font-size: 13px;

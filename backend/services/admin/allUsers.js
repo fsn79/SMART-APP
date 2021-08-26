@@ -1,8 +1,13 @@
-const db = require('../../models')
+const { Employees, Workcenters } = require('../../models');
 async function allUsers(req, res) {
-  const listUsers = await db.Employees.findAll({raw: true});
-  console.log(listUsers);
-  res.status(200).json(listUsers)
+  Workcenters.hasMany(Employees, { foreignKey: 'workcenterid' });
+  Employees.belongsTo(Workcenters, { foreignKey: 'workcenterid' });
+
+  const listUsers = await Employees.findAll({
+    raw: true,
+    include: [{ model: Workcenters }],
+  });
+  res.json(listUsers);
 }
 
 module.exports = allUsers;

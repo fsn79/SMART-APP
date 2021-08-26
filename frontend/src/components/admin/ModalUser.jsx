@@ -21,7 +21,7 @@ function ModalUser({ el }) {
         {el.email}
       </div>
       <div className='listTable' title={el.workcenterid}>
-        {el.workcenterid}
+        {el['Workcenter.name']}
       </div>
       <div className='wc-edit'>
         <img onClick={() => setModalActive(true)} src={editIcon} alt='edit' />

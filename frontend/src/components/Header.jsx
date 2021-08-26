@@ -6,10 +6,10 @@ function Header() {
   const [t, i18n] = useTranslation('global');
 
   return (
-    <div>
-      <h2>{t('header.hello-world')}</h2>
-      <button onClick={() => i18n.changeLanguage('en')}>EN</button>
-      <button onClick={() => i18n.changeLanguage('ru')}>RU</button>
+    <div className='button-lang'>
+      <h2>{t('')}</h2>
+      <button className='btn-lang' onClick={() => i18n.changeLanguage('en')}>EN</button>
+      <button className='btn-lang' onClick={() => i18n.changeLanguage('ru')}>RU</button>
     </div>
   );
 }
