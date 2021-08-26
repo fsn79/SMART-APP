@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 // import { fetchJson } from '../../helpers/fetchJson.jsx';
 import Loader from '../../helpers/Loader.jsx';
@@ -7,6 +8,8 @@ import Output from '../../helpers/Output.jsx';
 function Login() {
   const dispatch = useDispatch();
   const { load, error, message } = useSelector((state) => state);
+  const [t] = useTranslation('global');
+
   // Форма авторизации
   const handleLogin = (e) => {
     e.preventDefault();
@@ -16,10 +19,11 @@ function Login() {
     };
     dispatch({ type: 'LOGIN_USER_SAGA', payload });
   };
+
   return (
     <div className='flex-direction--column formbg padding-horizontal--48'>
       <span id='header' className='padding-bottom--15'>
-        Sign in to your account
+        <span className='padding-bottom--15'>{t('login.title')}</span>
       </span>
       <form onSubmit={handleLogin} id='login'>
         <div className='field padding-bottom--24'>
@@ -28,12 +32,17 @@ function Login() {
         </div>
         <div className='field padding-bottom--24'>
           <div>
-            <label htmlFor='password'>Password</label>
+            <label htmlFor='password'>{t('login.password')}</label>
           </div>
           <input type='password' name='password' />
         </div>
         <div className='field padding-bottom--24'>
-          <input type='submit' name='submit' value='Continue' className='button' />
+          <input
+            type='submit'
+            name='submit'
+            value={t('login.btn-login')}
+            className='button'
+          />
         </div>
         <div>
           {load && <Loader />}

@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import Order from './Order.jsx';
 import OrderNotSelected from './OrderNotSelected.jsx';
 import OrdersListingItem from './OrdersListingItem.jsx';
 
 function OrdersListing() {
+  const [t] = useTranslation('global');
   const dispatch = useDispatch();
   // eslint-disable-next-line
   const { currentOrderId, orderList, wccode, iduser, wcid } = useSelector(

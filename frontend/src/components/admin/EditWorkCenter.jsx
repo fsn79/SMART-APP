@@ -1,7 +1,9 @@
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import closeIcon from '../../images/closeicon.svg';
 
 function EditWorkCenter({ center, setActive }) {
+  const [t] = useTranslation('global');
   const dispatch = useDispatch();
   function handleSubmitEditCenter(e) {
     e.preventDefault();
@@ -26,11 +28,11 @@ function EditWorkCenter({ center, setActive }) {
         onClick={() => setActive(false)}
       />
       <span className='padding-bottom--15' id='form-header'>
-        Edit Work Center
+        {t('editWorkCenter.title')}
       </span>
       <form onSubmit={handleSubmitEditCenter}>
         <div className='field padding-bottom--24'>
-          <label htmlFor='centerName'>Edit Work Center Name</label>
+          <label htmlFor='centerName'>{t('editWorkCenter.eCenterName')}</label>
           <input
             type='text'
             name='centerName'
@@ -39,11 +41,11 @@ function EditWorkCenter({ center, setActive }) {
           />
         </div>
         <div className='field padding-bottom--24'>
-          <label htmlFor='code'>Edit Work Center code</label>
+          <label htmlFor='code'>{t('editWorkCenter.eCode')}</label>
           <input type='text' name='code' defaultValue={center.code} />
         </div>
         <div className='field padding-bottom--24'>
-          <label htmlFor='capacity'>Edit Work Center capacity</label>
+          <label htmlFor='capacity'>{t('editWorkCenter.eCapacity')}</label>
           <input
             type='number'
             step='0.01'
@@ -53,16 +55,16 @@ function EditWorkCenter({ center, setActive }) {
           />
         </div>
         <div className='field padding-bottom--24'>
-          <label htmlFor='status'>Edit Status</label>
+          <label htmlFor='status'>{t('editWorkCenter.eStatus')}</label>
           <p>
             <select name='status' className='selectStatus'>
-              <option>Active</option>
-              <option>Disabled</option>
+              <option>{t('editWorkCenter.oActive')}</option>
+              <option>{t('editWorkCenter.oDisabled')}</option>
             </select>
           </p>
         </div>
         <div className='field padding-bottom--24'>
-          <input type='submit' name='submit' value='Edit' />
+          <input type='submit' name='submit' value={t('editWorkCenter.btn-edit')} />
         </div>
       </form>
     </div>

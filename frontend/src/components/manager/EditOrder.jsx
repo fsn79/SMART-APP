@@ -40,9 +40,7 @@ function EditOrder({ order, setActive }) {
           />
         </div>
         <div className='field padding-bottom--24'>
-          {/* <div className="grid"> */}
           <label htmlFor='promisedDate'>Edit Work Order promised date</label>
-          {/* </div> */}
           <input type='date' name='promisedDate' defaultValue={order.promiseddate} />
         </div>
         <div className='field padding-bottom--24'>
