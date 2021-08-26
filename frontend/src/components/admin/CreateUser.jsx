@@ -63,7 +63,9 @@ function CreateUser() {
 
   return (
     <div className='flex-direction--column formbg padding-horizontal--48'>
-      <span id='header' className='padding-bottom--15'>{t('createUser.title')}</span>
+      <span id='header' className='padding-bottom--15'>
+        {t('createUser.title')}
+      </span>
       <form id='createUser' onSubmit={handleSubmitCreateUser}>
         <div className='field padding-bottom--24'>
           <label htmlFor='lastname'>{t('createUser.lastName')}</label>
@@ -108,7 +110,7 @@ function CreateUser() {
         </div>
         <p>
           <select onChange={selectJobTitle} name='jobtitle' required>
-           <option value='Worker'>{t('createUser.statusW')}</option>
+            <option value='Worker'>{t('createUser.statusW')}</option>
             <option value='Manager'>{t('createUser.statusM')}</option>
           </select>
         </p>

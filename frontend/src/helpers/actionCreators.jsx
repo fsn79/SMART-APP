@@ -26,6 +26,7 @@ import {
   SUBMIT_ITEM_PARTS,
   CLOSE_ORDER,
   GET_ORDER_LIST,
+  GET_RANDOM_ORDER_NUM,
 } from './actionTypes.jsx';
 
 // CREATE USER AC
@@ -131,4 +132,8 @@ export function closeOrderAC() {
 
 export function showMeOrdersListAC(payload) {
   return { type: GET_ORDER_LIST, payload };
+}
+
+export function getRandomOrderNumAC(payload) {
+  return { type: GET_RANDOM_ORDER_NUM, payload };
 }

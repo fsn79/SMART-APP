@@ -11,12 +11,14 @@ function CreateOrder() {
   const dispatch = useDispatch();
   // const history = useHistory();
   // eslint-disable-next-line object-curly-newline
-  const { itemList, load, message, error } = useSelector((store) => store);
+  const { itemList, load, message, error, randomOrderNum } = useSelector(
+    (store) => store,
+  );
   useEffect(() => {
     dispatch({ type: 'GET_ITEMS_LIST_SAGA' });
   }, [dispatch]);
-  const randomWorkOrderNumber = (e) => {
-    e.target.form.order.value = 'Generate?';
+  const randomWorkOrderNumber = () => {
+    dispatch({ type: 'GET_RANDOM_ORDER_NUM_SAGA' });
   };
   const submitHandler = (e) => {
     e.preventDefault();
@@ -47,7 +49,6 @@ function CreateOrder() {
         <div className='field padding-bottom--24'>
           <label htmlFor='itemId'>{t('createOrder.name')}</label>
           <select name='itemId' required>
-            <option value='empty'>-</option>
             {itemList.map((item) => (
               <option value={item.id} key={item.partnumber}>
                 {item.name} ({item.partnumber})
@@ -59,7 +60,13 @@ function CreateOrder() {
           <label htmlFor='order'>{t('createOrder.ewonOrca')}</label>
           <div className='flex-3-2'>
             <div>
-              <input type='text' name='order' required autoFocus />
+              <input
+                type='text'
+                name='order'
+                defaultValue={randomOrderNum && randomOrderNum}
+                required
+                autoFocus
+              />
             </div>
             <div>
               <button type='button' onClick={randomWorkOrderNumber}>

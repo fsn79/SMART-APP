@@ -1,20 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-// import { fetchJson } from '../../helpers/fetchJson.jsx';
+import { Redirect } from 'react-router-dom';
+
 import Loader from '../../helpers/Loader.jsx';
 import Output from '../../helpers/Output.jsx';
 
 function Login() {
   const dispatch = useDispatch();
-  const history = useHistory();
-  const {
-    load,
-    error,
-    message,
-    jobtitle,
-  } = useSelector((state) => state);
+  // eslint-disable-next-line
+  const { load, error, message, jobtitle } = useSelector((state) => state);
   const [t] = useTranslation('global');
   /* eslint-disable */
   const [jobtitle1, setJobtitle1] = useState(jobtitle);
@@ -67,6 +63,9 @@ function Login() {
         <div>
           {load && <Loader />}
           {message && <Output message={message} error={error} />}
+          {jobtitle === 'Worker' && <Redirect to='/orders' />}
+          {jobtitle === 'admin' && <Redirect to='/list-users' />}
+          {jobtitle === 'Manager' && <Redirect to='/edit-order' />}
         </div>
       </form>
     </div>

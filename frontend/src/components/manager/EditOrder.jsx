@@ -1,7 +1,9 @@
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import closeIcon from '../../images/closeicon.svg';
 
 function EditOrder({ order, setActive }) {
+  const [t] = useTranslation('global');
   const dispatch = useDispatch();
   function handleSubmitEditOrder(e) {
     e.preventDefault();
@@ -25,11 +27,11 @@ function EditOrder({ order, setActive }) {
         onClick={() => setActive(false)}
       />
       <span id='form-header' className='padding-bottom--15'>
-        Edit Work Order
+      {t('editOrder.editWOrder')}
       </span>
       <form id='editOrder' onSubmit={handleSubmitEditOrder}>
         <div className='field padding-bottom--24'>
-          <label htmlFor='plannedQuantity'>Edit Work Order planned quantity</label>
+          <label htmlFor='plannedQuantity'>{t('editOrder.editWOrderPLQty')}</label>
           <input
             type='number'
             step='1'
@@ -40,16 +42,16 @@ function EditOrder({ order, setActive }) {
           />
         </div>
         <div className='field padding-bottom--24'>
-          <label htmlFor='promisedDate'>Edit Work Order promised date</label>
+          <label htmlFor='promisedDate'>{t('editOrder.editWOrderPrDate')}</label>
           <input type='date' name='promisedDate' defaultValue={order.promiseddate} />
         </div>
         <div className='field padding-bottom--24'>
-          <label htmlFor='productionPrioroty'>Edit Production Prioroty</label>
+          <label htmlFor='productionPrioroty'>{t('editOrder.editProdPrior')}</label>
           <p>
             <select className='selectEditOrder' name='prioroty'>
-              <option>Low</option>
-              <option>Medium</option>
-              <option>High</option>
+              <option>{t('editOrder.low')}</option>
+              <option>{t('editOrder.medium')}</option>
+              <option>{t('editOrder.high')}</option>
             </select>
           </p>
         </div>
