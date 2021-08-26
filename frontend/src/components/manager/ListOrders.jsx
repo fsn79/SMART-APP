@@ -6,14 +6,14 @@ import ModalOrders from './ModalOrders.jsx';
 function ListOrders() {
   const [t] = useTranslation('global');
   const dispatch = useDispatch();
-  const list = useSelector((state) => state.userList);
+  const { orderList } = useSelector((state) => state);
   useEffect(() => {
     dispatch({ type: 'GET_ORDERS_LIST' });
   }, [dispatch]);
   return (
     <div className='listTableDiv'>
       <h1>{t('listOrders.title')}</h1>
-      {list.length && (
+      {orderList.length && (
         <div className='wc-item title'>
           <div className='wc-id'>ID</div>
           <div className='listTable'>{t('listOrders.Quantity')}</div>
@@ -22,8 +22,9 @@ function ListOrders() {
           <div className='wc-edit'></div>
         </div>
       )}
-      {list.length
-        ? list.map((el) => <ModalOrders el={el} key={el.id} />)
+      {
+      orderList.length > 0
+        ? orderList.map((el) => <ModalOrders el={el} key={el.id} />)
         : t('listOrders.loading')}
     </div>
   );

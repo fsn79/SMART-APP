@@ -25,6 +25,7 @@ import {
   GET_ORDER_IN_WORK,
   SUBMIT_ITEM_PARTS,
   CLOSE_ORDER,
+  GET_ORDER_LIST,
 } from './actionTypes.jsx';
 
 // CREATE USER AC
@@ -126,4 +127,8 @@ export function submitItemPartsAC(payload) {
 
 export function closeOrderAC() {
   return { type: CLOSE_ORDER };
+}
+
+export function showMeOrdersListAC(payload) {
+  return { type: GET_ORDER_LIST, payload };
 }

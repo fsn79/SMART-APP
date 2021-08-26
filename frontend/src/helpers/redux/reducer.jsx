@@ -26,6 +26,7 @@ import {
   GET_ORDER_IN_WORK,
   SUBMIT_ITEM_PARTS,
   CLOSE_ORDER,
+  GET_ORDER_LIST,
 } from '../actionTypes.jsx';
 
 const initState = {
@@ -208,6 +209,11 @@ function reducer(state = initState, action) {
         load: true,
         error: false,
         message: '',
+      };
+    case GET_ORDER_LIST:
+      return {
+        ...state,
+        orderList: action.payload.message
       };
     case LOGIN_USER_SUCCESS:
       return {

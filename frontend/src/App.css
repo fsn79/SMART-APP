@@ -893,7 +893,6 @@ form .work-center-select-wrapper select {
 .flex-3-2 div:last-child {
   width: 38%;
 }
-<<<<<<< HEAD
 .button-lang {
   position: absolute;
   display: flex;
@@ -910,7 +909,7 @@ form .work-center-select-wrapper select {
   color: rgb(255, 248, 248);
   padding: 0px;
   border: 0;
-  /* outline-color: none; */
+
 }
 .btn-lang:hover {
   transition: 1s;
@@ -919,7 +918,7 @@ form .work-center-select-wrapper select {
   color:rgb(255, 255, 255);
   border: 0;
   border: solid 1px #ddd;
-=======
+}
 #red {
   color: red;
   font-size: 13px;
@@ -1086,5 +1085,4 @@ form .work-center-select-wrapper select {
   box-shadow: none;
   text-shadow: none;
   font-weight: 600;
->>>>>>> 7b934d94141a7e5546cf005e94dca23c149f740d
 }
