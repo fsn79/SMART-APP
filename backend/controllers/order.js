@@ -7,8 +7,10 @@ const executionProgres = require('../services/worker/executionProgres');
 const getOrders = require('../services/worker/getOrders');
 const getWorkerOrder = require('../services/worker/getWorkerOrder');
 const showOrdersList = require('../services/manager/showOrdersList');
+const editOrder = require('../services/manager/editOrder');
 
 router.route('/').post(createOrder);
+router.route('/:id').put(editOrder);
 router.route('/').get(showOrdersList);
 router.route('/get-random').get(genOrderNum);
 router.route('/:wcCode/:wcId').get(getOrders);

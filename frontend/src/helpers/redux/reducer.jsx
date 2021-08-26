@@ -32,6 +32,8 @@ import {
   EDIT_USER_FAIL,
   GET_LIST_OF_ITEMS_SUCCESS,
   GET_LIST_OF_ITEMS_FAIL,
+  EDIT_ORDER_SUCCESS,
+  EDIT_ORDER_FAIL,
 } from '../actionTypes.jsx';
 
 const initState = {
@@ -194,22 +196,25 @@ function reducer(state = persistedState ?? initState, action) {
       };
 
     case EDIT_ORDER:
-      const indexOrder = state.orderList.findIndex(
-        (item) => item.id === action.payload.id,
-      );
-      const copyOrderList = [...state.orderList];
-      const copyOrderListItem = { ...copyOrderList[indexOrder] };
-
-      copyOrderListItem.quantity = action.payload.quantity;
-      copyOrderListItem.promiseddate = action.payload.promiseddate;
-      copyOrderListItem.prioroty = action.payload.prioroty;
-      copyOrderList[indexOrder] = copyOrderListItem;
-
       return {
         ...state,
-        userList: copyOrderList,
+        load: true,
+        error: false,
       };
-
+    case EDIT_ORDER_SUCCESS:
+      return {
+        ...state,
+        load: false,
+        error: false,
+        message: action.payload,
+      };
+    case EDIT_ORDER_FAIL:
+      return {
+        ...state,
+        load: false,
+        error: true,
+        message: action.payload,
+      };
     case EDIT_ITEM:
       return {
         ...state,

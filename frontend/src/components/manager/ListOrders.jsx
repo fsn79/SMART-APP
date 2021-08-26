@@ -10,7 +10,7 @@ function ListOrders() {
 
   useEffect(() => {
     dispatch({ type: 'GET_ORDERS_LIST' });
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className='listTableDiv'>
@@ -27,8 +27,7 @@ function ListOrders() {
           <div className='wc-edit'></div>
         </div>
       )}
-      {
-      orderList.length > 0
+      {orderList.length > 0
         ? orderList.map((el) => <ModalOrders el={el} key={el.id} />)
         : t('listOrders.loading')}
     </div>

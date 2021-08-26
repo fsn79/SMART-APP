@@ -31,6 +31,8 @@ import {
   EDIT_USER_FAIL,
   GET_LIST_OF_ITEMS_SUCCESS,
   GET_LIST_OF_ITEMS_FAIL,
+  EDIT_ORDER_SUCCESS,
+  EDIT_ORDER_FAIL,
 } from './actionTypes.jsx';
 
 // CREATE USER AC
@@ -113,6 +115,12 @@ export function editItemAC(payload) {
 
 export function editOrderAC(payload) {
   return { type: EDIT_ORDER, payload };
+}
+export function editOrderSuccessAC(payload) {
+  return { type: EDIT_ORDER_SUCCESS, payload };
+}
+export function editOrderFailAC(payload) {
+  return { type: EDIT_ORDER_FAIL, payload };
 }
 
 export function getWorkCentersAC(payload) {

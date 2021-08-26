@@ -32,6 +32,8 @@ import {
   editUserFailAC,
   getItemsFailAC,
   getItemsSuccessAC,
+  editOrderFailAC,
+  editOrderSuccessAC,
 } from '../actionCreators.jsx';
 import { fetchJson } from '../fetchJson.jsx';
 
@@ -145,13 +147,18 @@ function* editUser(action) {
   }
 }
 function* editOrder(action) {
+  yield put(editOrderAC());
   try {
     const response = yield call(fetchJson, `/api/order/${action.payload.id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(action.payload),
     });
-    yield put(editOrderAC(response));
+    if (response.error) {
+      yield put(editOrderFailAC(response.message));
+    } else {
+      yield put(editOrderSuccessAC(response.message));
+    }
   } catch (e) {
     console.log(e);
   }
@@ -331,7 +338,7 @@ export default function* defaultSaga() {
   yield takeEvery('WORK_CENTER', createWorkCenter);
   yield takeEvery('EDIT_WC', editWorkCenter);
   yield takeEvery('EDIT_USER_SAGA', editUser);
-  yield takeEvery('EDIT_ONE_ORDER', editOrder);
+  yield takeEvery('EDIT_ORDER_SAGA', editOrder);
   yield takeEvery('EDIT_ONE_ITEM', editItem);
   yield takeEvery('GET_WCS_SAGA', getWorkCenters);
   yield takeEvery('LOGIN_USER_SAGA', loginUser);
