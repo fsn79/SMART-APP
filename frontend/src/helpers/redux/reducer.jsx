@@ -52,7 +52,9 @@ const initState = {
   randomOrderNum: null,
 };
 
-function reducer(state = initState, action) {
+const persistedState = JSON.parse(window.localStorage.getItem('state')); // loadState
+
+function reducer(state = persistedState ?? initState, action) {
   switch (action.type) {
     // CREATE USER
     case CLEAR_MESSAGE:
