@@ -22,6 +22,9 @@ function ModalUser({ el }) {
       <div className='listTable' title={el.workcenterid}>
         {el['Workcenter.name']}
       </div>
+      <div className='listTable' title={el.workcenterid}>
+        {el.jobtitle}
+      </div>
       <div className='wc-edit'>
         <img onClick={() => setModalActive(true)} src={editIcon} alt='edit' />
         <Modal active={modalActive} setActive={setModalActive}>

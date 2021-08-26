@@ -1,8 +1,49 @@
-const { Employees, Workcenters } = require('../../models');
+const { Employees } = require('../../models');
+const bcrypt = require('bcrypt');
 
-function editUser(req, res) {
-  console.log('here');
-  return true;
+async function editUser(req, res) {
+  const { id, lastname, firsname, email, password, jobtitle, workcenterid, status } =
+    req.body;
+  try {
+    if (password) {
+      const hash = await bcrypt.hash(password, 10);
+      const out = await Employees.update(
+        {
+          lastname,
+          firsname,
+          email,
+          password: hash,
+          jobtitle,
+          workcenterid,
+          status,
+        },
+        {
+          where: {
+            id,
+          },
+        },
+      );
+    } else {
+      const out = await Employees.update(
+        {
+          lastname,
+          firsname,
+          email,
+          jobtitle,
+          workcenterid,
+          status,
+        },
+        {
+          where: {
+            id,
+          },
+        },
+      );
+    }
+    res.json({ error: false, message: 'User updated' });
+  } catch (e) {
+    res.json({ error: true, message: 'Error' });
+  }
 }
 
 module.exports = editUser;

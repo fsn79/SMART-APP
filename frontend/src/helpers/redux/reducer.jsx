@@ -153,18 +153,23 @@ function reducer(state = initState, action) {
       return newState;
 
     case EDIT_USER:
+      console.log('reducer');
       return {
+        ...state,
         load: true,
         error: false,
         message: '',
       };
     case EDIT_USER_SUCCESS:
+      console.log(action);
       return {
+        ...state,
         load: false,
-        message: action.payload.message,
+        message: action.payload,
       };
     case EDIT_USER_FAIL:
       return {
+        ...state,
         load: false,
         error: true,
         message: action.payload,
@@ -222,7 +227,7 @@ function reducer(state = initState, action) {
     case GET_ORDER_LIST:
       return {
         ...state,
-        orderList: action.payload.message
+        orderList: action.payload.message,
       };
     case LOGIN_USER_SUCCESS:
       return {
