@@ -24,7 +24,8 @@
     "workcenter": "Work Center",
     "btn-create": "Create",
     "statusW": "Worker",
-    "statusM": "Manager"
+    "statusM": "Manager",
+    "passwVerif": "Passwords do not match"
   },
   "listUsers": {
     "title": "Employees List",
@@ -151,5 +152,15 @@
     "medium": "Medium",
     "low": "Low",
     "takeToWork": "Take to work"
+  },
+  "orderNotSelected": {
+    "msg": "There are no active orders. Select an order from the list below."
+  },
+  "editItem": {
+    "editItem": "Edit item",
+    "itemRouting": "Item Routing",
+    "editWorkCsel": "Edit Work centers selections",
+    "editRoutingDescr": "Edit Routing Description",
+    "editCycleTime": "Edit Cycle Time"
   }
 }

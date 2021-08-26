@@ -1,7 +1,9 @@
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import closeIcon from '../../images/closeicon.svg';
 
 function EditItem({ item, setActive }) {
+  const [t] = useTranslation('global');
   const dispatch = useDispatch();
   function handleSubmitEditItem(e) {
     e.preventDefault();
