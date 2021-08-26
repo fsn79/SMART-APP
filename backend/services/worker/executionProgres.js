@@ -1,8 +1,6 @@
 const { Infoorders } = require('../../models/index');
 async function executionProgres(req, res) {
   const { num, type, pk } = req.body;
-  const { id } = req.session;
-  console.log(req.body);
   const order = await Infoorders.findByPk(pk, {
     raw: true,
     attributes: {

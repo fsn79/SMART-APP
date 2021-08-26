@@ -18,14 +18,14 @@ function ItemWorkCenter({ wc }) {
       <div className='listTable' title={wc.capacity}>
         {wc.capacity}
       </div>
-      <div className='listTable' title={wc.status}>
-        {wc.status ? 'Open' : 'Close'}
-      </div>
+      <div className='listTable'>{wc.status ? 'Open' : 'Close'}</div>
       <div className='wc-edit'>
         <img onClick={() => setModalActive(true)} src={editIcon} alt='edit' />
-        <Modal active={modalActive} setActive={setModalActive}>
-          <EditWorkCenter center={wc} setActive={setModalActive} />
-        </Modal>
+        {modalActive && (
+          <Modal active={modalActive} setActive={setModalActive}>
+            <EditWorkCenter center={wc} setActive={setModalActive} />
+          </Modal>
+        )}
       </div>
     </div>
   );

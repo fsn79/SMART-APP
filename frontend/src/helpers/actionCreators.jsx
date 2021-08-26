@@ -35,6 +35,8 @@ import {
   EDIT_ORDER_FAIL,
   CREATE_WORK_CENTER_SUCCESS,
   CREATE_WORK_CENTER_FAIL,
+  EDIT_WORK_CENTER_SUCCESS,
+  EDIT_WORK_CENTER_FAIL,
 } from './actionTypes.jsx';
 
 // CREATE USER AC
@@ -113,8 +115,14 @@ export function editUserFailAC(payload) {
   return { type: EDIT_USER_FAIL, payload };
 }
 // EDIT USER AC - END
-export function editWorkCenterAC(payload) {
-  return { type: EDIT_WORK_CENTER, payload };
+export function editWorkCenterAC() {
+  return { type: EDIT_WORK_CENTER };
+}
+export function editWorkCenterSuccesAC(payload) {
+  return { type: EDIT_WORK_CENTER_SUCCESS, payload };
+}
+export function editWorkCenterFailAC(payload) {
+  return { type: EDIT_WORK_CENTER_FAIL, payload };
 }
 
 export function editItemAC(payload) {

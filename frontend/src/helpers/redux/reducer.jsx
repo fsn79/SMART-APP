@@ -36,6 +36,8 @@ import {
   EDIT_ORDER_FAIL,
   CREATE_WORK_CENTER_SUCCESS,
   CREATE_WORK_CENTER_FAIL,
+  EDIT_WORK_CENTER_SUCCESS,
+  EDIT_WORK_CENTER_FAIL,
 } from '../actionTypes.jsx';
 
 const initState = {
@@ -177,17 +179,25 @@ function reducer(state = persistedState ?? initState, action) {
       };
     case EDIT_WORK_CENTER:
       /* eslint-disable */
-      const index = state.workCenterList.findIndex(
-        (item) => item.id === action.payload.id,
-      );
-
-      const newState = {
+      return {
         ...state,
-        workCenterList: [...state.workCenterList],
+        load: true,
+        error: false,
       };
-
-      newState.workCenterList.splice(index, 1, action.payload);
-      return newState;
+    case EDIT_WORK_CENTER_SUCCESS:
+      return {
+        ...state,
+        load: false,
+        error: false,
+        message: action.payload,
+      };
+    case EDIT_WORK_CENTER_FAIL:
+      return {
+        ...state,
+        load: false,
+        error: true,
+        message: action.payload,
+      };
 
     case EDIT_USER:
       console.log('reducer');

@@ -14,7 +14,7 @@ function EditWorkCenter({ center, setActive }) {
       capacity: e.target.capacity.value,
       status: e.target.status.value,
     };
-    dispatch({ type: 'EDIT_WC', payload });
+    dispatch({ type: 'EDIT_WC_SAGA', payload });
   }
   // Форма редактирования отдела
   return (
@@ -57,9 +57,12 @@ function EditWorkCenter({ center, setActive }) {
         <div className='field padding-bottom--24'>
           <label htmlFor='status'>{t('editWorkCenter.eStatus')}</label>
           <p>
-            <select name='status' className='selectStatus'>
-              <option>{t('editWorkCenter.oActive')}</option>
-              <option>{t('editWorkCenter.oDisabled')}</option>
+            <select
+              defaultValue={center.status}
+              name='status'
+              className='selectStatus'>
+              <option value='true'>{t('editWorkCenter.oActive')}</option>
+              <option value='false'>{t('editWorkCenter.oDisabled')}</option>
             </select>
           </p>
         </div>

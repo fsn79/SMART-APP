@@ -36,6 +36,8 @@ import {
   editOrderSuccessAC,
   createWorkCenterFailAC,
   createWorkCenterSuccesAC,
+  editWorkCenterFailAC,
+  editWorkCenterSuccesAC,
 } from '../actionCreators.jsx';
 import { fetchJson } from '../fetchJson.jsx';
 
@@ -124,15 +126,20 @@ function* createWorkCenter(action) {
 }
 
 function* editWorkCenter(action) {
+  yield put(editWorkCenterAC());
   try {
-    const response = yield call(fetchJson, '/api/wc/:id', {
+    const response = yield call(fetchJson, '/api/wc', {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(action.payload),
     });
-    yield put(editWorkCenterAC(response));
+    if (response.error) {
+      yield put(editWorkCenterFailAC(response.message));
+    } else {
+      yield put(editWorkCenterSuccesAC(response.message));
+    }
   } catch (e) {
-    console.log(e);
+    yield put(editWorkCenterFailAC('Connection error'));
   }
 }
 
@@ -292,7 +299,7 @@ function* getOrderInWork(action) {
 
 function* submitItemParts(action) {
   try {
-    const response = yield call(fetchJson, '/api/order/progressive/', {
+    const response = yield call(fetchJson, '/api/order/progressive', {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(action.payload),
@@ -340,7 +347,7 @@ export default function* defaultSaga() {
   yield takeEvery('CREATE_USER_SAGA', createUser);
   yield takeEvery('CREATE_ITEM_SAGA', createItem);
   yield takeEvery('CREATE_WORK_CENTER_SAGA', createWorkCenter);
-  yield takeEvery('EDIT_WC', editWorkCenter);
+  yield takeEvery('EDIT_WC_SAGA', editWorkCenter);
   yield takeEvery('EDIT_USER_SAGA', editUser);
   yield takeEvery('EDIT_ORDER_SAGA', editOrder);
   yield takeEvery('EDIT_ONE_ITEM', editItem);
