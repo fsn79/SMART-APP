@@ -1,13 +1,15 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
-// import { fetchJson } from '../../helpers/fetchJson.jsx';
+import { Redirect } from 'react-router-dom';
+
 import Loader from '../../helpers/Loader.jsx';
 import Output from '../../helpers/Output.jsx';
 
 function Login() {
   const dispatch = useDispatch();
-  const { load, error, message } = useSelector((state) => state);
+  // eslint-disable-next-line
+  const { load, error, message, jobtitle } = useSelector((state) => state);
   const [t] = useTranslation('global');
 
   // Форма авторизации
@@ -47,6 +49,9 @@ function Login() {
         <div>
           {load && <Loader />}
           {message && <Output message={message} error={error} />}
+          {jobtitle === 'Worker' && <Redirect to='/orders' />}
+          {jobtitle === 'admin' && <Redirect to='/list-users' />}
+          {jobtitle === 'Manager' && <Redirect to='/edit-order' />}
         </div>
       </form>
     </div>
