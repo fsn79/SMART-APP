@@ -161,6 +161,18 @@
     "itemRouting": "Item Routing",
     "editWorkCsel": "Edit Work centers selections",
     "editRoutingDescr": "Edit Routing Description",
-    "editCycleTime": "Edit Cycle Time"
+    "editCycleTime": "Edit Cycle Time",
+    "editStatus": "Edit Status",
+    "active": "Active",
+    "disabled": "Disabled"
+  },
+  "editOrder": {
+    "editWOrder": "Edit Work Order",
+    "editWOrderPLQty": "Edit Work Order planned quantity",
+    "editWOrderPrDate": "Edit Work Order promised date",
+    "editProdPrior": "Edit Production Prioroty",
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low"
   }
 }

@@ -34,15 +34,15 @@ function EditItem({ item, setActive }) {
         onClick={() => setActive(false)}
       />
       <span id='form-header' className='padding-bottom--15'>
-        Edit item
+      {t('editItem.editItem')}
       </span>
       <form id='editItem' onSubmit={handleSubmitEditItem}>
         <div className='field padding-bottom--24'>
-          <label>Item Routing</label>
+          <label>{t('editItem.itemRouting')}</label>
           <div className='work-center-select-titles'>
-            <div>Edit Work centers selections</div>
-            <div>Edit Routing Description</div>
-            <div>Edit Cycle Time</div>
+            <div>{t('editItem.editRoutingDescr')}</div>
+            <div>{t('editItem.editWorkCsel')}</div>
+            <div>{t('editItem.editCycleTime')}</div>
           </div>
           <div className='work-center-select-wrapper'>
             <div className='work-center-label'>
@@ -129,11 +129,11 @@ function EditItem({ item, setActive }) {
           </div>
         </div>
         <div className='field padding-bottom--24'>
-          <label htmlFor='status'>Edit Status</label>
+          <label htmlFor='status'>{t('editItem.editStatus')}</label>
           <p>
             <select name='status' className='selectStatus'>
-              <option>Active</option>
-              <option>Disabled</option>
+              <option>{t('editItem.active')}</option>
+              <option>{t('editItem.disabled')}</option>
             </select>
           </p>
         </div>
