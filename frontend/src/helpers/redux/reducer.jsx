@@ -34,6 +34,8 @@ import {
   GET_LIST_OF_ITEMS_FAIL,
   EDIT_ORDER_SUCCESS,
   EDIT_ORDER_FAIL,
+  CREATE_WORK_CENTER_SUCCESS,
+  CREATE_WORK_CENTER_FAIL,
 } from '../actionTypes.jsx';
 
 const initState = {
@@ -122,7 +124,22 @@ function reducer(state = persistedState ?? initState, action) {
     case CREATE_WORK_CENTER:
       return {
         ...state,
-        workCenterList: [...state, action.payload],
+        load: true,
+        error: false,
+      };
+    case CREATE_WORK_CENTER_SUCCESS:
+      return {
+        ...state,
+        load: false,
+        error: false,
+        message: action.payload,
+      };
+    case CREATE_WORK_CENTER_FAIL:
+      return {
+        ...state,
+        load: false,
+        error: true,
+        message: action.payload,
       };
     case GET_WORK_CENTERS:
       return {
@@ -290,6 +307,7 @@ function reducer(state = persistedState ?? initState, action) {
         ...state,
         error: false,
         load: false,
+        randomOrderNum: null,
         message: action.payload,
       };
     // CREATE ORDER - END

@@ -33,6 +33,8 @@ import {
   GET_LIST_OF_ITEMS_FAIL,
   EDIT_ORDER_SUCCESS,
   EDIT_ORDER_FAIL,
+  CREATE_WORK_CENTER_SUCCESS,
+  CREATE_WORK_CENTER_FAIL,
 } from './actionTypes.jsx';
 
 // CREATE USER AC
@@ -59,8 +61,14 @@ export function loginUserSuccessAC(payload) {
 }
 // LOGIN USER AC - END
 
-export function createWorkCenterAC(payload) {
-  return { type: CREATE_WORK_CENTER, payload };
+export function createWorkCenterAC() {
+  return { type: CREATE_WORK_CENTER };
+}
+export function createWorkCenterSuccesAC(payload) {
+  return { type: CREATE_WORK_CENTER_SUCCESS, payload };
+}
+export function createWorkCenterFailAC(payload) {
+  return { type: CREATE_WORK_CENTER_FAIL, payload };
 }
 
 // CREATE ITEM AC
