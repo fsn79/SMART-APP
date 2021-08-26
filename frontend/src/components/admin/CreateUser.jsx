@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchJson } from '../../helpers/fetchJson.jsx';
@@ -12,7 +12,7 @@ function CreateUser() {
   const [t] = useTranslation('global');
   const { load, error, message } = useSelector((state) => state);
   const dispatch = useDispatch();
-  const history = useHistory();
+  // const history = useHistory();
   useEffect(() => {
     async function fetchAndSetWorkCenters() {
       const listWorkCenters = await fetchJson('/api/wc');
@@ -32,7 +32,10 @@ function CreateUser() {
       workcenterid: e.target.workcenter.value,
     };
     dispatch({ type: 'CREATE_USER_SAGA', payload });
-    history.push('/list-users');
+    if (!error) {
+      e.target.reset();
+    }
+    // history.push('/list-users');
   };
 
   return (

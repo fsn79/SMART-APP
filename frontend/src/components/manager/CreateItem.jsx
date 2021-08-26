@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import Loader from '../../helpers/Loader.jsx';
@@ -9,7 +9,7 @@ function CreateItem() {
   // Форма создания продукта
   const [t] = useTranslation('global');
   const dispatch = useDispatch();
-  const history = useHistory();
+  // const history = useHistory();
   const { load, message, error } = useSelector((store) => store);
   const count = [1, 2, 3];
   const centers = useSelector((state) => state.workCenterList);
@@ -33,7 +33,9 @@ function CreateItem() {
       cycletime3: e.target.cycletime3.value,
     };
     dispatch({ type: 'CREATE_ITEM_SAGA', payload });
-    history.push('/edit-item');
+    if (!error) {
+      e.target.reset();
+    }
   };
 
   return (
