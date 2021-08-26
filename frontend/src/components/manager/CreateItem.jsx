@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import Loader from '../../helpers/Loader.jsx';
@@ -8,6 +9,7 @@ function CreateItem() {
   // Форма создания продукта
   const [t] = useTranslation('global');
   const dispatch = useDispatch();
+  const history = useHistory();
   const { load, message, error } = useSelector((store) => store);
   const count = [1, 2, 3];
   const centers = useSelector((state) => state.workCenterList);
@@ -31,17 +33,20 @@ function CreateItem() {
       cycletime3: e.target.cycletime3.value,
     };
     dispatch({ type: 'CREATE_ITEM_SAGA', payload });
+    history.push('/edit-item');
   };
 
   return (
     <div
       className='flex-direction--column formbg padding-horizontal--48'
       id='createItemDiv'>
-      <span className='padding-bottom--15'>{t('createItem.title')}</span>
+      <span id='header' className='padding-bottom--15'>
+        {t('createItem.title')}
+      </span>
       <form id='createItem' onSubmit={handlerCreateItem}>
         <div className='field padding-bottom--24'>
           <label htmlFor='itemName'>{t('createItem.name')}</label>
-          <input type='text' name='itemName' autoFocus/>
+          <input type='text' name='itemName' autoFocus />
         </div>
         <div className='field padding-bottom--24'>
           <label htmlFor='partNumber'>{t('createItem.pNumber')}</label>
@@ -83,6 +88,7 @@ function CreateItem() {
               <div className='work-center-label'>
                 <input
                   type='number'
+                  min='0'
                   step='0.01'
                   className='cycleTime'
                   name={`cycletime${num}`}

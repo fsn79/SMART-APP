@@ -23,6 +23,8 @@ import {
   CREATE_ORDER_SUCCESS,
   TAKE_ORDER_IN_WORK,
   GET_ORDER_IN_WORK,
+  SUBMIT_ITEM_PARTS,
+  CLOSE_ORDER,
 } from './actionTypes.jsx';
 
 // CREATE USER AC
@@ -116,4 +118,12 @@ export function takeOrderInWorkAC(payload) {
 
 export function getOrderInWorkAC(payload) {
   return { type: GET_ORDER_IN_WORK, payload };
+}
+
+export function submitItemPartsAC(payload) {
+  return { type: SUBMIT_ITEM_PARTS, payload };
+}
+
+export function closeOrderAC() {
+  return { type: CLOSE_ORDER };
 }

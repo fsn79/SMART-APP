@@ -159,6 +159,7 @@ a {
   color: #3e9bbb;
 }
 
+h1,
 h2,
 h3,
 h4,
@@ -365,11 +366,11 @@ button:hover,
 #sidebar section:before,
 #sidebar nav:before {
   content: '';
-  border-top: solid 1px;
+  /* border-top: solid 1px;
   border-bottom: solid 1px;
-  border-color: rgba(0, 0, 0, 0.25);
-  box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.075),
-    0px 1px 0px 0px rgba(255, 255, 255, 0.075);
+  border-color: rgba(0, 0, 0, 0.25); */
+  /* box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.075),
+    0px 1px 0px 0px rgba(255, 255, 255, 0.075); */
   display: block;
   height: 0.5em;
   margin: 0 0 2em 0;
@@ -644,9 +645,12 @@ select.selectStatus {
   outline-color: rgb(84 105 212 / 0.5);
 }
 
-#createItemDiv,
+#createItemDiv {
+  max-width: 40em;
+}
 #editItemDiv {
   max-width: 40em;
+  padding: 30px;
 }
 
 .borderDiv {
@@ -700,7 +704,6 @@ select.selectStatus {
   padding: 5px 10px;
 }
 .wc-item.close {
-  opacity: 0.5;
   background-color: #e1e1e1;
   border-radius: 5px;
 }
@@ -739,6 +742,7 @@ form input.wc-code {
 .wc-item.title .wc-edit {
   width: 50px;
 }
+
 .wc-edit img {
   width: 20px;
   margin: -4px 0;
@@ -810,9 +814,18 @@ form input.wc-code {
   margin-top: 150px;
 }
 
+#editOrderModal {
+  margin-top: 10px;
+  padding: 30px;
+}
+
 .selectEditUser {
   width: 368px;
   margin-left: 7px;
+}
+
+.selectEditOrder {
+  width: 368px;
 }
 /* Orders */
 .orders-wrapper {
@@ -834,6 +847,14 @@ form input.wc-code {
   font-size: 18px;
 }
 
+#header {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.747);
+  margin-bottom: 10px;
+}
+
 .work-center-select-wrapper,
 .work-center-select-titles {
   display: flex;
@@ -841,6 +862,12 @@ form input.wc-code {
   justify-content: space-between;
   padding-bottom: 10px;
 }
+
+.work-center-select-titles div {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 500;
+}
+
 .work-center-select-wrapper div,
 .work-center-select-titles div {
   width: 30%;
@@ -865,6 +892,10 @@ form .work-center-select-wrapper select {
 }
 .flex-3-2 div:last-child {
   width: 38%;
+}
+#red {
+  color: red;
+  font-size: 13px;
 }
 .avaliable-orders {
   margin-bottom: 15px;
@@ -1013,4 +1044,19 @@ form .work-center-select-wrapper select {
 }
 .bad-part-info form button {
   background-color: #eb5b5b;
+}
+.order-close {
+  text-align: center;
+}
+.order-close button {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 14px;
+  padding: 10px 30px;
+
+  margin: 0 0 25px 0;
+  border: none;
+  background-color: #4caf50;
+  box-shadow: none;
+  text-shadow: none;
+  font-weight: 600;
 }

@@ -1,25 +1,24 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useTranslation } from 'react-i18next';
+// import { useTranslation } from 'react-i18next';
 import Order from './Order.jsx';
 import OrderNotSelected from './OrderNotSelected.jsx';
 import OrdersListingItem from './OrdersListingItem.jsx';
 
 function OrdersListing() {
-  const [t] = useTranslation('global');
+  // const [t] = useTranslation('global');
   const dispatch = useDispatch();
-  const {
-    currentOrderId, orderList, wccode, iduser,
-  } = useSelector(
+  // eslint-disable-next-line
+  const { currentOrderId, orderList, wccode, iduser, wcid } = useSelector(
     (state) => state,
   );
   useEffect(() => {
-    dispatch({ type: 'GET_ORDERS_LIST_SAGA', code: wccode });
+    dispatch({ type: 'GET_ORDERS_LIST_SAGA', payload: { code: wccode, wcid } });
     dispatch({
       type: 'GET_ORDER_IN_WORK_SAGA',
       payload: { userId: iduser, wcCode: wccode },
     });
-  }, [dispatch, currentOrderId, iduser, wccode]);
+  }, [dispatch, currentOrderId, iduser, wccode, wcid]);
 
   return (
     <div className='orders-wrapper'>

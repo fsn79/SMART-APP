@@ -24,6 +24,8 @@ import {
   CLEAR_MESSAGE,
   TAKE_ORDER_IN_WORK,
   GET_ORDER_IN_WORK,
+  SUBMIT_ITEM_PARTS,
+  CLOSE_ORDER,
 } from '../actionTypes.jsx';
 
 const initState = {
@@ -36,6 +38,13 @@ const initState = {
   workCenterList: [],
   orderList: [],
   currentOrderId: null,
+  currentOrder: null,
+  user: null,
+  jobtitle: null,
+  iduser: null,
+  wccode: null,
+  status: null,
+  wcid: null,
 };
 
 function reducer(state = initState, action) {
@@ -115,7 +124,6 @@ function reducer(state = initState, action) {
         userList: action.payload,
       };
     case GET_LIST_OF_ORDERS:
-      console.log(action);
       return {
         ...state,
         orderList: [...action.payload.message],
@@ -211,6 +219,7 @@ function reducer(state = initState, action) {
         iduser: action.payload.data.id,
         wccode: action.payload.data.wccode,
         status: action.payload.data.status,
+        wcid: action.payload.data.wcid,
         message: action.payload.message,
       };
     case LOGIN_USER_FAIL:
@@ -259,15 +268,32 @@ function reducer(state = initState, action) {
       };
     // CREATE ORDER - END
     case TAKE_ORDER_IN_WORK:
+      console.log('reducer');
+      console.log(action.payload);
       return {
         ...state,
         currentOrderId: action.payload.orderId,
+        currentOrder: null,
       };
     case GET_ORDER_IN_WORK:
       return {
         ...state,
         currentOrder: action.payload.data,
         currentOrderId: action.payload.data.id,
+      };
+    case SUBMIT_ITEM_PARTS:
+      return {
+        ...state,
+        currentOrder: {
+          ...state.currentOrder,
+          ...action.payload.data,
+        },
+      };
+    case CLOSE_ORDER:
+      return {
+        ...state,
+        currentOrderId: null,
+        currentOrder: null,
       };
     /* eslint-enable */
     default:

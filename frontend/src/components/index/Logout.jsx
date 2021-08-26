@@ -9,6 +9,6 @@ function Logout() {
   }, [dispatch]);
 
   // Выход из системы
-  return <Redirect to="/" />;
+  return <Redirect to='/' />;
 }
 export default Logout;

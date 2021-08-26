@@ -37,6 +37,7 @@ function Navigation() {
             {t('navigation.alogout')}
             </Link>
           </li>
+          <li></li>
         </ul>
       </nav>
     );
@@ -70,6 +71,7 @@ function Navigation() {
             {t('navigation.mlogout')}
             </Link>
           </li>
+          <li></li>
         </ul>
       </nav>
     );
@@ -88,6 +90,7 @@ function Navigation() {
             {t('navigation.wlogout')}
             </Link>
           </li>
+          <li></li>
         </ul>
       </nav>
     );
