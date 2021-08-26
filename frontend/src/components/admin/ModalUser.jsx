@@ -4,7 +4,6 @@ import editIcon from '../../images/editIcon.svg';
 import EditUser from './EditUser.jsx';
 
 function ModalUser({ el }) {
-  console.log(el);
   const [modalActive, setModalActive] = useState(false);
   return (
     <div className={el.status ? 'wc-item' : 'wc-item close'} key={el.id}>
@@ -22,6 +21,9 @@ function ModalUser({ el }) {
       </div>
       <div className='listTable' title={el.workcenterid}>
         {el['Workcenter.name']}
+      </div>
+      <div className='listTable' title={el.workcenterid}>
+        {el.jobtitle}
       </div>
       <div className='wc-edit'>
         <img onClick={() => setModalActive(true)} src={editIcon} alt='edit' />

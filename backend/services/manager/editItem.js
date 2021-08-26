@@ -1,6 +1,5 @@
-
 function editProduct(req, res) {
-  return true
-};
+  return true;
+}
 
 module.exports = editProduct;

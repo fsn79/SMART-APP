@@ -22,7 +22,6 @@ function EditItem({ item, setActive }) {
     };
     dispatch({ type: 'EDIT_ONE_ITEM', payload });
   }
-
   return (
     <div
       className='modal_content flex-direction--column formbg padding-horizontal--48'
@@ -34,38 +33,41 @@ function EditItem({ item, setActive }) {
         onClick={() => setActive(false)}
       />
       <span id='form-header' className='padding-bottom--15'>
-      {t('editItem.editItem')}
+        {t('editItem.editItem')}
       </span>
       <form id='editItem' onSubmit={handleSubmitEditItem}>
         <div className='field padding-bottom--24'>
           <label>{t('editItem.itemRouting')}</label>
           <div className='work-center-select-titles'>
-            <div>{t('editItem.editRoutingDescr')}</div>
             <div>{t('editItem.editWorkCsel')}</div>
+            <div>{t('editItem.editRoutingDescr')}</div>
             <div>{t('editItem.editCycleTime')}</div>
           </div>
           <div className='work-center-select-wrapper'>
             <div className='work-center-label'>
               <p>
-                <select className='selectCenter2' name='workcenter1'>
-                  <option>Center 1</option>
-                  <option>Center 2</option>
-                  <option>Center 3</option>
-                </select>
+                <input
+                  type='text'
+                  className='routingDescription'
+                  defaultValue={item.workcenter1}
+                  disabled
+                />
               </p>
               <p>
-                <select className='selectCenter2' name='workcenter2'>
-                  <option>Center 1</option>
-                  <option>Center 2</option>
-                  <option>Center 3</option>
-                </select>
+                <input
+                  type='text'
+                  className='routingDescription'
+                  defaultValue={item.workcenter2}
+                  disabled
+                />
               </p>
               <p>
-                <select name='workcenter3'>
-                  <option>Center 1</option>
-                  <option>Center 2</option>
-                  <option>Center 3</option>
-                </select>
+                <input
+                  type='text'
+                  className='routingDescription'
+                  defaultValue={item.workcenter3}
+                  disabled
+                />
               </p>
             </div>
             <div className='work-center-label'>

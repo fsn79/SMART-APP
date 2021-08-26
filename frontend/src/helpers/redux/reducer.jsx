@@ -28,6 +28,12 @@ import {
   CLOSE_ORDER,
   GET_ORDER_LIST,
   GET_RANDOM_ORDER_NUM,
+  EDIT_USER_SUCCESS,
+  EDIT_USER_FAIL,
+  GET_LIST_OF_ITEMS_SUCCESS,
+  GET_LIST_OF_ITEMS_FAIL,
+  EDIT_ORDER_SUCCESS,
+  EDIT_ORDER_FAIL,
 } from '../actionTypes.jsx';
 
 const initState = {
@@ -50,7 +56,9 @@ const initState = {
   randomOrderNum: null,
 };
 
-function reducer(state = initState, action) {
+const persistedState = JSON.parse(window.localStorage.getItem('state')); // loadState
+
+function reducer(state = persistedState ?? initState, action) {
   switch (action.type) {
     // CREATE USER
     case CLEAR_MESSAGE:
@@ -134,7 +142,21 @@ function reducer(state = initState, action) {
     case GET_LIST_OF_ITEMS:
       return {
         ...state,
-        itemList: action.payload,
+        itemList: [],
+      };
+    case GET_LIST_OF_ITEMS_SUCCESS:
+      return {
+        ...state,
+        load: false,
+        error: false,
+        itemList: [...action.payload],
+      };
+    case GET_LIST_OF_ITEMS_FAIL:
+      return {
+        ...state,
+        load: false,
+        error: true,
+        message: action.payload,
       };
     case EDIT_WORK_CENTER:
       /* eslint-disable */
@@ -151,57 +173,52 @@ function reducer(state = initState, action) {
       return newState;
 
     case EDIT_USER:
-      const indexUser = state.userList.findIndex((item) => {
-        item.id === action.payload.id;
-      });
-
-      const newStateUser = {
+      console.log('reducer');
+      return {
         ...state,
-        userList: [...state.userList],
+        load: true,
+        error: false,
+        message: '',
       };
-
-      newStateUser.userList.splice(indexUser, 1, action.payload);
-      return newState;
+    case EDIT_USER_SUCCESS:
+      console.log(action);
+      return {
+        ...state,
+        load: false,
+        message: action.payload,
+      };
+    case EDIT_USER_FAIL:
+      return {
+        ...state,
+        load: false,
+        error: true,
+        message: action.payload,
+      };
 
     case EDIT_ORDER:
-      const indexOrder = state.orderList.findIndex(
-        (item) => item.id === action.payload.id,
-      );
-      const copyOrderList = [...state.orderList];
-      const copyOrderListItem = { ...copyOrderList[indexOrder] };
-
-      copyOrderListItem.quantity = action.payload.quantity;
-      copyOrderListItem.promiseddate = action.payload.promiseddate;
-      copyOrderListItem.prioroty = action.payload.prioroty;
-      copyOrderList[indexOrder] = copyOrderListItem;
-
       return {
         ...state,
-        userList: copyOrderList,
+        load: true,
+        error: false,
       };
-
-    case EDIT_ITEM:
-      const indexItem = state.itemList.findIndex(
-        (item) => item.id === action.payload.id,
-      );
-      const copyItemList = [...state.itemList];
-      const copyItemListItem = { ...copyItemList[indexItem] };
-
-      copyItemListItem.workcenter1 = action.payload.workcenter1;
-      copyItemListItem.descrroute1 = action.payload.descrroute1;
-      copyItemListItem.cycletime1 = action.payload.cycletime1;
-      copyItemListItem.workcenter2 = action.payload.workcenter2;
-      copyItemListItem.descrroute2 = action.payload.descrroute2;
-      copyItemListItem.cycletime2 = action.payload.cycletime2;
-      copyItemListItem.workcenter3 = action.payload.workcenter3;
-      copyItemListItem.descrroute3 = action.payload.descrroute3;
-      copyItemListItem.cycletime3 = action.payload.cycletime3;
-      copyItemListItem.status = action.payload.status;
-      copyItemList[indexItem] = copyItemListItem;
-
+    case EDIT_ORDER_SUCCESS:
       return {
         ...state,
-        itemList: copyItemList,
+        load: false,
+        error: false,
+        message: action.payload,
+      };
+    case EDIT_ORDER_FAIL:
+      return {
+        ...state,
+        load: false,
+        error: true,
+        message: action.payload,
+      };
+    case EDIT_ITEM:
+      return {
+        ...state,
+        // itemList: copyItemList,
       };
 
     // LOGIN USER
@@ -215,7 +232,7 @@ function reducer(state = initState, action) {
     case GET_ORDER_LIST:
       return {
         ...state,
-        orderList: action.payload.message
+        orderList: action.payload.message,
       };
     case LOGIN_USER_SUCCESS:
       return {

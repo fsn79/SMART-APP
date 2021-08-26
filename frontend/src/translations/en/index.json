@@ -32,7 +32,8 @@
     "lastName": "Lastname",
     "firstname": "Firstname",
     "wc": "Work Center",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "jobtitle": "Jobtitle"
   },
   "listWC": {
     "title": "Work Centers List",
@@ -97,7 +98,7 @@
     "eLastname": "Edit Lastname",
     "eFirstname": "Edit Firstname",
     "eEmail": "Edit Email",
-    "ePassword": "Edit Password",
+    "ePassword": "New Password",
     "eJobtitle": "Edit Jobtitle",
     "oManager": "Manager",
     "oWorker": "Worker",
@@ -162,7 +163,7 @@
   "editItem": {
     "editItem": "Edit item",
     "itemRouting": "Item Routing",
-    "editWorkCsel": "Edit Work centers selections",
+    "editWorkCsel": "Work Center Name",
     "editRoutingDescr": "Edit Routing Description",
     "editCycleTime": "Edit Cycle Time",
     "editStatus": "Edit Status",

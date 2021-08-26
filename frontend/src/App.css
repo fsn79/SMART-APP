@@ -900,7 +900,7 @@ form .work-center-select-wrapper select {
   justify-content: space-between;
   top: 0.85em;
   right: 1.5em;
-  width:4rem;
+  width: 4rem;
   height: 1.5rem;
   padding: none;
 }
@@ -910,13 +910,12 @@ form .work-center-select-wrapper select {
   color: rgb(255, 248, 248);
   padding: 0px;
   border: 0;
-
 }
 .btn-lang:hover {
   transition: 1s;
   background-color: rgba(0, 0, 0, 0);
   font-family: 'Open Sans Condensed', sans-serif;
-  color:rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
   border: 0;
   border: solid 1px #ddd;
 }
@@ -1086,7 +1085,6 @@ form .work-center-select-wrapper select {
   text-shadow: none;
   font-weight: 600;
 }
-
 .info-user {
   margin-top: 10px;
   line-height: 18px;
@@ -1122,4 +1120,7 @@ form .work-center-select-wrapper select {
   text-align: center;
   color: #d4dde073;
   font-size: 16px;
+}
+.work-center-name {
+  font-weight: 600;
 }

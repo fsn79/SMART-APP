@@ -85,10 +85,8 @@ function CreateOrder() {
         </div>
         <label htmlFor='priority'>{t('createOrder.pPriority')}</label>
         <p>
-          <select name='priority' required>
-            <option defaultValue value='1'>
-              {t('createOrder.value1')}
-            </option>
+          <select defaultValue='1' name='priority' required>
+            <option value='1'>{t('createOrder.value1')}</option>
             <option value='2'>{t('createOrder.value2')}</option>
             <option value='3'>{t('createOrder.value3')}</option>
           </select>

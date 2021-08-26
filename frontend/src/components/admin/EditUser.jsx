@@ -1,10 +1,25 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import { useEffect, useState } from 'react';
+
 import closeIcon from '../../images/closeicon.svg';
+import Loader from '../../helpers/Loader.jsx';
+import Output from '../../helpers/Output.jsx';
+import { fetchJson } from '../../helpers/fetchJson.jsx';
 
 function EditUser({ user, setActive }) {
-  const [t] = useTranslation('global');
+  const { error, message, load } = useSelector((store) => store);
   const dispatch = useDispatch();
+  const [t] = useTranslation('global');
+  const [workCenters, setworkCenters] = useState([]);
+  useEffect(() => {
+    async function fetchAndSetWorkCenters() {
+      const listWorkCenters = await fetchJson('/api/wc');
+      setworkCenters(listWorkCenters.message);
+    }
+    fetchAndSetWorkCenters();
+  }, []);
+
   function handleSubmitEditUser(e) {
     e.preventDefault();
     const payload = {
@@ -17,14 +32,13 @@ function EditUser({ user, setActive }) {
       workcenterid: e.target.workcenter.value,
       status: e.target.status.value,
     };
-    dispatch({ type: 'EDIT_ONE_USER', payload });
+    dispatch({ type: 'EDIT_USER_SAGA', payload });
   }
   // Форма редактирования пользователя
   return (
     <div
       id='editUserModal'
       className='modal_content flex-direction--column formbg padding-horizontal--48'>
-      {/* <button className="modal_close" onClick={() => setActive(false)}>&times;</button> */}
       <img
         className='modal_close'
         alt='close'
@@ -54,24 +68,27 @@ function EditUser({ user, setActive }) {
         </div>
         <div className='field padding-bottom--24'>
           <label htmlFor='password'>{t('editUser.ePassword')}</label>
-          <input type='password' name='password' defaultValue={user.password} />
+          <input type='password' name='password' />
         </div>
         <div className='grid--50-50'>
           <label htmlFor='jobtitle'>{t('editUser.eJobtitle')}</label>
         </div>
         <p>
           <select className='selectEditUser' name='jobtitle'>
-            <option>{t('editUser.oManager')}</option>
-            <option>{t('editUser.oWorker')}</option>
+            <option value='Manager'>{t('editUser.oManager')}</option>
+            <option value='Worker'>{t('editUser.oWorker')}</option>
           </select>
         </p>
         <div className='grid--50-50'>
           <label htmlFor='workcenter'>{t('editUser.eWC')}</label>
         </div>
         <p>
-          <select className='selectEditUser' name='workcenter'>
-            <option>{t('editUser.oManager')}</option>
-            <option>{t('editUser.oWorker')}</option>
+          <select className='selectEditUser' name='workcenter' required>
+            {workCenters.map((el) => (
+              <option key={el.id} value={el.id}>
+                {el.name}
+              </option>
+            ))}
           </select>
         </p>
         <div className='grid--50-50'>
@@ -79,14 +96,16 @@ function EditUser({ user, setActive }) {
         </div>
         <p>
           <select className='selectEditUser' name='status'>
-            <option>{t('editUser.eActive')}</option>
-            <option>{t('editUser.eRetired')}</option>
+            <option value='true'>{t('editUser.eActive')}</option>
+            <option value='false'>{t('editUser.eRetired')}</option>
           </select>
         </p>
         <div className='field padding-bottom--24'>
           <input type='submit' name='submit' value={t('editUser.btn-edit')} />
         </div>
       </form>
+      {load && <Loader />}
+      {message && <Output message={message} error={error} />}
     </div>
   );
 }
