@@ -35,6 +35,7 @@ function Navigation() {
               Logout
             </Link>
           </li>
+          <li></li>
         </ul>
       </nav>
     );
@@ -68,6 +69,7 @@ function Navigation() {
               Logout
             </Link>
           </li>
+          <li></li>
         </ul>
       </nav>
     );
@@ -86,6 +88,7 @@ function Navigation() {
               Logout
             </Link>
           </li>
+          <li></li>
         </ul>
       </nav>
     );

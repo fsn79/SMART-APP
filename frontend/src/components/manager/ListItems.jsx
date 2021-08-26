@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import ModalOrders from './ModalOrders.jsx';
+import ModalItems from './ModalItems.jsx';
 
 function ListItems() {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ function ListItems() {
           <div className='listTable'>Name</div>
           <div className='listTable'>Part Number</div>
           <div className='listTable'>Description</div>
-          <div className='wc-edit'></div>
+          <div className='wc-edit-items'></div>
         </div>
       )}
       {list.length

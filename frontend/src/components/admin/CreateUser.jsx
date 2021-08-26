@@ -5,11 +5,14 @@ import Loader from '../../helpers/Loader.jsx';
 import Output from '../../helpers/Output.jsx';
 
 function CreateUser() {
+  const [password, setPassword] = useState('');
   // Форма создания пользователя
+  const [passState, setPassState] = useState(true);
   const [selectStatus, setSelectStatus] = useState(true);
   const [workCenters, setworkCenters] = useState([]);
   const { load, error, message } = useSelector((state) => state);
   const dispatch = useDispatch();
+
   useEffect(() => {
     async function fetchAndSetWorkCenters() {
       const listWorkCenters = await fetchJson('/api/wc');
@@ -31,6 +34,18 @@ function CreateUser() {
     dispatch({ type: 'CREATE_USER_SAGA', payload });
   };
 
+  const handleVerification = (e) => {
+    if (e.target.value === password) {
+      setPassState(true);
+    } else {
+      setPassState(false);
+    }
+  };
+
+  const handleFirstPassword = (e) => {
+    setPassword(e.target.value);
+  };
+  
   const selectJobTitle = (e) => {
     const { value } = e.target.selectedOptions[0];
     if (value === 'Manager') {
@@ -42,7 +57,7 @@ function CreateUser() {
 
   return (
     <div className='flex-direction--column formbg padding-horizontal--48'>
-      <span className='padding-bottom--15'>Create a new employee</span>
+      <span id="header" className='padding-bottom--15'>Create a new employee</span>
       <form id='createUser' onSubmit={handleSubmitCreateUser}>
         <div className='field padding-bottom--24'>
           <label htmlFor='lastname'>Lastname</label>
@@ -60,14 +75,16 @@ function CreateUser() {
           <div className='grid--50-50'>
             <label htmlFor='password'>Password</label>
           </div>
-          <input type='password' name='password' required />
+          <input type='password' name='password' id='password' required onChange={handleFirstPassword}/>
         </div>
         <div className='field padding-bottom--24'>
           <div className='grid--50-50'>
-            <label htmlFor='password'>Repeat Password</label>
+            <label htmlFor='repeatpassword'>Repeat Password</label>
           </div>
-          <input type='password' name='repeatpassword' required />
+          <input type='password' name='repeatpassword' id='repeatpassword' required onChange={handleVerification}/>
+          {!passState && <p id='red'>Passwords do not match</p>}
         </div>
+        {/* Пароли не совпадают */}
         <div className='grid--50-50'>
           <label htmlFor='jobtitle'>Jobtitle</label>
         </div>
