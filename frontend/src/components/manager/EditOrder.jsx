@@ -66,9 +66,9 @@ function EditOrder({ order, setActive }) {
         <div className='field padding-bottom--24'>
           <input type='submit' name='submit' value='Edit' />
         </div>
+        {load && <Loader />}
+        {message && <Output message={message} error={error} />}
       </form>
-      {load && <Loader />}
-      {message && <Output message={message} error={error} />}
     </div>
   );
 }
