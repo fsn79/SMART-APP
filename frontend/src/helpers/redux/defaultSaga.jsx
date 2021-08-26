@@ -23,6 +23,9 @@ import {
   createOrderFailAC,
   createOrderSuccessAC,
   takeOrderInWorkAC,
+  getOrderInWorkAC,
+  submitItemPartsAC,
+  closeOrderAC,
 } from '../actionCreators.jsx';
 import { fetchJson } from '../fetchJson.jsx';
 
@@ -181,6 +184,7 @@ function* loginUser(action) {
       yield put(loginUserSuccessAC(response));
     }
   } catch (e) {
+    console.log(e);
     yield put(loginUserFailAC('Connection error'));
   }
 }
@@ -196,13 +200,16 @@ function* getUsersList() {
     console.log(e);
   }
 }
-function* getOrdersList(payload) {
-  console.log(payload);
+function* getOrdersList(action) {
   try {
-    const response = yield call(fetchJson, `/api/order/${payload.status}`, {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
-    });
+    const response = yield call(
+      fetchJson,
+      `/api/order/${action.payload.code}/${action.payload.wcid}`,
+      {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      },
+    );
     yield put(getOrdersAC(response));
   } catch (e) {
     console.log(e);
@@ -229,11 +236,55 @@ function* logoutUser() {
   }
 }
 
-function* takeOrderInWork(payload) {
-  console.log('take-order-saga');
+function* takeOrderInWork(action) {
+  console.log(action);
   try {
-    const response = payload.orderId;
+    const response = yield call(fetchJson, '/api/order/progressive/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(action.payload),
+    });
+    console.log(response);
     yield put(takeOrderInWorkAC(response));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+function* getOrderInWork(action) {
+  const { userId, wcCode } = action.payload;
+  try {
+    const response = yield call(fetchJson, `/api/order/worker/${userId}/${wcCode}`);
+    if (response.data) {
+      yield put(getOrderInWorkAC(response));
+    }
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+function* submitItemParts(action) {
+  try {
+    const response = yield call(fetchJson, '/api/order/progressive/', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(action.payload),
+    });
+    yield put(submitItemPartsAC(response));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+function* closeOrder(action) {
+  try {
+    // eslint-disable-next-line
+    const response = yield call(fetchJson, '/api/order/close/', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(action.payload),
+    });
+    yield put(closeOrderAC());
   } catch (e) {
     console.log(e);
   }
@@ -253,8 +304,11 @@ export default function* defaultSaga() {
   yield takeEvery('LOGIN_USER_SAGA', loginUser);
   yield takeEvery('GET_USERS_LIST', getUsersList);
   yield takeEvery('LOGOUT_USER_SAGA', logoutUser);
-  yield takeEvery('GET_ORDERS_LIST', getOrdersList);
+  yield takeEvery('GET_ORDERS_LIST_SAGA', getOrdersList);
   yield takeEvery('GET_ITEMS_LIST_SAGA', getItemsList);
   yield takeEvery('CREATE_ORDER_SAGA', createOrder);
   yield takeEvery('TAKE_ORDER_IN_WORK_SAGA', takeOrderInWork);
+  yield takeEvery('GET_ORDER_IN_WORK_SAGA', getOrderInWork);
+  yield takeEvery('SUBMIT_PARTS_SAGA', submitItemParts);
+  yield takeEvery('CLOSE_ORDER_SAGA', closeOrder);
 }

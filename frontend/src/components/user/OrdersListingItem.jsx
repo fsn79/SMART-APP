@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 function OrdersListingItem({ order }) {
   const dispatch = useDispatch();
-  const { currentOrderId } = useSelector((state) => state);
+  const { currentOrderId, iduser } = useSelector((state) => state);
   const priorityName = (priority) => {
     switch (priority) {
       case 3:
@@ -15,7 +15,10 @@ function OrdersListingItem({ order }) {
   };
   const promisedDate = (date) => date.split('T')[0];
   const buttonHandler = () => {
-    dispatch({ type: 'TAKE_ORDER_IN_WORK_SAGA', orderId: order.id });
+    dispatch({
+      type: 'TAKE_ORDER_IN_WORK_SAGA',
+      payload: { orderId: order.id, userId: iduser },
+    });
   };
   const date = promisedDate(order.promiseddate);
   const priority = priorityName(order.priority);

@@ -1014,3 +1014,18 @@ form .work-center-select-wrapper select {
 .bad-part-info form button {
   background-color: #eb5b5b;
 }
+.order-close {
+  text-align: center;
+}
+.order-close button {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 14px;
+  padding: 10px 30px;
+
+  margin: 0 0 25px 0;
+  border: none;
+  background-color: #4caf50;
+  box-shadow: none;
+  text-shadow: none;
+  font-weight: 600;
+}
