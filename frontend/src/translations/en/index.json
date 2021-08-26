@@ -178,5 +178,10 @@
     "high": "High",
     "medium": "Medium",
     "low": "Low"
+  },
+  "infoUser": {
+    "name": "Name",
+    "jobtitle": "Job Title",
+    "wc":"Work Center Code"
   }
 }

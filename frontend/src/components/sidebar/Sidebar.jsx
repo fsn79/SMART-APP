@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 
 import Logo from './Logo.jsx';
 import Navigation from './Navigation.jsx';
+import InfoUser from './InfoUser.jsx';
 // import Header from '../Header.jsx';
 import { CLEAR_MESSAGE } from '../../helpers/actionTypes.jsx';
 
@@ -23,6 +24,7 @@ function Sidebar() {
   return (
     <div id='sidebar'>
       <Logo />
+      <InfoUser />
       <Navigation />
     </div>
   );
