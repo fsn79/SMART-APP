@@ -119,7 +119,7 @@ function* createWorkCenter(action) {
       yield put(createWorkCenterSuccesAC(response.message));
     }
   } catch (e) {
-    console.log(e);
+    yield put(createWorkCenterFailAC('Connection error'));
   }
 }
 
@@ -150,7 +150,7 @@ function* editUser(action) {
       yield put(editUserSuccessAC(response.message));
     }
   } catch (e) {
-    console.log(e);
+    yield put(editUserFailAC('Connection error'));
   }
 }
 function* editOrder(action) {
@@ -167,7 +167,7 @@ function* editOrder(action) {
       yield put(editOrderSuccessAC(response.message));
     }
   } catch (e) {
-    console.log(e);
+    yield put(editOrderFailAC('Connection error'));
   }
 }
 
@@ -209,7 +209,6 @@ function* loginUser(action) {
       yield put(loginUserSuccessAC(response));
     }
   } catch (e) {
-    console.log(e);
     yield put(loginUserFailAC('Connection error'));
   }
 }
@@ -253,7 +252,7 @@ function* getItemsList() {
       yield put(getItemsSuccessAC(response.data));
     }
   } catch (e) {
-    console.log(e);
+    yield put(getItemsFailAC('Connection error'));
   }
 }
 
@@ -267,14 +266,12 @@ function* logoutUser() {
 }
 
 function* takeOrderInWork(action) {
-  console.log(action);
   try {
     const response = yield call(fetchJson, '/api/order/progressive/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(action.payload),
     });
-    console.log(response);
     yield put(takeOrderInWorkAC(response));
   } catch (e) {
     console.log(e);
