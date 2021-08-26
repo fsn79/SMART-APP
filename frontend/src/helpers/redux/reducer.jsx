@@ -26,6 +26,7 @@ import {
   GET_ORDER_IN_WORK,
   SUBMIT_ITEM_PARTS,
   CLOSE_ORDER,
+  GET_RANDOM_ORDER_NUM,
 } from '../actionTypes.jsx';
 
 const initState = {
@@ -45,6 +46,7 @@ const initState = {
   wccode: null,
   status: null,
   wcid: null,
+  randomOrderNum: null,
 };
 
 function reducer(state = initState, action) {
@@ -294,6 +296,11 @@ function reducer(state = initState, action) {
         ...state,
         currentOrderId: null,
         currentOrder: null,
+      };
+    case GET_RANDOM_ORDER_NUM:
+      return {
+        ...state,
+        randomOrderNum: action.payload,
       };
     /* eslint-enable */
     default:
