@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import Loader from '../../helpers/Loader.jsx';
@@ -8,6 +9,7 @@ function CreateOrder() {
   const [t] = useTranslation('global');
   // Форма создания задачи
   const dispatch = useDispatch();
+  const history = useHistory();
   // eslint-disable-next-line object-curly-newline
   const { itemList, load, message, error } = useSelector((store) => store);
   useEffect(() => {
@@ -31,6 +33,7 @@ function CreateOrder() {
       priority: priority.value,
     };
     dispatch({ type: 'CREATE_ORDER_SAGA', payload });
+    history.push('/orders');
   };
   return (
     <div className='flex-direction--column formbg padding-horizontal--48'>
