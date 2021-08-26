@@ -1,8 +1,8 @@
 {
   "development": {
-    "username": "anya",
-    "password": "anya",
-    "database": "game",
+    "username": "postgres",
+    "password": "postgres",
+    "database": "smartapp",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
