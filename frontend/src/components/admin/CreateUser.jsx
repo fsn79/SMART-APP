@@ -7,7 +7,10 @@ import Loader from '../../helpers/Loader.jsx';
 import Output from '../../helpers/Output.jsx';
 
 function CreateUser() {
+  const [password, setPassword] = useState('');
   // Форма создания пользователя
+  const [passState, setPassState] = useState(true);
+  const [selectStatus, setSelectStatus] = useState(true);
   const [workCenters, setworkCenters] = useState([]);
   const [t] = useTranslation('global');
   const { load, error, message } = useSelector((state) => state);
@@ -38,9 +41,29 @@ function CreateUser() {
     // history.push('/list-users');
   };
 
+  const handleVerification = (e) => {
+    if (e.target.value === password) {
+      setPassState(true);
+    } else {
+      setPassState(false);
+    }
+  };
+
+  const handleFirstPassword = (e) => {
+    setPassword(e.target.value);
+  };
+  const selectJobTitle = (e) => {
+    const { value } = e.target.selectedOptions[0];
+    if (value === 'Manager') {
+      setSelectStatus(false);
+    } else {
+      setSelectStatus(true);
+    }
+  };
+
   return (
     <div className='flex-direction--column formbg padding-horizontal--48'>
-      <span className='padding-bottom--15'>{t('createUser.title')}</span>
+      <span id='header' className='padding-bottom--15'>{t('createUser.title')}</span>
       <form id='createUser' onSubmit={handleSubmitCreateUser}>
         <div className='field padding-bottom--24'>
           <label htmlFor='lastname'>{t('createUser.lastName')}</label>
@@ -58,35 +81,53 @@ function CreateUser() {
           <div className='grid--50-50'>
             <label htmlFor='password'>{t('createUser.password')}</label>
           </div>
-          <input type='password' name='password' required />
+          <input
+            type='password'
+            name='password'
+            id='password'
+            required
+            onChange={handleFirstPassword}
+          />
         </div>
         <div className='field padding-bottom--24'>
           <div className='grid--50-50'>
             <label htmlFor='password'>{t('createUser.repeatPassword')}</label>
           </div>
-          <input type='password' name='repeatpassword' required />
+          <input
+            type='password'
+            name='repeatpassword'
+            id='repeatpassword'
+            required
+            onChange={handleVerification}
+          />
+          {!passState && <p id='red'>{t('createUser.passwVerif')}</p>}
         </div>
+        {/* Пароли не совпадают */}
         <div className='grid--50-50'>
           <label htmlFor='jobtitle'>{t('createUser.jobtitle')}</label>
         </div>
         <p>
-          <select name='jobtitle' required>
-            <option value='Worker'>{t('createUser.statusW')}</option>
+          <select onChange={selectJobTitle} name='jobtitle' required>
+           <option value='Worker'>{t('createUser.statusW')}</option>
             <option value='Manager'>{t('createUser.statusM')}</option>
           </select>
         </p>
-        <div className='grid--50-50'>
-          <label htmlFor='workcenter'>{t('createUser.workcenter')}</label>
-        </div>
-        <p>
-          <select name='workcenter' required>
-            {workCenters.map((el) => (
-              <option key={el.id} value={el.id}>
-                {el.name}
-              </option>
-            ))}
-          </select>
-        </p>
+        {selectStatus === true && (
+          <>
+            <div className='grid--50-50'>
+              <label htmlFor='workcenter'>{t('createUser.workcenter')}</label>
+            </div>
+            <p>
+              <select name='workcenter' required>
+                {workCenters.map((el) => (
+                  <option key={el.id} value={el.id}>
+                    {el.name}
+                  </option>
+                ))}
+              </select>
+            </p>
+          </>
+        )}
         <div className='field padding-bottom--24'>
           <button type='submit'>{t('createUser.btn-create')}</button>
         </div>

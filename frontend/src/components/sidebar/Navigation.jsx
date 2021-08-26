@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 // import { useState } from 'react';
 
 function Navigation() {
+  const [t] = useTranslation('global');
   // const [sidebar, setSidebar] = useState(<nav id='nav' />);
   const { jobtitle } = useSelector((state) => state);
 
@@ -12,29 +14,30 @@ function Navigation() {
         <ul>
           <li>
             <Link className='link' to='/create-user'>
-              Create User
+            {t('navigation.createUser')}
             </Link>
           </li>
           <li>
             <Link className='link' to='/create-work-center'>
-              Create work center
+            {t('navigation.createWCr')}
             </Link>
           </li>
           <li>
             <Link className='link' to='/list-users'>
-              Edit User
+            {t('navigation.eUser')}
             </Link>
           </li>
           <li>
             <Link className='link' to='/edit-work-center'>
-              Edit Work Center
+            {t('navigation.eWCr')}
             </Link>
           </li>
           <li>
             <Link className='link' to='/logout'>
-              Logout
+            {t('navigation.alogout')}
             </Link>
           </li>
+          <li></li>
         </ul>
       </nav>
     );
@@ -45,29 +48,30 @@ function Navigation() {
         <ul>
           <li>
             <Link className='link' to='/create-order'>
-              Create Order
+            {t('navigation.createOrder')}
             </Link>
           </li>
           <li>
             <Link className='link' to='/create-item'>
-              Create Item
+            {t('navigation.createItem')}
             </Link>
           </li>
           <li>
             <Link className='link' to='/edit-order'>
-              Edit Order
+            {t('navigation.editOrder')}
             </Link>
           </li>
           <li>
             <Link className='link' to='/edit-item'>
-              Edit Item
+            {t('navigation.editItem')}
             </Link>
           </li>
           <li>
             <Link className='link' to='/logout'>
-              Logout
+            {t('navigation.mlogout')}
             </Link>
           </li>
+          <li></li>
         </ul>
       </nav>
     );
@@ -78,14 +82,15 @@ function Navigation() {
         <ul>
           <li>
             <Link className='link' to='/orders'>
-              Orders
+            {t('navigation.orders')}
             </Link>
           </li>
           <li>
             <Link className='link' to='/logout'>
-              Logout
+            {t('navigation.wlogout')}
             </Link>
           </li>
+          <li></li>
         </ul>
       </nav>
     );

@@ -21,50 +21,70 @@ function EditUser({ user, setActive }) {
   }
   // Форма редактирования пользователя
   return (
-    <div id='editUserModal' className="modal_content flex-direction--column formbg padding-horizontal--48">
+    <div
+      id='editUserModal'
+      className='modal_content flex-direction--column formbg padding-horizontal--48'>
       {/* <button className="modal_close" onClick={() => setActive(false)}>&times;</button> */}
-      <img className="modal_close" alt="close" src={closeIcon} onClick={() => setActive(false)} />
-      <span id="form-header" className="padding-bottom--15">{t('editUser.title')}</span>
-      <form id="editUser" onSubmit={handleSubmitEditUser}>
-        <div className="field padding-bottom--24">
-          <label htmlFor="lastname">{t('editUser.eLastname')}</label>
-          <input type="text" name="lastname" defaultValue={user.lastname} autoFocus/>
+      <img
+        className='modal_close'
+        alt='close'
+        src={closeIcon}
+        onClick={() => setActive(false)}
+      />
+      <span id='form-header' className='padding-bottom--15'>
+        {t('editUser.title')}
+      </span>
+      <form id='editUser' onSubmit={handleSubmitEditUser}>
+        <div className='field padding-bottom--24'>
+          <label htmlFor='lastname'>{t('editUser.eLastname')}</label>
+          <input
+            type='text'
+            name='lastname'
+            defaultValue={user.lastname}
+            autoFocus
+          />
         </div>
-        <div className="field padding-bottom--24">
-          <label htmlFor="firstname">{t('editUser.eFirstname')}</label>
-          <input type="text" name="firstname" defaultValue={user.firstname} />
+        <div className='field padding-bottom--24'>
+          <label htmlFor='firstname'>{t('editUser.eFirstname')}</label>
+          <input type='text' name='firstname' defaultValue={user.firstname} />
         </div>
-        <div className="field padding-bottom--24">
-          <label htmlFor="email">{t('editUser.eEmail')}</label>
-          <input type="email" name="email" defaultValue={user.email} />
+        <div className='field padding-bottom--24'>
+          <label htmlFor='email'>{t('editUser.eEmail')}</label>
+          <input type='email' name='email' defaultValue={user.email} />
         </div>
-        <div className="field padding-bottom--24">
-          <label htmlFor="password">{t('editUser.ePassword')}</label>
-          <input type="password" name="password" defaultValue={user.password} />
+        <div className='field padding-bottom--24'>
+          <label htmlFor='password'>{t('editUser.ePassword')}</label>
+          <input type='password' name='password' defaultValue={user.password} />
         </div>
-        <div className="grid--50-50">
-          <label htmlFor="jobtitle">{t('editUser.eJobtitle')}</label>
+        <div className='grid--50-50'>
+          <label htmlFor='jobtitle'>{t('editUser.eJobtitle')}</label>
         </div>
-        <p><select className="selectEditUser" name='jobtitle'>
-          <option>{t('editUser.oManager')}</option>
-          <option>{t('editUser.oWorker')}</option>
-        </select></p>
-        <div className="grid--50-50">
-          <label htmlFor="workcenter">{t('editUser.eWC')}</label>
+        <p>
+          <select className='selectEditUser' name='jobtitle'>
+            <option>{t('editUser.oManager')}</option>
+            <option>{t('editUser.oWorker')}</option>
+          </select>
+        </p>
+        <div className='grid--50-50'>
+          <label htmlFor='workcenter'>{t('editUser.eWC')}</label>
         </div>
-        <p><select className="selectEditUser" name='workcenter'>
-          <option>{t('editUser.oManager')}</option>
-          <option>{t('editUser.oWorker')}</option>
-        </select></p>
-        <div className="grid--50-50">
-          <label htmlFor="status">{t('editUser.eStatus')}</label>
+        <p>
+          <select className='selectEditUser' name='workcenter'>
+            <option>{t('editUser.oManager')}</option>
+            <option>{t('editUser.oWorker')}</option>
+          </select>
+        </p>
+        <div className='grid--50-50'>
+          <label htmlFor='status'>{t('editUser.eStatus')}</label>
         </div>
-        <p><select className="selectEditUser" name='status'>
-          <option>{t('editUser.eActive')}</option>
-          <option>{t('editUser.eRetired')}</option>
-        </select></p>
-        <div className="field padding-bottom--24">
-          <input type="submit" name="submit" value={t('editUser.btn-edit')} />
+        <p>
+          <select className='selectEditUser' name='status'>
+            <option>{t('editUser.eActive')}</option>
+            <option>{t('editUser.eRetired')}</option>
+          </select>
+        </p>
+        <div className='field padding-bottom--24'>
+          <input type='submit' name='submit' value={t('editUser.btn-edit')} />
         </div>
       </form>
     </div>

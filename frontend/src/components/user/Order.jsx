@@ -1,13 +1,117 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+
 function Order() {
   // Текущая задача
+  const [t] = useTranslation('global');
+  const dispatch = useDispatch();
+  const { currentOrder } = useSelector((store) => store);
+  const priorityName = (priority) => {
+    switch (priority) {
+      case 3:
+        return t('order.high');
+      case 2:
+        return t('order.medium');
+      default:
+        return t('order.low');
+    }
+  };
+  const promisedDate = (date) => date.split('T')[0];
+  const date = promisedDate(currentOrder['Order.promiseddate']);
+  const priority = priorityName(currentOrder['Order.priority']);
+  const goodPartReport = (e) => {
+    e.preventDefault();
+    const { num } = e.target;
+    dispatch({
+      type: 'SUBMIT_PARTS_SAGA',
+      payload: { num: num.value, type: 'good', pk: currentOrder.id },
+    });
+    e.target.reset();
+  };
+  const badPartReport = (e) => {
+    e.preventDefault();
+    const { num } = e.target;
+    dispatch({
+      type: 'SUBMIT_PARTS_SAGA',
+      payload: { num: num.value, type: 'bad' },
+    });
+    e.target.reset();
+  };
+  const closeOrder = () => {
+    dispatch({
+      type: 'CLOSE_ORDER_SAGA',
+      payload: { pk: currentOrder.id },
+    });
+  };
   return (
-    <div>
-      <div>
-        <h2>CurrentOrder</h2>
+    <div className='current-order'>
+      <div className='current-order-header'>
+        <div className='header-date'>
+        {t('order.promisedDate')}
+          <br />
+          {date}
+        </div>
+        <div className='header-title'>
+        {t('order.currentOrder')} <br />
+        {t('order.number')} {currentOrder['Order.number']}
+        </div>
+        <div className='header-priority'>
+        {t('order.priority')}
+          <br />
+          {priority}
+        </div>
       </div>
-      <form>
-        <h2>Update/Close Order</h2>
-      </form>
+      <div className='current-order-wrapper'>
+        <div className='current-order-info'>
+          <p>
+            <strong>{t('order.itemName')} </strong> {currentOrder['Order.itemname']}
+          </p>
+          <p>
+            <strong>{t('order.itemPartnumber')} </strong> {currentOrder['Order.itempartnum']}
+          </p>
+          <p>
+            <strong>{t('order.routingDescriptor')} </strong>
+            {currentOrder['Order.Item.descrroute']}
+          </p>
+        </div>
+        <div className='current-order-progress'>
+          <h3>{t('order.orderProgress')}</h3>
+          <div className='progress-bar'>
+            {currentOrder.quantitycomplete}/{currentOrder['Order.quantity']}
+          </div>
+          <div className='order-complete-info'>
+            <div className='good-part-info'>
+              <div className='time-to-complete'>{t('order.timeToComplete')}</div>
+              <div className='order-report-wrapper'>
+                <form onSubmit={goodPartReport}>
+                  <h4>{t('order.goodPart')}</h4>
+                  <input type='number' step='1' min='0' name='num' autoFocus required/>
+                  <button>{t('order.submitGood')}</button>
+                </form>
+              </div>
+            </div>
+            <div className='bad-part-info'>
+              <div className='quality-info'>{t('order.quality')}</div>
+              <div className='order-report-wrapper'>
+                <form onSubmit={badPartReport}>
+                  <h4>{t('order.reportDefective')}</h4>
+                  <input type='number' step='1' min='0' name='num' required/>
+                  <button>{t('order.submitDefect')}</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div className='order-close'>
+            {currentOrder.quantitycomplete >= currentOrder['Order.quantity'] ? (
+              <button type='button' onClick={closeOrder}>
+                Close order
+              </button>
+            ) : (
+              ''
+            )}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

@@ -42,7 +42,9 @@ function Login() {
 
   return (
     <div className='flex-direction--column formbg padding-horizontal--48'>
-      <span className='padding-bottom--15'>{t('login.title')}</span>
+      <span id='header' className='padding-bottom--15'>
+        <span className='padding-bottom--15'>{t('login.title')}</span>
+      </span>
       <form onSubmit={handleLogin} id='login'>
         <div className='field padding-bottom--24'>
           <label htmlFor='email'>Email</label>
@@ -55,7 +57,12 @@ function Login() {
           <input type='password' name='password' />
         </div>
         <div className='field padding-bottom--24'>
-          <input type='submit' name='submit' value={t('login.btn-login')} className='button' />
+          <input
+            type='submit'
+            name='submit'
+            value={t('login.btn-login')}
+            className='button'
+          />
         </div>
         <div>
           {load && <Loader />}

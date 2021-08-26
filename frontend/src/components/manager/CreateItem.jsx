@@ -42,11 +42,13 @@ function CreateItem() {
     <div
       className='flex-direction--column formbg padding-horizontal--48'
       id='createItemDiv'>
-      <span className='padding-bottom--15'>{t('createItem.title')}</span>
+      <span id='header' className='padding-bottom--15'>
+        {t('createItem.title')}
+      </span>
       <form id='createItem' onSubmit={handlerCreateItem}>
         <div className='field padding-bottom--24'>
           <label htmlFor='itemName'>{t('createItem.name')}</label>
-          <input type='text' name='itemName' autoFocus/>
+          <input type='text' name='itemName' autoFocus />
         </div>
         <div className='field padding-bottom--24'>
           <label htmlFor='partNumber'>{t('createItem.pNumber')}</label>
@@ -88,6 +90,7 @@ function CreateItem() {
               <div className='work-center-label'>
                 <input
                   type='number'
+                  min='0'
                   step='0.01'
                   className='cycleTime'
                   name={`cycletime${num}`}
