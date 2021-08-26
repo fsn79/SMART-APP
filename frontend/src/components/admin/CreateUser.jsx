@@ -26,14 +26,26 @@ function CreateUser() {
 
   const handleSubmitCreateUser = (e) => {
     e.preventDefault();
-    const payload = {
-      lastname: e.target.lastname.value,
-      firstname: e.target.firstname.value,
-      email: e.target.email.value,
-      password: e.target.password.value,
-      jobtitle: e.target.jobtitle.value,
-      workcenterid: e.target.workcenter.value,
-    };
+    console.log(e.target.workcenter);
+    let payload = {};
+    if (selectStatus === false) {
+      payload = {
+        lastname: e.target.lastname.value,
+        firstname: e.target.firstname.value,
+        email: e.target.email.value,
+        password: e.target.password.value,
+        jobtitle: e.target.jobtitle.value,
+      };
+    } else {
+      payload = {
+        lastname: e.target.lastname.value,
+        firstname: e.target.firstname.value,
+        email: e.target.email.value,
+        password: e.target.password.value,
+        jobtitle: e.target.jobtitle.value,
+        workcenterid: e.target.workcenter.value,
+      };
+    }
     dispatch({ type: 'CREATE_USER_SAGA', payload });
     history.push('/list-users');
   };
@@ -105,7 +117,7 @@ function CreateUser() {
         </div>
         <p>
           <select onChange={selectJobTitle} name='jobtitle' required>
-           <option value='Worker'>{t('createUser.statusW')}</option>
+            <option value='Worker'>{t('createUser.statusW')}</option>
             <option value='Manager'>{t('createUser.statusM')}</option>
           </select>
         </p>
