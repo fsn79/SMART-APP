@@ -25,27 +25,21 @@ function OrdersListing() {
     <div className='orders-wrapper'>
       {currentOrderId ? <Order /> : <OrderNotSelected />}
       <div className='avaliable-orders'>
-        <h2>Pending orders</h2>
+        <h2>{t('ordersListing.title1')}</h2>
         <div className='orders-listing-wrapper'>
           <div className='orders-title'>
             <div className='orders-title-id'>ID</div>
-            <div className='orders-title-priority'>Priority</div>
-            <div className='orders-title-number'>Order Number</div>
-            <div className='orders-title-date'>Promised Date</div>
-            <div className='orders-title-ipn'>Item Partnumber</div>
-            <div className='orders-title-iname'>Item Name</div>
+            <div className='orders-title-priority'>{t('ordersListing.title2')}</div>
+            <div className='orders-title-number'>{t('ordersListing.orderNumber')}</div>
+            <div className='orders-title-date'>{t('ordersListing.promiseDate')}</div>
+            <div className='orders-title-ipn'>{t('ordersListing.itemPartnumber')}</div>
+            <div className='orders-title-iname'>{t('ordersListing.itemName')}</div>
             <div className='orders-title-button'></div>
           </div>
           {orderList.map((order) => (
             <OrdersListingItem order={order} key={order.id} />
           ))}
         </div>
-      {/* <div className='current-order'>
-        <h2>{t('ordersListing.title1')}</h2>
-        {currentOrderId ? <Order /> : <OrderNotSelected />}
-      </div>
-      <div className='avaliable-orders'>
-        <h2>{t('ordersListing.title2')}</h2> */}
       </div>
     </div>
   );

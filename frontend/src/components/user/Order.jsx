@@ -1,16 +1,18 @@
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 function Order() {
   // Текущая задача
+  const [t] = useTranslation('global');
   const { currentOrder } = useSelector((store) => store);
   const priorityName = (priority) => {
     switch (priority) {
       case 3:
-        return 'Hight';
+        return t('order.high');
       case 2:
-        return 'Medium';
+        return t('order.medium');
       default:
-        return 'Low';
+        return t('order.low');
     }
   };
   const promisedDate = (date) => date.split('T')[0];
@@ -20,16 +22,16 @@ function Order() {
     <div className='current-order'>
       <div className='current-order-header'>
         <div className='header-date'>
-          Promised date:
+        {t('order.promisedDate')}
           <br />
           {date}
         </div>
         <div className='header-title'>
-          Current Order <br />
-          number: {currentOrder['Order.number']}
+        {t('order.currentOrder')} <br />
+        {t('order.number')} {currentOrder['Order.number']}
         </div>
         <div className='header-priority'>
-          Priority:
+        {t('order.priority')}
           <br />
           {priority}
         </div>
@@ -37,39 +39,39 @@ function Order() {
       <div className='current-order-wrapper'>
         <div className='current-order-info'>
           <p>
-            <strong>Item name: </strong> {currentOrder['Order.itemname']}
+            <strong>{t('order.itemName')} </strong> {currentOrder['Order.itemname']}
           </p>
           <p>
-            <strong>Item partnumber: </strong> {currentOrder['Order.itempartnum']}
+            <strong>{t('order.itemPartnumber')} </strong> {currentOrder['Order.itempartnum']}
           </p>
           <p>
-            <strong>Routing descriptor: </strong>
+            <strong>{t('order.routingDescriptor')} </strong>
             {currentOrder['Order.Item.descrroute']}
           </p>
         </div>
         <div className='current-order-progress'>
-          <h3>Order Progress</h3>
+          <h3>{t('order.orderProgress')}</h3>
           <div className='progress-bar'>
             {currentOrder.quantitycomplete}/{currentOrder['Order.quantity']}
           </div>
           <div className='order-complete-info'>
             <div className='good-part-info'>
-              <div className='time-to-complete'>Time to complete (min): 102</div>
+              <div className='time-to-complete'>{t('order.timeToComplete')}</div>
               <div className='order-report-wrapper'>
                 <form>
-                  <h4>Good part report</h4>
-                  <input type='text' />
-                  <button>Submit</button>
+                  <h4>{t('order.goodPart')}</h4>
+                  <input type='number' step='1' min='0' autoFocus/>
+                  <button>{t('order.submitGood')}</button>
                 </form>
               </div>
             </div>
             <div className='bad-part-info'>
-              <div className='quality-info'>Quality: 96%</div>
+              <div className='quality-info'>{t('order.quality')}</div>
               <div className='order-report-wrapper'>
                 <form>
-                  <h4>Report defective parts</h4>
-                  <input type='text' />
-                  <button>Submit</button>
+                  <h4>{t('order.reportDefective')}</h4>
+                  <input type='number' step='1' min='0'/>
+                  <button>{t('order.submitDefect')}</button>
                 </form>
               </div>
             </div>

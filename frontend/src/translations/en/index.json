@@ -80,8 +80,13 @@
     "btn-create": "Create"
   },
   "ordersListing": {
-    "title1": "Current Order",
-    "title2": "Available Orders"
+    "title1": "Pending orders",
+    "title2": "Priority",
+    "priority": "Priority",
+    "orderNumber": "Order Number",
+    "promiseDate": "Promised Date",
+    "itemPartnumber": "Item Partnumber",
+    "itemName": "Item Name"
   },
   "editUser": {
     "title": "Edit employee",
@@ -107,5 +112,44 @@
     "oActive": "Active",
     "oDisabled": "Disabled",
     "btn-edit": "Edit"
+  },
+  "navigation": {
+    "createUser": "Create User",
+    "createWCr": "Create work center",
+    "eUser": "Edit User",
+    "eWCr": "Edit Work Center",
+    "alogout": "Logout",
+    "createOrder": "Create Order",
+    "createItem": "Create Item",
+    "editOrder": "Edit Order",
+    "editItem": "Edit Item",
+    "mlogout": "Logout",
+    "orders": "Orders",
+    "wlogout": "Logout"
+  },
+  "order": {
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low",
+    "promisedDate": "Promised date:",
+    "currentOrder": "Current Order",
+    "number": "number:",
+    "priority": "Priority:",
+    "itemName": "Item name:",
+    "itemPartnumber": "Item partnumber:",
+    "routingDescriptor": "Routing descriptor:",
+    "orderProgress": "Order Progress",
+    "timeToComplete": "Time to complete (min): 102",
+    "goodPart": "Good part report",
+    "submitGood": "Submit",
+    "quality": "Quality: 96%",
+    "reportDefective": "Report defective parts",
+    "submitDefect": "Submit"
+  },
+  "orderListingItem": {
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low",
+    "takeToWork": "Take to work"
   }
 }
