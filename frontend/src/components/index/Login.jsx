@@ -35,7 +35,12 @@ function Login() {
           <input type='password' name='password' />
         </div>
         <div className='field padding-bottom--24'>
-          <input type='submit' name='submit' value={t('login.btn-login')} className='button' />
+          <input
+            type='submit'
+            name='submit'
+            value={t('login.btn-login')}
+            className='button'
+          />
         </div>
         <div>
           {load && <Loader />}

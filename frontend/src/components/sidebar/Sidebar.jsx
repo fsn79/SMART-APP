@@ -5,7 +5,7 @@ import Header from '../Header.jsx';
 function Sidebar() {
   // Боковая панель
   return (
-    <div id="sidebar">
+    <div id='sidebar'>
       <Logo />
       <Navigation />
       <Header />

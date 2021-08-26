@@ -17,8 +17,8 @@ function ListUsers() {
   return (
     <div className='listTableDiv'>
       <h1>{t('listUsers.title')}</h1>
-      {
-        list.length && <div className='wc-item title'>
+      {list.length && (
+        <div className='wc-item title'>
           <div className='wc-id'>ID</div>
           <div className='listTable'>{t('listUsers.lastName')}</div>
           <div className='listTable'>{t('listUsers.firstname')}</div>
@@ -26,12 +26,10 @@ function ListUsers() {
           <div className='listTable'>{t('listUsers.wc')}</div>
           <div className='wc-edit'></div>
         </div>
-      }
-      {
-        list.length
-          ? list.map((el) => <ModalUser el={el} key={el.id} />)
-          : t('listUsers.loading')
-      }
+      )}
+      {list.length
+        ? list.map((el) => <ModalUser el={el} key={el.id} />)
+        : t('listUsers.loading')}
     </div>
   );
 }

@@ -13,20 +13,18 @@ function ListItems() {
   return (
     <div className='listTableDiv'>
       <h1>{t('listItems.title')}</h1>
-      {
-        list.length && <div className='wc-item title'>
+      {list.length && (
+        <div className='wc-item title'>
           <div className='wc-id'>ID</div>
           <div className='listTable'>{t('listItems.name')}</div>
           <div className='listTable'>{t('listItems.pNumber')}</div>
           <div className='listTable'>{t('listItems.Description')}</div>
           <div className='wc-edit'></div>
         </div>
-      }
-      {
-        list.length
-          ? list.map((el) => <ModalOrders el={el} key={el.id} />)
-          : t('listItems.loading')
-      }
+      )}
+      {list.length
+        ? list.map((el) => <ModalOrders el={el} key={el.id} />)
+        : t('listItems.loading')}
     </div>
   );
 }

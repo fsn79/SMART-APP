@@ -17,7 +17,8 @@ function ModalItems({ el }) {
           <EditItem order={el} setActive={setModalActive} />
         </Modal>
       </div>
-    </div>);
+    </div>
+  );
 }
 
-export default ModalOrders;
+export default ModalItems;

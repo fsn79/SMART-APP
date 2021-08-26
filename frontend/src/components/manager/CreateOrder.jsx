@@ -51,16 +51,14 @@ function CreateOrder() {
           </select>
         </div>
         <div className='field padding-bottom--24'>
-          <label htmlFor='order'>
-          {t('createOrder.ewonOrca')}
-          </label>
+          <label htmlFor='order'>{t('createOrder.ewonOrca')}</label>
           <div className='flex-3-2'>
             <div>
               <input type='text' name='order' required />
             </div>
             <div>
               <button type='button' onClick={randomWorkOrderNumber}>
-              {t('createOrder.btn-generate')}
+                {t('createOrder.btn-generate')}
               </button>
             </div>
           </div>
@@ -77,7 +75,7 @@ function CreateOrder() {
         <p>
           <select name='priority' required>
             <option defaultValue value='1'>
-            {t('createOrder.value1')}
+              {t('createOrder.value1')}
             </option>
             <option value='2'>{t('createOrder.value2')}</option>
             <option value='3'>{t('createOrder.value3')}</option>

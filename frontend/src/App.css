@@ -803,7 +803,9 @@ form input.wc-code {
   text-overflow: ellipsis;
 }
 
-#editUserModal, #editWCModal, #editOrderModal {
+#editUserModal,
+#editWCModal,
+#editOrderModal {
   padding: 30px;
   margin-top: 150px;
 }
@@ -864,4 +866,3 @@ form .work-center-select-wrapper select {
 .flex-3-2 div:last-child {
   width: 38%;
 }
-
