@@ -6,10 +6,12 @@ import ModalOrders from './ModalOrders.jsx';
 function ListOrders() {
   const [t] = useTranslation('global');
   const dispatch = useDispatch();
-  const { orderList } = useSelector((state) => state);
+  const orderList = useSelector((state) => state.orderList);
+
   useEffect(() => {
     dispatch({ type: 'GET_ORDERS_LIST' });
-  }, [dispatch]);
+  }, []);
+
   return (
     <div className='listTableDiv'>
       <h1>{t('listOrders.title')}</h1>

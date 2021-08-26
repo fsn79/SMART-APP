@@ -250,7 +250,7 @@ function reducer(state = initState, action) {
         itemList: [...action.payload],
       };
     // GET ITEMS - END
-    // CREATE ORDER
+    // CREATE GET_ORDERS_LIST
     case CREATE_ORDER:
       return {
         ...state,
