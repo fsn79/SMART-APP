@@ -32,7 +32,9 @@ function CreateOrder() {
   };
   return (
     <div className='flex-direction--column formbg padding-horizontal--48'>
-      <span id="header" className='padding-bottom--15'>Create a New Work Order</span>
+      <span id='header' className='padding-bottom--15'>
+        Create a New Work Order
+      </span>
       <form id='createOrder' onSubmit={submitHandler}>
         <div className='field padding-bottom--24'>
           <label htmlFor='itemId'>Item Name</label>
@@ -51,7 +53,7 @@ function CreateOrder() {
           </label>
           <div className='flex-3-2'>
             <div>
-              <input type='text' name='order' required autoFocus/>
+              <input type='text' name='order' required autoFocus />
             </div>
             <div>
               <button type='button' onClick={randomWorkOrderNumber}>
@@ -62,7 +64,7 @@ function CreateOrder() {
         </div>
         <div className='field padding-bottom--24'>
           <label htmlFor='quantity'>Enter Work Order planned quantity</label>
-          <input type='number' min="1" step='1' name='quantity' required />
+          <input type='number' min='1' step='1' name='quantity' required />
         </div>
         <div className='field padding-bottom--24'>
           <label htmlFor='date'>Enter Work Order promised date</label>

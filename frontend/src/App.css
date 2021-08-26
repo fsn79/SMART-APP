@@ -808,7 +808,6 @@ form input.wc-code {
   text-overflow: ellipsis;
 }
 
-
 #editUserModal,
 #editWCModal,
 #editOrderModal {
@@ -853,7 +852,7 @@ form input.wc-code {
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 20px;
   font-weight: 600;
-  color:rgba(0, 0, 0, 0.747);
+  color: rgba(0, 0, 0, 0.747);
   margin-bottom: 10px;
 }
 
@@ -865,7 +864,7 @@ form input.wc-code {
   padding-bottom: 10px;
 }
 
-.work-center-select-titles div{
+.work-center-select-titles div {
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 500;
 }
@@ -895,9 +894,9 @@ form .work-center-select-wrapper select {
 .flex-3-2 div:last-child {
   width: 38%;
 }
-#red{
-  color:red;
-  font-size:13px;
+#red {
+  color: red;
+  font-size: 13px;
 }
 .avaliable-orders {
   margin-bottom: 15px;

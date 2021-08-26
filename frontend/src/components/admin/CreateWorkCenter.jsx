@@ -13,26 +13,28 @@ function CreateWorkCenter() {
   };
   // Форма создания отдела
   return (
-    <div className="flex-direction--column formbg padding-horizontal--48">
-      <span id="header" className="padding-bottom--15">Create a New Work Center</span>
+    <div className='flex-direction--column formbg padding-horizontal--48'>
+      <span id='header' className='padding-bottom--15'>
+        Create a New Work Center
+      </span>
       <form onSubmit={handleSubmitCenter}>
-        <div className="field padding-bottom--24">
-          <label htmlFor="centerName">Work Center Name</label>
-          <input type="text" name="centerName" autoFocus/>
+        <div className='field padding-bottom--24'>
+          <label htmlFor='centerName'>Work Center Name</label>
+          <input type='text' name='centerName' autoFocus />
         </div>
-        <div className="field padding-bottom--24">
-          <label htmlFor="code">Work Center code</label>
-          <input type="text" name="code" />
+        <div className='field padding-bottom--24'>
+          <label htmlFor='code'>Work Center code</label>
+          <input type='text' name='code' />
         </div>
-        <div className="field padding-bottom--24">
-          <label htmlFor="capacity">Work Center capacity</label>
-          <input type="number" min='0'step='1' name="capacity" />
+        <div className='field padding-bottom--24'>
+          <label htmlFor='capacity'>Work Center capacity</label>
+          <input type='number' min='0' step='1' name='capacity' />
         </div>
-        <div className="field padding-bottom--24">
-          <input type="submit" name="submit" value="Create" />
+        <div className='field padding-bottom--24'>
+          <input type='submit' name='submit' value='Create' />
         </div>
       </form>
-</div>
+    </div>
   );
 }
 
