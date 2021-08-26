@@ -26,6 +26,7 @@ import {
   getOrderInWorkAC,
   submitItemPartsAC,
   closeOrderAC,
+  showMeOrdersListAC,
   getRandomOrderNumAC,
 } from '../actionCreators.jsx';
 import { fetchJson } from '../fetchJson.jsx';
@@ -291,6 +292,14 @@ function* closeOrder(action) {
   }
 }
 
+function* showMeOrdersList() {
+  try {
+    const response = yield call(fetchJson, '/api/order');
+    yield put(showMeOrdersListAC(response));
+  } catch (e) {
+    console.log(e);
+  }
+}
 function* getRandomOrderNum() {
   try {
     const response = yield call(fetchJson, '/api/order/get-random');
@@ -321,5 +330,6 @@ export default function* defaultSaga() {
   yield takeEvery('GET_ORDER_IN_WORK_SAGA', getOrderInWork);
   yield takeEvery('SUBMIT_PARTS_SAGA', submitItemParts);
   yield takeEvery('CLOSE_ORDER_SAGA', closeOrder);
+  yield takeEvery('GET_ORDERS_LIST', showMeOrdersList);
   yield takeEvery('GET_RANDOM_ORDER_NUM_SAGA', getRandomOrderNum);
 }
