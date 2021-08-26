@@ -25,6 +25,7 @@ import {
   GET_ORDER_IN_WORK,
   SUBMIT_ITEM_PARTS,
   CLOSE_ORDER,
+  GET_ORDER_LIST,
   GET_RANDOM_ORDER_NUM,
   EDIT_USER_SUCCESS,
   EDIT_USER_FAIL,
@@ -136,6 +137,10 @@ export function submitItemPartsAC(payload) {
 
 export function closeOrderAC() {
   return { type: CLOSE_ORDER };
+}
+
+export function showMeOrdersListAC(payload) {
+  return { type: GET_ORDER_LIST, payload };
 }
 
 export function getRandomOrderNumAC(payload) {

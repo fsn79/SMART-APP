@@ -35,6 +35,9 @@ function CreateUser() {
       workcenterid: e.target.workcenter.value,
     };
     dispatch({ type: 'CREATE_USER_SAGA', payload });
+    if (!error) {
+      e.target.reset();
+    }
     // history.push('/list-users');
   };
 

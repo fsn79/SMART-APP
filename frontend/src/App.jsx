@@ -16,6 +16,7 @@ import ListUsers from './components/admin/ListUsers.jsx';
 import ListWorkCenters from './components/admin/ListWorkCenters.jsx';
 import ListOrders from './components/manager/ListOrders.jsx';
 import ListItems from './components/manager/ListItems.jsx';
+import Header from './components/Header.jsx';
 
 function App() {
   // const { jobtitle } = useSelector((state) => state);
@@ -24,6 +25,7 @@ function App() {
       <BrowserRouter>
         <Sidebar />
         <div id='content'>
+          <Header />
           <div className='inner'>
             <Switch>
               <Route path='/' exact>

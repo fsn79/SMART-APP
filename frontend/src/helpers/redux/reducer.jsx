@@ -26,6 +26,7 @@ import {
   GET_ORDER_IN_WORK,
   SUBMIT_ITEM_PARTS,
   CLOSE_ORDER,
+  GET_ORDER_LIST,
   GET_RANDOM_ORDER_NUM,
   EDIT_USER_SUCCESS,
   EDIT_USER_FAIL,
@@ -218,6 +219,11 @@ function reducer(state = initState, action) {
         error: false,
         message: '',
       };
+    case GET_ORDER_LIST:
+      return {
+        ...state,
+        orderList: action.payload.message
+      };
     case LOGIN_USER_SUCCESS:
       return {
         ...state,
@@ -253,7 +259,7 @@ function reducer(state = initState, action) {
         itemList: [...action.payload],
       };
     // GET ITEMS - END
-    // CREATE ORDER
+    // CREATE GET_ORDERS_LIST
     case CREATE_ORDER:
       return {
         ...state,
