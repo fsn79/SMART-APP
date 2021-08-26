@@ -10,6 +10,9 @@ function ModalOrders({ el }) {
   return (
     <div className={el.status ? 'wc-item' : 'wc-item close'} key={el.id}>
       <div className='wc-id'>{el.id}</div>
+      <div className='listTable'>{el.itemname}</div>
+      <div className='listTable'>{el.itempartnum}</div>
+      <div className='listTable'>{el.number}</div>
       <div className='listTable' title={el.quantity}>
         {el.quantity}
       </div>
