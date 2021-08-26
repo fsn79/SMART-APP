@@ -41,7 +41,6 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
       },
       workcenterid: {
-        allowNull: false,
         type: DataTypes.INTEGER,
         references: {
           model: 'Workcenters',
@@ -60,8 +59,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      freezeTableName: true,
       modelName: 'Employees',
+      freezeTableName: true,
     },
   );
   return Employees;

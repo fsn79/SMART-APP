@@ -51,7 +51,7 @@ function CreateOrder() {
           </label>
           <div className='flex-3-2'>
             <div>
-              <input type='text' name='order' required />
+              <input type='text' name='order' required autoFocus/>
             </div>
             <div>
               <button type='button' onClick={randomWorkOrderNumber}>
@@ -62,7 +62,7 @@ function CreateOrder() {
         </div>
         <div className='field padding-bottom--24'>
           <label htmlFor='quantity'>Enter Work Order planned quantity</label>
-          <input type='number' step='0.01' min='0' name='quantity' required />
+          <input type='number' min="1" step='1' name='quantity' required />
         </div>
         <div className='field padding-bottom--24'>
           <label htmlFor='date'>Enter Work Order promised date</label>

@@ -1,7 +1,9 @@
 'use strict';
-const { Model } = require('sequelize');
+const {
+  Model
+} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Orders extends Model {
+  class Infoorders extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -10,49 +12,42 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
-  }
-  Orders.init(
+  };
+  Infoorders.init(
     {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: DataTypes.INTEGER,
+        type: DataTypes.INTEGER
       },
-      itemname: {
-        allowNull: false,
-        type: DataTypes.STRING,
-      },
-      itempartnum: {
-        allowNull: false,
-        type: DataTypes.STRING,
-      },
-      itemsid: {
-        allowNull: false,
+      employeesid: {
         type: DataTypes.INTEGER,
         references: {
-          model: 'Items',
+          model: 'Employees',
           key: 'id',
           onUpdate: 'cascade',
           onDelete: 'cascade',
         },
       },
-      number: {
-        allowNull: false,
-        type: DataTypes.STRING,
+      ordersid: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'Orders',
+          key: 'id',
+          onUpdate: 'cascade',
+          onDelete: 'cascade',
+        },
       },
-      quantity: {
+      quantitycomplete: {
         allowNull: false,
         type: DataTypes.INTEGER,
+        defaultValue: 0,
       },
-      promiseddate: {
-        allowNull: false,
-        type: DataTypes.DATE,
-      },
-      priority: {
+      quantitydefect: {
         allowNull: false,
         type: DataTypes.INTEGER,
-        defaultValue: 1,
+        defaultValue: 0,
       },
       status: {
         allowNull: false,
@@ -61,12 +56,12 @@ module.exports = (sequelize, DataTypes) => {
       },
       createdAt: DataTypes.DATE,
       updatedAt: DataTypes.DATE,
-    },
-    {
-      sequelize,
-      modelName: 'Orders',
-      freezeTableName: true,
-    },
+  },
+  {
+    sequelize,
+    modelName: 'Infoorders',
+    freezeTableName: true,
+  }
   );
-  return Orders;
+  return Infoorders;
 };
