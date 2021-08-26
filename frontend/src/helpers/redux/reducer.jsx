@@ -223,6 +223,7 @@ function reducer(state = initState, action) {
         load: false,
         error: false,
         user: action.payload.data.name,
+        userlastname: action.payload.data.lastname,
         jobtitle: action.payload.data.jobtitle,
         iduser: action.payload.data.id,
         wccode: action.payload.data.wccode,

@@ -27,6 +27,7 @@ async function loginUser(req, res) {
             data: {
               id: checkUser.id,
               name: checkUser.firstname,
+              lastname: checkUser.lastname,
               status: checkUser.status,
               jobtitle: checkUser.jobtitle,
               wccode: checkUser['Workcenter.code'],
