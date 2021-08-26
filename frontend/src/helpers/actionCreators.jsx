@@ -26,6 +26,8 @@ import {
   SUBMIT_ITEM_PARTS,
   CLOSE_ORDER,
   GET_RANDOM_ORDER_NUM,
+  EDIT_USER_SUCCESS,
+  EDIT_USER_FAIL,
 } from './actionTypes.jsx';
 
 // CREATE USER AC
@@ -81,10 +83,17 @@ export function createOrderSuccessAC(payload) {
   return { type: CREATE_ORDER_SUCCESS, payload };
 }
 // CREATE ORDER AC - END
+// EDIT USER AC
 export function editUserAC(payload) {
   return { type: EDIT_USER, payload };
 }
-
+export function editUserSuccessAC(payload) {
+  return { type: EDIT_USER_SUCCESS, payload };
+}
+export function editUserFailAC(payload) {
+  return { type: EDIT_USER_FAIL, payload };
+}
+// EDIT USER AC - END
 export function editWorkCenterAC(payload) {
   return { type: EDIT_WORK_CENTER, payload };
 }

@@ -1,7 +1,8 @@
-const db = require('../../models');
+const { Employees, Workcenters } = require('../../models');
 
 function editUser(req, res) {
-  return true
-};
+  console.log('here');
+  return true;
+}
 
 module.exports = editUser;

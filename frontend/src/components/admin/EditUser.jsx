@@ -24,7 +24,6 @@ function EditUser({ user, setActive }) {
     <div
       id='editUserModal'
       className='modal_content flex-direction--column formbg padding-horizontal--48'>
-      {/* <button className="modal_close" onClick={() => setActive(false)}>&times;</button> */}
       <img
         className='modal_close'
         alt='close'

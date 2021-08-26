@@ -27,6 +27,8 @@ import {
   SUBMIT_ITEM_PARTS,
   CLOSE_ORDER,
   GET_RANDOM_ORDER_NUM,
+  EDIT_USER_SUCCESS,
+  EDIT_USER_FAIL,
 } from '../actionTypes.jsx';
 
 const initState = {
@@ -150,17 +152,22 @@ function reducer(state = initState, action) {
       return newState;
 
     case EDIT_USER:
-      const indexUser = state.userList.findIndex((item) => {
-        item.id === action.payload.id;
-      });
-
-      const newStateUser = {
-        ...state,
-        userList: [...state.userList],
+      return {
+        load: true,
+        error: false,
+        message: '',
       };
-
-      newStateUser.userList.splice(indexUser, 1, action.payload);
-      return newState;
+    case EDIT_USER_SUCCESS:
+      return {
+        load: false,
+        message: action.payload.message,
+      };
+    case EDIT_USER_FAIL:
+      return {
+        load: false,
+        error: true,
+        message: action.payload,
+      };
 
     case EDIT_ORDER:
       const indexOrder = state.orderList.findIndex(

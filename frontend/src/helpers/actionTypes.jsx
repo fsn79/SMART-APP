@@ -16,8 +16,11 @@ export const CREATE_ORDER_FAIL = 'CREATE_ORDER_FAIL';
 //
 export const LOGOUT_USER = 'LOGOUT_USER';
 //
-export const CREATE_WORK_CENTER = 'CREATE_WORK_CENTER';
 export const EDIT_USER = 'EDIT_USER';
+export const EDIT_USER_SUCCESS = 'EDIT_USER_SUCCESS';
+export const EDIT_USER_FAIL = 'EDIT_USER_FAIL';
+//
+export const CREATE_WORK_CENTER = 'CREATE_WORK_CENTER';
 export const EDIT_WORK_CENTER = 'EDIT_WORK_CENTER';
 export const EDIT_ITEM = 'EDIT_ITEM';
 export const EDIT_ORDER = 'EDIT_ORDER';
