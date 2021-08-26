@@ -45,7 +45,6 @@ function CreateUser() {
   const handleFirstPassword = (e) => {
     setPassword(e.target.value);
   };
-  
   const selectJobTitle = (e) => {
     const { value } = e.target.selectedOptions[0];
     if (value === 'Manager') {
@@ -57,7 +56,9 @@ function CreateUser() {
 
   return (
     <div className='flex-direction--column formbg padding-horizontal--48'>
-      <span id="header" className='padding-bottom--15'>Create a new employee</span>
+      <span id='header' className='padding-bottom--15'>
+        Create a new employee
+      </span>
       <form id='createUser' onSubmit={handleSubmitCreateUser}>
         <div className='field padding-bottom--24'>
           <label htmlFor='lastname'>Lastname</label>
@@ -75,13 +76,25 @@ function CreateUser() {
           <div className='grid--50-50'>
             <label htmlFor='password'>Password</label>
           </div>
-          <input type='password' name='password' id='password' required onChange={handleFirstPassword}/>
+          <input
+            type='password'
+            name='password'
+            id='password'
+            required
+            onChange={handleFirstPassword}
+          />
         </div>
         <div className='field padding-bottom--24'>
           <div className='grid--50-50'>
             <label htmlFor='repeatpassword'>Repeat Password</label>
           </div>
-          <input type='password' name='repeatpassword' id='repeatpassword' required onChange={handleVerification}/>
+          <input
+            type='password'
+            name='repeatpassword'
+            id='repeatpassword'
+            required
+            onChange={handleVerification}
+          />
           {!passState && <p id='red'>Passwords do not match</p>}
         </div>
         {/* Пароли не совпадают */}
@@ -94,18 +107,23 @@ function CreateUser() {
             <option value='Manager'>Manager</option>
           </select>
         </p>
-        {selectStatus === true && <><div className='grid--50-50'>
-          <label htmlFor='workcenter'>Workcenter</label>
-        </div>
-        <p><select name='workcenter' required>
-            {workCenters.map((el) => (
-              <option key={el.id} value={el.id}>
-                {el.name}
-              </option>
-            ))}
-          </select>
-        </p></>}
-       <div className='field padding-bottom--24'>
+        {selectStatus === true && (
+          <>
+            <div className='grid--50-50'>
+              <label htmlFor='workcenter'>Workcenter</label>
+            </div>
+            <p>
+              <select name='workcenter' required>
+                {workCenters.map((el) => (
+                  <option key={el.id} value={el.id}>
+                    {el.name}
+                  </option>
+                ))}
+              </select>
+            </p>
+          </>
+        )}
+        <div className='field padding-bottom--24'>
           <button type='submit'>Create</button>
         </div>
         {load && <Loader />}

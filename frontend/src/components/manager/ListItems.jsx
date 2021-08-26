@@ -21,7 +21,7 @@ function ListItems() {
         </div>
       )}
       {list.length
-        ? list.map((el) => <ModalOrders el={el} key={el.id} />)
+        ? list.map((el) => <ModalItems el={el} key={el.id} />)
         : 'Loading...'}
     </div>
   );
