@@ -178,7 +178,6 @@ function* loginUser(action) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(action.payload),
     });
-    console.log(response);
     if (!response.data.status || response.error) {
       yield put(loginUserFailAC(response.message));
     } else {
@@ -245,6 +244,7 @@ function* takeOrderInWork(action) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(action.payload),
     });
+    console.log(response);
     yield put(takeOrderInWorkAC(response));
   } catch (e) {
     console.log(e);

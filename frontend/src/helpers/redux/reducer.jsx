@@ -38,6 +38,13 @@ const initState = {
   workCenterList: [],
   orderList: [],
   currentOrderId: null,
+  currentOrder: null,
+  user: null,
+  jobtitle: null,
+  iduser: null,
+  wccode: null,
+  status: null,
+  wcid: null,
 };
 
 function reducer(state = initState, action) {
