@@ -62,6 +62,9 @@
   },
   "listOrders": {
     "title": "Orders List",
+    "name": "Name",
+    "itempartnum": "itempartnum",
+    "number": "number",
     "Quantity": "Quantity",
     "Promiseddate": "Promiseddate",
     "Priority": "Priority",

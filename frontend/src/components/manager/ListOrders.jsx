@@ -18,6 +18,9 @@ function ListOrders() {
       {orderList.length && (
         <div className='wc-item title'>
           <div className='wc-id'>ID</div>
+          <div className='listTable'>{t('listOrders.name')}</div>
+          <div className='listTable'>{t('listOrders.itempartnum')}</div>
+          <div className='listTable'>{t('listOrders.number')}</div>
           <div className='listTable'>{t('listOrders.Quantity')}</div>
           <div className='listTable'>{t('listOrders.Promiseddate')}</div>
           <div className='listTable'>{t('listOrders.Priority')}</div>
