@@ -90,9 +90,9 @@ function Order() {
           </div>
           <div className='order-complete-info'>
             <div className='good-part-info'>
-              <div className='time-to-complete'>
-                {t('order.badParts')}
-                {currentOrder.quantitydefect}
+              <div className='quality-info'>
+                {t('order.quality')}
+                {quality}%
               </div>
               <div className='order-report-wrapper'>
                 <form onSubmit={goodPartReport}>
@@ -110,9 +110,9 @@ function Order() {
               </div>
             </div>
             <div className='bad-part-info'>
-              <div className='quality-info'>
-                {t('order.quality')}
-                {quality}%
+              <div className='time-to-complete'>
+                {t('order.badParts')}
+                {currentOrder.quantitydefect}
               </div>
               <div className='order-report-wrapper'>
                 <form onSubmit={badPartReport}>

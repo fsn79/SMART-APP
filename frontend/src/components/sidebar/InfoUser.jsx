@@ -11,7 +11,7 @@ function InfoUser() {
       {
         // eslint-disable-next-line
         user &&
-          (jobtitle === 'admin' || 'Manager' ? (
+          (jobtitle === 'admin' || jobtitle === 'Manager' ? (
             <>
               <div className='info-user'>
                 <p className='info-user-p'>
