@@ -9,7 +9,7 @@ function ListOrders() {
   const orderList = useSelector((state) => state.orderList);
 
   useEffect(() => {
-    dispatch({ type: 'GET_ORDERS_LIST' });
+    dispatch({ type: 'GET_ORDERS_LIST_MANAGER_SAGA' });
   }, [dispatch]);
 
   return (

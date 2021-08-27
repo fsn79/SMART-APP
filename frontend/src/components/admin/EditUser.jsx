@@ -74,7 +74,10 @@ function EditUser({ user, setActive }) {
           <label htmlFor='jobtitle'>{t('editUser.eJobtitle')}</label>
         </div>
         <p>
-          <select className='selectEditUser' name='jobtitle'>
+          <select
+            className='selectEditUser'
+            defaultValue={user.jobtitle}
+            name='jobtitle'>
             <option value='Manager'>{t('editUser.oManager')}</option>
             <option value='Worker'>{t('editUser.oWorker')}</option>
           </select>

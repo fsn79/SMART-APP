@@ -362,6 +362,6 @@ export default function* defaultSaga() {
   yield takeEvery('GET_ORDER_IN_WORK_SAGA', getOrderInWork);
   yield takeEvery('SUBMIT_PARTS_SAGA', submitItemParts);
   yield takeEvery('CLOSE_ORDER_SAGA', closeOrder);
-  yield takeEvery('GET_ORDERS_LIST', showMeOrdersList);
+  yield takeEvery('GET_ORDERS_LIST_MANAGER_SAGA', showMeOrdersList);
   yield takeEvery('GET_RANDOM_ORDER_NUM_SAGA', getRandomOrderNum);
 }

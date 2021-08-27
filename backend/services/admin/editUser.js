@@ -2,15 +2,24 @@ const { Employees } = require('../../models');
 const bcrypt = require('bcrypt');
 
 async function editUser(req, res) {
-  const { id, lastname, firsname, email, password, jobtitle, workcenterid, status } =
-    req.body;
+  const {
+    id,
+    lastname,
+    firstname,
+    email,
+    password,
+    jobtitle,
+    workcenterid,
+    status,
+  } = req.body;
+  console.log(req.body);
   try {
     if (password) {
       const hash = await bcrypt.hash(password, 10);
       const out = await Employees.update(
         {
           lastname,
-          firsname,
+          firstname,
           email,
           password: hash,
           jobtitle,
@@ -27,7 +36,7 @@ async function editUser(req, res) {
       const out = await Employees.update(
         {
           lastname,
-          firsname,
+          firstname,
           email,
           jobtitle,
           workcenterid,

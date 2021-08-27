@@ -33,7 +33,7 @@ function Order() {
     const { num } = e.target;
     dispatch({
       type: 'SUBMIT_PARTS_SAGA',
-      payload: { num: num.value, type: 'bad' },
+      payload: { num: num.value, type: 'bad', pk: currentOrder.id },
     });
     e.target.reset();
   };
@@ -43,20 +43,28 @@ function Order() {
       payload: { pk: currentOrder.id },
     });
   };
+  const qualityPercent = (all, bad) => {
+    const one = 100 / all;
+    return 100 - one * bad;
+  };
+  const quality = qualityPercent(
+    currentOrder['Order.quantity'],
+    currentOrder.quantitydefect,
+  );
   return (
     <div className='current-order'>
       <div className='current-order-header'>
         <div className='header-date'>
-        {t('order.promisedDate')}
+          {t('order.promisedDate')}
           <br />
           {date}
         </div>
         <div className='header-title'>
-        {t('order.currentOrder')} <br />
-        {t('order.number')} {currentOrder['Order.number']}
+          {t('order.currentOrder')} <br />
+          {t('order.number')} {currentOrder['Order.number']}
         </div>
         <div className='header-priority'>
-        {t('order.priority')}
+          {t('order.priority')}
           <br />
           {priority}
         </div>
@@ -67,7 +75,8 @@ function Order() {
             <strong>{t('order.itemName')} </strong> {currentOrder['Order.itemname']}
           </p>
           <p>
-            <strong>{t('order.itemPartnumber')} </strong> {currentOrder['Order.itempartnum']}
+            <strong>{t('order.itemPartnumber')} </strong>{' '}
+            {currentOrder['Order.itempartnum']}
           </p>
           <p>
             <strong>{t('order.routingDescriptor')} </strong>
@@ -81,21 +90,34 @@ function Order() {
           </div>
           <div className='order-complete-info'>
             <div className='good-part-info'>
-              <div className='time-to-complete'>{t('order.timeToComplete')}</div>
+              <div className='time-to-complete'>
+                {t('order.badParts')}
+                {currentOrder.quantitydefect}
+              </div>
               <div className='order-report-wrapper'>
                 <form onSubmit={goodPartReport}>
                   <h4>{t('order.goodPart')}</h4>
-                  <input type='number' step='1' min='0' name='num' autoFocus required/>
+                  <input
+                    type='number'
+                    step='1'
+                    min='0'
+                    name='num'
+                    autoFocus
+                    required
+                  />
                   <button>{t('order.submitGood')}</button>
                 </form>
               </div>
             </div>
             <div className='bad-part-info'>
-              <div className='quality-info'>{t('order.quality')}</div>
+              <div className='quality-info'>
+                {t('order.quality')}
+                {quality}%
+              </div>
               <div className='order-report-wrapper'>
                 <form onSubmit={badPartReport}>
                   <h4>{t('order.reportDefective')}</h4>
-                  <input type='number' step='1' min='0' name='num' required/>
+                  <input type='number' step='1' min='0' name='num' required />
                   <button>{t('order.submitDefect')}</button>
                 </form>
               </div>

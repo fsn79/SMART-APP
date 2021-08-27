@@ -144,10 +144,10 @@
     "itemPartnumber": "Item partnumber:",
     "routingDescriptor": "Routing descriptor:",
     "orderProgress": "Order Progress",
-    "timeToComplete": "Time to complete (min): 102",
+    "badParts": "Defective Parts: ",
     "goodPart": "Good part report",
     "submitGood": "Submit",
-    "quality": "Quality: 96%",
+    "quality": "Quality: ",
     "reportDefective": "Report defective parts",
     "submitDefect": "Submit"
   },
@@ -182,6 +182,6 @@
   "infoUser": {
     "name": "Name",
     "jobtitle": "Job Title",
-    "wc":"Work Center Code"
+    "wc": "Work Center Code"
   }
 }

@@ -259,7 +259,7 @@ function reducer(state = persistedState ?? initState, action) {
     case GET_ORDER_LIST:
       return {
         ...state,
-        orderList: action.payload.message,
+        orderList: [...action.payload.message],
       };
     case LOGIN_USER_SUCCESS:
       return {
