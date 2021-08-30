@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import ModalUser from './ModalUser.jsx';
 
-// import { fetchJson } from '../../helpers/fetchJson.jsx';
+// import { fetchJson } from '../../helpers/fetchJson.jsx';//
 
 function ListUsers() {
   const [t] = useTranslation('global');
