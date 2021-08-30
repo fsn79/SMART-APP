@@ -27,6 +27,16 @@ import {
   CLOSE_ORDER,
   GET_ORDER_LIST,
   GET_RANDOM_ORDER_NUM,
+  EDIT_USER_SUCCESS,
+  EDIT_USER_FAIL,
+  GET_LIST_OF_ITEMS_SUCCESS,
+  GET_LIST_OF_ITEMS_FAIL,
+  EDIT_ORDER_SUCCESS,
+  EDIT_ORDER_FAIL,
+  CREATE_WORK_CENTER_SUCCESS,
+  CREATE_WORK_CENTER_FAIL,
+  EDIT_WORK_CENTER_SUCCESS,
+  EDIT_WORK_CENTER_FAIL,
 } from './actionTypes.jsx';
 
 // CREATE USER AC
@@ -53,8 +63,14 @@ export function loginUserSuccessAC(payload) {
 }
 // LOGIN USER AC - END
 
-export function createWorkCenterAC(payload) {
-  return { type: CREATE_WORK_CENTER, payload };
+export function createWorkCenterAC() {
+  return { type: CREATE_WORK_CENTER };
+}
+export function createWorkCenterSuccesAC(payload) {
+  return { type: CREATE_WORK_CENTER_SUCCESS, payload };
+}
+export function createWorkCenterFailAC(payload) {
+  return { type: CREATE_WORK_CENTER_FAIL, payload };
 }
 
 // CREATE ITEM AC
@@ -71,6 +87,12 @@ export function createItemFailAC(payload) {
 export function getItemsAC(payload) {
   return { type: GET_LIST_OF_ITEMS, payload };
 }
+export function getItemsSuccessAC(payload) {
+  return { type: GET_LIST_OF_ITEMS_SUCCESS, payload };
+}
+export function getItemsFailAC(payload) {
+  return { type: GET_LIST_OF_ITEMS_FAIL, payload };
+}
 // CREATE ORDER AC
 export function createOrderAC(payload) {
   return { type: CREATE_ORDER, payload };
@@ -82,12 +104,25 @@ export function createOrderSuccessAC(payload) {
   return { type: CREATE_ORDER_SUCCESS, payload };
 }
 // CREATE ORDER AC - END
+// EDIT USER AC
 export function editUserAC(payload) {
   return { type: EDIT_USER, payload };
 }
-
-export function editWorkCenterAC(payload) {
-  return { type: EDIT_WORK_CENTER, payload };
+export function editUserSuccessAC(payload) {
+  return { type: EDIT_USER_SUCCESS, payload };
+}
+export function editUserFailAC(payload) {
+  return { type: EDIT_USER_FAIL, payload };
+}
+// EDIT USER AC - END
+export function editWorkCenterAC() {
+  return { type: EDIT_WORK_CENTER };
+}
+export function editWorkCenterSuccesAC(payload) {
+  return { type: EDIT_WORK_CENTER_SUCCESS, payload };
+}
+export function editWorkCenterFailAC(payload) {
+  return { type: EDIT_WORK_CENTER_FAIL, payload };
 }
 
 export function editItemAC(payload) {
@@ -96,6 +131,12 @@ export function editItemAC(payload) {
 
 export function editOrderAC(payload) {
   return { type: EDIT_ORDER, payload };
+}
+export function editOrderSuccessAC(payload) {
+  return { type: EDIT_ORDER_SUCCESS, payload };
+}
+export function editOrderFailAC(payload) {
+  return { type: EDIT_ORDER_FAIL, payload };
 }
 
 export function getWorkCentersAC(payload) {

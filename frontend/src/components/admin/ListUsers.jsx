@@ -9,7 +9,6 @@ function ListUsers() {
   const [t] = useTranslation('global');
   const dispatch = useDispatch();
   const list = useSelector((state) => state.userList);
-  console.log(list);
   useEffect(() => {
     dispatch({ type: 'GET_USERS_LIST' });
   }, [dispatch]);
@@ -24,6 +23,7 @@ function ListUsers() {
           <div className='listTable'>{t('listUsers.firstname')}</div>
           <div className='listTableEmail'>Email</div>
           <div className='listTable'>{t('listUsers.wc')}</div>
+          <div className='listTable'>{t('listUsers.jobtitle')}</div>
           <div className='wc-edit'></div>
         </div>
       )}

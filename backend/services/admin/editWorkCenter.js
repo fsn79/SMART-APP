@@ -1,7 +1,8 @@
 const db = require('../../models');
 
-function editDepartmet(req, res) {
-  return true
-};
+function editWorkCenter(req, res) {
+  console.log('here');
+  return true;
+}
 
-module.exports = editDepartmet;
+module.exports = editWorkCenter;

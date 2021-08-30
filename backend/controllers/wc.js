@@ -5,6 +5,6 @@ const listingWorkCenters = require('../services/admin/listingWorkCenter');
 
 router.route('/').get(listingWorkCenters);
 router.route('/').post(createWorkCenter);
-router.route('/:id').put(editWorkCenter);
+router.route('/').put(editWorkCenter);
 
 module.exports = router;

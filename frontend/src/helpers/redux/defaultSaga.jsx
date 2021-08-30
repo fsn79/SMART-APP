@@ -28,6 +28,16 @@ import {
   closeOrderAC,
   showMeOrdersListAC,
   getRandomOrderNumAC,
+  editUserSuccessAC,
+  editUserFailAC,
+  getItemsFailAC,
+  getItemsSuccessAC,
+  editOrderFailAC,
+  editOrderSuccessAC,
+  createWorkCenterFailAC,
+  createWorkCenterSuccesAC,
+  editWorkCenterFailAC,
+  editWorkCenterSuccesAC,
 } from '../actionCreators.jsx';
 import { fetchJson } from '../fetchJson.jsx';
 
@@ -98,53 +108,73 @@ function* createOrder(action) {
 }
 
 function* createWorkCenter(action) {
+  yield put(createWorkCenterAC());
   try {
     const response = yield call(fetchJson, '/api/wc', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(action.payload),
     });
-    yield put(createWorkCenterAC(response));
+    if (response.error) {
+      yield put(createWorkCenterFailAC(response.message));
+    } else {
+      yield put(createWorkCenterSuccesAC(response.message));
+    }
   } catch (e) {
-    console.log(e);
+    yield put(createWorkCenterFailAC('Connection error'));
   }
 }
 
 function* editWorkCenter(action) {
+  yield put(editWorkCenterAC());
   try {
-    const response = yield call(fetchJson, '/api/wc/:id', {
+    const response = yield call(fetchJson, '/api/wc', {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(action.payload),
     });
-    yield put(editWorkCenterAC(response));
+    if (response.error) {
+      yield put(editWorkCenterFailAC(response.message));
+    } else {
+      yield put(editWorkCenterSuccesAC(response.message));
+    }
   } catch (e) {
-    console.log(e);
+    yield put(editWorkCenterFailAC('Connection error'));
   }
 }
 
 function* editUser(action) {
+  yield put(editUserAC());
   try {
     const response = yield call(fetchJson, `/api/user/${action.payload.id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(action.payload),
     });
-    yield put(editUserAC(response));
+    if (response.error) {
+      yield put(editUserFailAC(response.message));
+    } else {
+      yield put(editUserSuccessAC(response.message));
+    }
   } catch (e) {
-    console.log(e);
+    yield put(editUserFailAC('Connection error'));
   }
 }
 function* editOrder(action) {
+  yield put(editOrderAC());
   try {
     const response = yield call(fetchJson, `/api/order/${action.payload.id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(action.payload),
     });
-    yield put(editOrderAC(response));
+    if (response.error) {
+      yield put(editOrderFailAC(response.message));
+    } else {
+      yield put(editOrderSuccessAC(response.message));
+    }
   } catch (e) {
-    console.log(e);
+    yield put(editOrderFailAC('Connection error'));
   }
 }
 
@@ -186,7 +216,6 @@ function* loginUser(action) {
       yield put(loginUserSuccessAC(response));
     }
   } catch (e) {
-    console.log(e);
     yield put(loginUserFailAC('Connection error'));
   }
 }
@@ -218,14 +247,19 @@ function* getOrdersList(action) {
   }
 }
 function* getItemsList() {
+  yield put(getItemsAC());
   try {
     const response = yield call(fetchJson, '/api/item', {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     });
-    yield put(getItemsAC(response.message));
+    if (response.error) {
+      yield put(getItemsFailAC(response.message));
+    } else {
+      yield put(getItemsSuccessAC(response.data));
+    }
   } catch (e) {
-    console.log(e);
+    yield put(getItemsFailAC('Connection error'));
   }
 }
 
@@ -239,14 +273,12 @@ function* logoutUser() {
 }
 
 function* takeOrderInWork(action) {
-  console.log(action);
   try {
     const response = yield call(fetchJson, '/api/order/progressive/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(action.payload),
     });
-    console.log(response);
     yield put(takeOrderInWorkAC(response));
   } catch (e) {
     console.log(e);
@@ -267,7 +299,7 @@ function* getOrderInWork(action) {
 
 function* submitItemParts(action) {
   try {
-    const response = yield call(fetchJson, '/api/order/progressive/', {
+    const response = yield call(fetchJson, '/api/order/progressive', {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(action.payload),
@@ -314,10 +346,10 @@ export default function* defaultSaga() {
   yield takeEvery('TEST', loadData);
   yield takeEvery('CREATE_USER_SAGA', createUser);
   yield takeEvery('CREATE_ITEM_SAGA', createItem);
-  yield takeEvery('WORK_CENTER', createWorkCenter);
-  yield takeEvery('EDIT_WC', editWorkCenter);
-  yield takeEvery('EDIT_ONE_USER', editUser);
-  yield takeEvery('EDIT_ONE_ORDER', editOrder);
+  yield takeEvery('CREATE_WORK_CENTER_SAGA', createWorkCenter);
+  yield takeEvery('EDIT_WC_SAGA', editWorkCenter);
+  yield takeEvery('EDIT_USER_SAGA', editUser);
+  yield takeEvery('EDIT_ORDER_SAGA', editOrder);
   yield takeEvery('EDIT_ONE_ITEM', editItem);
   yield takeEvery('GET_WCS_SAGA', getWorkCenters);
   yield takeEvery('LOGIN_USER_SAGA', loginUser);
@@ -330,6 +362,6 @@ export default function* defaultSaga() {
   yield takeEvery('GET_ORDER_IN_WORK_SAGA', getOrderInWork);
   yield takeEvery('SUBMIT_PARTS_SAGA', submitItemParts);
   yield takeEvery('CLOSE_ORDER_SAGA', closeOrder);
-  yield takeEvery('GET_ORDERS_LIST', showMeOrdersList);
+  yield takeEvery('GET_ORDERS_LIST_MANAGER_SAGA', showMeOrdersList);
   yield takeEvery('GET_RANDOM_ORDER_NUM_SAGA', getRandomOrderNum);
 }
